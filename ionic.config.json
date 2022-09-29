@@ -1,0 +1,7 @@
+{
+  "name": "MIT-QuestionAPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
