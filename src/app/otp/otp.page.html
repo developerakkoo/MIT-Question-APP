@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="auth"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="11" offset="1">
+        <ion-text class="ion-text-center" color="success">
+          <h4>We have sent you a verification code on your mobile.</h4>
+        </ion-text>
+  <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:6}"></ng-otp-input>
+        
+</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+  <ion-button expand="full" color="success" (click)="Submit()" fill="clear" >
+    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
+    Login
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>

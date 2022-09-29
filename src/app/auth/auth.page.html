@@ -1,0 +1,29 @@
+
+
+<ion-content color="primary">
+<ion-text class="ion-text-center" color="light">
+  <h1 class="title">Quizy</h1>
+</ion-text>
+
+<ion-grid fixed style="margin-top:50% ;">
+  <ion-row>
+    <ion-col size="12">
+      <ion-text color="success">
+        <h1>Welcome back!</h1>
+      </ion-text>
+      <input placeholder="Enter your mobile number" class="mobileInput" type="number" name="number" [(ngModel)]="mobileNo" id="">
+      <ion-text class="ion-text-center" color="medium">
+        <p style="font-size: 12px ;">We will text you a verification code.</p>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+  <ion-button expand="full" color="success" (click)="Submit()" fill="clear" >
+    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
+    Continue
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>

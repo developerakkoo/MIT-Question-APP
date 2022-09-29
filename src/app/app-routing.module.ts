@@ -8,8 +8,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'auth',
     pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+  },
+  {
+    path: 'question-one',
+    loadChildren: () => import('./Question/question-one/question-one.module').then( m => m.QuestionOnePageModule)
+  },
+  {
+    path: 'question-two',
+    loadChildren: () => import('./Question/question-two/question-two.module').then( m => m.QuestionTwoPageModule)
+  },
+  {
+    path: 'question-three',
+    loadChildren: () => import('./Question/question-three/question-three.module').then( m => m.QuestionThreePageModule)
+  },
+  {
+    path: 'otp',
+    loadChildren: () => import('./otp/otp.module').then( m => m.OtpPageModule)
   },
 ];
 

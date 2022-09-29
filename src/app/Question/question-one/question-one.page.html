@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">01</strong><span style="color: #92949c;">/05</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+
+<ion-grid class="ion-margin-top">
+  <ion-row>
+    <ion-col style="margin-top:10px;" size="12" color="light">
+      <ion-text  class="ion-margin-top"  color="light">
+        <h5 style="font-weight: 500;">Drag down the following five animals in the order of your preference.</h5>
+      </ion-text>
+      <ion-list style="margin-top:30px;" color="primary">
+        <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
+    
+          <ion-item lines="none" color="primary" *ngFor="let item of listItems">
+            <ion-label>
+              {{item}}
+            </ion-label>
+            <ion-reorder color="primary"></ion-reorder>
+          </ion-item>
+    
+        </ion-reorder-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+  <ion-button expand="full" color="success" (click)="getList()" fill="clear" size="large" >
+    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
+    Next
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>
