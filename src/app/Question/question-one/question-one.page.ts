@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionOnePage implements OnInit {
   listItems:any;
 
-  constructor() {
+  constructor(private router: Router) {
     this.listItems = [
       "A. Cow",
       "B. Tiger",
@@ -31,6 +32,7 @@ export class QuestionOnePage implements OnInit {
 
   getList() {
     console.table(this.listItems);
+    this.router.navigate(['question-two']);
   }
 
 }

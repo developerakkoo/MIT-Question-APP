@@ -31,6 +31,18 @@ const routes: Routes = [
     path: 'otp',
     loadChildren: () => import('./otp/otp.module').then( m => m.OtpPageModule)
   },
+  {
+    path: 'question-four',
+    loadChildren: () => import('./Question/question-four/question-four.module').then( m => m.QuestionFourPageModule)
+  },
+  {
+    path: 'question-five',
+    loadChildren: () => import('./Question/question-five/question-five.module').then( m => m.QuestionFivePageModule)
+  },
+  {
+    path: 'question-six',
+    loadChildren: () => import('./Question/question-six/question-six.module').then( m => m.QuestionSixPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>questionTwo</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">02</strong><span style="color: #92949c;">/05</span></ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content color="primary">
 
-<ion-content>
+<ion-grid class="ion-margin-top">
+  <ion-row>
+    <ion-col style="margin-top:10px;" size="7" color="light">
+      <ion-text  class="ion-margin-top"  color="light">
+        <h5 style="font-weight: 500;">Write a word to describe each one of the following.</h5>
+      </ion-text>
+      <ion-list style="margin-top:30px;" color="primary">
+        <ion-item color="primary" *ngFor="let item of listItems">
+          <ion-label> {{item}} </ion-label>
+          <ion-select value="peperoni" multiple="false" placeholder="Select">
+            <ion-select-option value="peperoni">Peperoni</ion-select-option>
+            <ion-select-option value="hawaii">Hawaii</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+  <ion-button expand="full" color="success" (click)="getList()" fill="clear" size="large" >
+    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
+    Next
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,13 +1,15 @@
 
 
 <ion-content color="primary">
-<ion-text class="ion-text-center" color="light">
-  <h1 class="title">Quizy</h1>
-</ion-text>
 
-<ion-grid fixed style="margin-top:50% ;">
+
+<ion-grid fixed >
   <ion-row>
-    <ion-col size="12">
+    <ion-col sizeLg="5" offsetLg="3" sizeSm="12" sizeXs="12">
+      <ion-text class="ion-text-center" color="light">
+        <h1 class="title">Quizy</h1>
+        <h4>A quiz for your life!</h4>
+      </ion-text>
       <ion-text color="success">
         <h1>Welcome back!</h1>
       </ion-text>
@@ -15,15 +17,11 @@
       <ion-text class="ion-text-center" color="medium">
         <p style="font-size: 12px ;">We will text you a verification code.</p>
       </ion-text>
+      <ion-button expand="full" color="success" (click)="Submit()">
+        <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
+        Continue
+      </ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>
 </ion-content>
-<ion-footer>
-  <ion-toolbar color="primary">
-  <ion-button expand="full" color="success" (click)="Submit()" fill="clear" >
-    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
-    Continue
-  </ion-button>
-  </ion-toolbar>
-</ion-footer>

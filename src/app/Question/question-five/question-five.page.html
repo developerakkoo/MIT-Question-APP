@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">02</strong><span style="color: #92949c;">/05</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+
+<ion-grid class="ion-margin-top">
+  <ion-row>
+    <ion-col style="margin-top:10px;" size="7" color="light">
+      <ion-text  class="ion-margin-top"  color="light">
+        <h5 style="font-weight: 500;">Select the details.</h5>
+      </ion-text>
+      <ion-list style="margin-top:30px;" color="primary">
+        
+          <ion-radio-group  name="auto" value="tesla">
+            <ion-list-header>
+              <ion-label>Age</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Above 18 years</ion-label>
+              <ion-radio value="above18"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Below 18 years</ion-label>
+              <ion-radio value="below18"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        
+
+          <ion-radio-group  name="auto" value="tesla">
+            <ion-list-header>
+              <ion-label>Gender</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Male</ion-label>
+              <ion-radio value="male"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Female</ion-label>
+              <ion-radio value="female"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Other</ion-label>
+              <ion-radio value="other"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+  <ion-button expand="full" color="success" (click)="submit()" fill="clear" size="large" >
+    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
+    Next
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>
