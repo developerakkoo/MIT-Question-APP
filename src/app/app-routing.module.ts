@@ -43,6 +43,18 @@ const routes: Routes = [
     path: 'question-six',
     loadChildren: () => import('./Question/question-six/question-six.module').then( m => m.QuestionSixPageModule)
   },
+  {
+    path: 'result',
+    loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
+  },
+  {
+    path: 'selectitems/:tag',
+    loadChildren: () => import('./selectitems/selectitems.module').then( m => m.SelectitemsPageModule)
+  },
+  {
+    path: 'relative-select-page',
+    loadChildren: () => import('./relative-select-page/relative-select-page.module').then( m => m.RelativeSelectPagePageModule)
+  },
 ];
 
 @NgModule({

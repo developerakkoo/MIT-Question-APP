@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      My Books
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="4">
+        <ion-text class="ion-text-center" color="primary">
+          <h1>My Books this year</h1>
+        </ion-text>
+      <ion-slides mode="ios" pager="ios" scrollbar="ios">
+        <ion-slide style="background-image: url(../../assets/richdadpoordad.jpg) ;" *ngFor="let img of booksYear">
+          <img style="width: auto; background-size: cover;" [src]="img.image" alt="">
+        </ion-slide>
+       
+      </ion-slides>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text class="ion-text-center" color="primary">
+          <h1>My Books this month</h1>
+        </ion-text>
+      <ion-slides mode="ios" pager="ios" scrollbar="ios">
+        <ion-slide style="background-image: url(../../assets/richdadpoordad.jpg) ;" *ngFor="let img of booksYear">
+          <img style="width: auto; background-size: cover;" [src]="img.image" alt="">
+        </ion-slide>
+       
+      </ion-slides>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text class="ion-text-center" color="primary">
+          <h1>My Books this Week</h1>
+        </ion-text>
+      <ion-slides mode="ios" pager="ios" scrollbar="ios">
+        <ion-slide style="background-image: url(../../assets/richdadpoordad.jpg) ;" *ngFor="let img of booksYear">
+          <img style="width: auto; background-size: cover;" [src]="img.image" alt="">
+        </ion-slide>
+       
+      </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

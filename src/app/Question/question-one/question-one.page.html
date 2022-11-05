@@ -3,22 +3,22 @@
     <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">01</strong><span style="color: #92949c;">/05</span></ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="primary">
+<ion-content>
 
 <ion-grid class="ion-margin-top">
   <ion-row>
     <ion-col style="margin-top:10px;" size="7" color="light">
-      <ion-text  class="ion-margin-top"  color="light">
+      <ion-text  class="ion-margin-top"  color="primary">
         <h5 style="font-weight: 500;">Drag down the following five animals in the order of your preference.</h5>
       </ion-text>
-      <ion-list style="margin-top:30px;" color="primary">
+      <ion-list style="margin-top:30px;" >
         <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
     
-          <ion-item lines="none" color="primary" *ngFor="let item of listItems">
+          <ion-item lines="none" *ngFor="let item of listItems">
             <ion-label>
-              {{item}}
+              {{item.key}}
             </ion-label>
-            <ion-reorder color="primary"></ion-reorder>
+            <ion-reorder></ion-reorder>
           </ion-item>
     
         </ion-reorder-group>
@@ -27,12 +27,38 @@
   </ion-row>
 </ion-grid>
 
+<ion-grid >
+  <ion-col style="margin-top:10px;" size="7" color="light">
+    <ion-text  class="ion-margin-top"  color="primary">
+      <h5 style="font-weight: 500;">You can drag only once.</h5>
+      <h6>List will appear below</h6>
+    </ion-text>
+    <ion-list style="margin-top:30px;" >
+      <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
+  
+        <ion-item lines="none" *ngFor="let item of draggedList">
+          <ion-label>
+            {{item.key}}
+          </ion-label>
+          <ion-reorder></ion-reorder>
+        </ion-item>
+  
+      </ion-reorder-group>
+    </ion-list>
+  </ion-col>
+</ion-grid>
 </ion-content>
 <ion-footer>
   <ion-toolbar color="primary">
-  <ion-button expand="full" color="success" (click)="getList()" fill="clear" size="large" >
-    <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
-    Next
-  </ion-button>
+  <ion-buttons slot="start">
+    <!-- <ion-button (click)="goBack()">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Go Back
+    </ion-button> -->
+    <ion-button (click)="getList()">
+      <ion-icon slot="start" name="arrow-forward"></ion-icon>
+      Continue
+    </ion-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-footer>

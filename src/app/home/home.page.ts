@@ -7,6 +7,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  booksYear:any[] = [
+    {
+      name: "Rich Dad Poor Dad",
+      image: "assets/richdadpoordad.jpg"
+    }
+    ,
+    {
+      name: "Rich Dad Poor Dad",
+      image: "assets/richdadpoordad.jpg"
+    },
+    {
+      name: "Rich Dad Poor Dad",
+      image: "assets/richdadpoordad.jpg"
+    }
+  ]
   constructor() {}
 
 }

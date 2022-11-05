@@ -1,27 +1,37 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">03</strong><span style="color: #92949c;">/05</span></ion-title>
+    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">03</strong><span style="color: #92949c;">/03</span></ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="primary">
+<ion-content>
 
 <ion-grid class="ion-margin-top">
   <ion-row>
     <ion-col style="margin-top:10px;" size="7" color="light">
-      <ion-text  class="ion-margin-top"  color="light">
-        <h5 style="font-weight: 500;">Drag down the following five animals in the order of your preference.</h5>
+      <ion-text  class="ion-margin-top"  color="primary">
+        <h5 style="font-weight: 500;">Think of someone (who also knows you and is important to you) that you can relate
+          to the following colors: (Please do not repeat your answer twice. Name just one
+          person for each color.) .</h5>
       </ion-text>
-      <ion-list style="margin-top:30px;" color="primary">
-        <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
-    
-          <ion-item lines="none" color="primary" *ngFor="let item of listItems">
-            <ion-label>
-              {{item}}
-            </ion-label>
-            <ion-reorder color="primary"></ion-reorder>
-          </ion-item>
-    
-        </ion-reorder-group>
+      <ion-list style="margin-top:30px;" >
+        <ion-item detail (click)="openSelectPage('DOG')">
+          <ion-label> YELLOW - {{yellowOptionSelected || "Click to select"}}</ion-label>
+        </ion-item>
+        <ion-item detail (click)="openSelectPage('CAT')">
+          <ion-label> ORANGE - {{orangeOptionSelected || "Click to select"}}</ion-label>
+        </ion-item>
+        <ion-item detail (click)="openSelectPage('RAT')">
+          <ion-label> RED - {{redOptionSelected || "Click to select"}}</ion-label>
+        </ion-item>
+
+        <ion-item detail (click)="openSelectPage('COFFEE')">
+          <ion-label> WHITE - {{whiteOptionSelected || "Click to select"}}</ion-label>
+        </ion-item>
+
+        <ion-item detail (click)="openSelectPage('SEA')">
+          <ion-label> GREEN - {{greenOptionSelected || "Click to select"}}</ion-label>
+        </ion-item>
+
       </ion-list>
     </ion-col>
   </ion-row>
