@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-relative-select-page',
@@ -80,9 +82,21 @@ export class RelativeSelectPagePage implements OnInit {
     "Client",
     "Patient",
   ]
-  constructor() { }
+  @Input() tag:string;
+  constructor(private modalController: ModalController,
+              private route: ActivatedRoute) {
+         
+                
+              }
 
   ngOnInit() {
+  }
+  onDismissByValue(value){
+    this.modalController.dismiss(value);
+  }
+
+  onDismiss(){
+    this.modalController.dismiss();
   }
 
 }

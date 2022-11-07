@@ -2,7 +2,7 @@ import { RelativeSelectPagePage } from './../../relative-select-page/relative-se
 import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-question-three',
@@ -18,14 +18,14 @@ export class QuestionThreePage implements OnInit {
   whiteOptionSelected;
   greenOptionSelected;
   dogOptionSelected: any;
-  selectedList: any;
-  catOptionSelected: any;
-  ratOptionSelected: any;
-  coffeeOptionSelected: any;
-  seaOptionSelected: any;
+
+  selectedList:any[] = [
+
+  ]
 
 
   constructor(private router: Router,
+    private toastController: ToastController,
     private modalController: ModalController) {
     this.listItems = [
       "A. Yellow",
@@ -47,7 +47,7 @@ export class QuestionThreePage implements OnInit {
 
   async presentModal(item) {
     const modal = await this.modalController.create({
-    component: SelectitemsPage,
+    component: RelativeSelectPagePage,
     componentProps: { value: item }
     });
   
@@ -55,7 +55,7 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.dogOptionSelected = data.data['value'];
+    this.yellowOptionSelected = data.data;
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
@@ -69,86 +69,15 @@ export class QuestionThreePage implements OnInit {
       console.log(this.selectedList);
   
   }
-  presentToast(arg0: string) {
-    throw new Error('Method not implemented.');
-  }
-
-  async presentModalCat(item) {
-    const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
     });
-  
-    await modal.present();
-  
-    const data = await modal.onDidDismiss();
-    console.log(data);
-    this.catOptionSelected = data.data['value'];
-    if (this.selectedList.includes(data.data)) {
-      this.presentToast("You cannot use same words twice.");
-      return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
+    toast.present();
   }
 
-  async presentModalRat(item) {
-    const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
-    });
-  
-    await modal.present();
-  
-    const data = await modal.onDidDismiss();
-    console.log(data);
-    this.ratOptionSelected = data.data['value'];
-    if (this.selectedList.includes(data.data)) {
-      this.presentToast("You cannot use same words twice.");
-      return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
-  }
-
-  async presentModalCoffee(item) {
-    const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
-    });
-  
-    await modal.present();
-  
-    const data = await modal.onDidDismiss();
-    console.log(data);
-    this.coffeeOptionSelected = data.data['value'];
-    if (this.selectedList.includes(data.data)) {
-      this.presentToast("You cannot use same words twice.");
-      return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
-  }
-
-  async presentModalSea(item) {
+  async presentModalGreen(item) {
     const modal = await this.modalController.create({
     component: RelativeSelectPagePage,
     componentProps: { value: item }
@@ -158,7 +87,82 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.seaOptionSelected = data.data['value'];
+    this.greenOptionSelected = data.data;
+    if (this.selectedList.includes(data.data)) {
+      this.presentToast("You cannot use same words twice.");
+      return;
+  
+     };
+  
+  
+     
+     this.selectedList.push(data.data);
+      console.log(this.selectedList.includes(data.data));
+      console.log(this.selectedList);
+  
+  }
+
+  async presentModalOrange(item) {
+    const modal = await this.modalController.create({
+    component: RelativeSelectPagePage,
+    componentProps: { value: item }
+    });
+  
+    await modal.present();
+  
+    const data = await modal.onDidDismiss();
+    console.log(data);
+    this.orangeOptionSelected = data.data;
+    if (this.selectedList.includes(data.data)) {
+      this.presentToast("You cannot use same words twice.");
+      return;
+  
+     };
+  
+  
+     
+     this.selectedList.push(data.data);
+      console.log(this.selectedList.includes(data.data));
+      console.log(this.selectedList);
+  
+  }
+
+  async presentModalRed(item) {
+    const modal = await this.modalController.create({
+    component: RelativeSelectPagePage,
+    componentProps: { value: item }
+    });
+  
+    await modal.present();
+  
+    const data = await modal.onDidDismiss();
+    console.log(data);
+    this.redOptionSelected = data.data;
+    if (this.selectedList.includes(data.data)) {
+      this.presentToast("You cannot use same words twice.");
+      return;
+  
+     };
+  
+  
+     
+     this.selectedList.push(data.data);
+      console.log(this.selectedList.includes(data.data));
+      console.log(this.selectedList);
+  
+  }
+
+  async presentModalWhite(item) {
+    const modal = await this.modalController.create({
+    component: RelativeSelectPagePage,
+    componentProps: { value: item }
+    });
+  
+    await modal.present();
+  
+    const data = await modal.onDidDismiss();
+    console.log(data);
+    this.whiteOptionSelected = data.data;
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
@@ -175,20 +179,20 @@ export class QuestionThreePage implements OnInit {
 
   openSelectPage(item){
     console.log(item);
-    if(item == "DOG"){
+    if(item == "Yellow"){
       this.presentModal(item);
 
     }
-else if(item == "CAT"){
-  this.presentModalCat(item);
+else if(item == "Orange"){
+  this.presentModalOrange(item);
 }
-else if(item == "RAT"){
-  this.presentModalRat(item)
-}else if(item == "COFFEE"){
-  this.presentModalCoffee(item);
+else if(item == "Red"){
+  this.presentModalRed(item)
+}else if(item == "White"){
+  this.presentModalWhite(item);
 }
-else if(item == "SEA"){
-  this.presentModalSea(item);
+else if(item == "Green"){
+  this.presentModalGreen(item);
 }
     // this.router.navigate(['selectitems', item])
     
