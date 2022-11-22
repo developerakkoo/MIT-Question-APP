@@ -1,3 +1,4 @@
+import { DataService } from './../../data.service';
 import { RelativeSelectPagePage } from './../../relative-select-page/relative-select-page.page';
 import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { Router } from '@angular/router';
@@ -23,16 +24,30 @@ export class QuestionThreePage implements OnInit {
 
   ]
 
+  rList:any[] = [];
+  fList:any[] = [];
+
+  relativeCount:number;
+  friendCount: number;
+
 
   constructor(private router: Router,
     private toastController: ToastController,
+    private data: DataService,
     private modalController: ModalController) {
+    // this.listItems = [
+    //   "A. Yellow",
+    //   "B. Orange",
+    //   "C. Red",
+    //   "D. White",
+    //   "E. Green",
+    // ];
     this.listItems = [
-      "A. Yellow",
-      "B. Orange",
-      "C. Red",
-      "D. White",
-      "E. Green",
+      {key: "A. Yellow", value: ""},//0
+      {key: "B. Orange", value: ""},//1
+      {key: "C. Red", value: ""},//2
+      {key: "D. White", value: ""},//3
+      {key: "E. Green", value: ""},//4
     ];
    }
 
@@ -41,8 +56,35 @@ export class QuestionThreePage implements OnInit {
 
 
   getList() {
+    this.listItems = [
+      {key: "A. Yellow", value: this.yellowOptionSelected},//0
+      {key: "B. Orange", value: this.orangeOptionSelected},//1
+      {key: "C. Red", value: this.redOptionSelected},//2
+      {key: "D. White", value: this.whiteOptionSelected},//3
+      {key: "E. Green", value: this.greenOptionSelected},//4
+    ];
     console.table(this.listItems);
-    this.router.navigate(['question-four']);
+    this.rList = this.selectedList.map(v => v.type === 'r');
+    this.fList = this.selectedList.map(v => v.type === 'f');
+    // console.log(this.pList);
+    // console.log(this.pList.length);
+    let relativeCount = this.rList.filter(x => x === true).length;
+    let friendCount = this.fList.filter(x => x === false).length;
+
+    console.log(`Negative Words Count:- ${ relativeCount}`);
+    console.log(`Positive Words Count:- ${ friendCount}`);
+
+    if(relativeCount == 0 && friendCount == 0){
+      this.presentToast("You need to answer the above question first.");
+      return;
+    }
+    // this.data.set('questionThree', this.listItems).then((value) =>{
+    //   this.router.navigate(['question-four']);
+
+    // }).catch((error) =>{
+    //   console.log(error);
+      
+    // })
   }
 
   async presentModal(item) {
@@ -55,7 +97,7 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.yellowOptionSelected = data.data;
+    this.yellowOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
@@ -87,7 +129,7 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.greenOptionSelected = data.data;
+    this.greenOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
@@ -112,7 +154,7 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.orangeOptionSelected = data.data;
+    this.orangeOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
@@ -137,7 +179,7 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.redOptionSelected = data.data;
+    this.redOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
@@ -162,7 +204,7 @@ export class QuestionThreePage implements OnInit {
   
     const data = await modal.onDidDismiss();
     console.log(data);
-    this.whiteOptionSelected = data.data;
+    this.whiteOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;

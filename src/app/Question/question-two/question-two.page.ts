@@ -1607,8 +1607,6 @@ export class QuestionTwoPage implements OnInit {
 
    };
 
-
-
    this.selectedList.push(ev.detail.value);
     console.log(this.selectedList.includes(ev.detail.value));
     console.log(this.selectedList);

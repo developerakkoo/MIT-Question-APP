@@ -19,6 +19,6 @@ export class OtpPage implements OnInit {
   }
 
   Submit(){
-    this.router.navigate(['question-one'])
+    this.router.navigate(['first-page-task'])
   }
 }

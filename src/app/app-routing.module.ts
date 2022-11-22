@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'relative-select-page',
     loadChildren: () => import('./relative-select-page/relative-select-page.module').then( m => m.RelativeSelectPagePageModule)
   },
+  {
+    path: 'first-page-task',
+    loadChildren: () => import('./first-page-task/first-page-task.module').then( m => m.FirstPageTaskPageModule)
+  },
 ];
 
 @NgModule({
