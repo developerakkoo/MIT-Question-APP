@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { QuestionOnePage } from './question-one.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    QuestionOnePageRoutingModule
+    QuestionOnePageRoutingModule,
+    TranslateModule
   ],
   declarations: [QuestionOnePage]
 })

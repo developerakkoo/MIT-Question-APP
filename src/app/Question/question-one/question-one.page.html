@@ -1,6 +1,10 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">01</strong><span style="color: #92949c;">/03</span></ion-title>
+    <!-- <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">01</strong><span style="color: #92949c;">/03</span></ion-title> -->
+    <ion-title> {{"FIRST-PAGE.title" | translate}} </ion-title>
+    <ion-button fill="clear" slot="end" (click)="openLanguagePopOver($event)">
+      <ion-icon color="light" slot="start" name="planet"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -9,7 +13,7 @@
   <ion-row>
     <ion-col style="margin-top:10px;" size="7" color="light">
       <ion-text  class="ion-margin-top"  color="primary">
-        <h5 style="font-weight: 500;">Drag down the following five animals in the order of your preference.</h5>
+        <h5 style="font-weight: 500;"> {{ "FIRST-PAGE.question" | translate}} </h5>
       </ion-text>
       <ion-list style="margin-top:30px;" >
         <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
@@ -30,8 +34,8 @@
 <ion-grid >
   <ion-col style="margin-top:10px;" size="7" color="light">
     <ion-text  class="ion-margin-top"  color="primary">
-      <h5 style="font-weight: 500;">You can drag only once.</h5>
-      <h6>List will appear below</h6>
+      <h5 style="font-weight: 500;">{{ "FIRST-PAGE.note" | translate }}</h5>
+      <h6>{{ "FIRST-PAGE.list-title" | translate }}</h6>
     </ion-text>
     <ion-list style="margin-top:30px;" >
       <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
@@ -57,7 +61,7 @@
     </ion-button> -->
     <ion-button (click)="getList()">
       <ion-icon slot="start" name="arrow-forward"></ion-icon>
-      Continue
+      {{ "FIRST-PAGE.btn" | translate }}
     </ion-button>
   </ion-buttons>
   </ion-toolbar>

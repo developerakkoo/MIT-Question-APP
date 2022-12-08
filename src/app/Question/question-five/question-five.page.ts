@@ -1,3 +1,4 @@
+import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionFivePage implements OnInit {
 
-  constructor(private router: Router) { }
+  gender ="male";
+  age = "above18";
+
+  constructor(private router: Router,
+              private data: DataService) { }
 
   ngOnInit() {
   }
 
-  submit(){
-    this.router.navigate(['home'])
+  async submit(){
+    await this.data.set("age", this.age);
+    await this.data.set("gender", this.gender);
+    this.router.navigate(['complete-task']);
   }
 
+
+  genderEvent(ev){
+    console.log(ev.detail.value);
+    this.gender = ev.detail.value;
+    
+  }
+
+  ageEvent(ev){
+    console.log(ev.detail.value);
+    this.age = ev.detail.value;
+    
+  }
 }

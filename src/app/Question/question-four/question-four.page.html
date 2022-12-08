@@ -1,13 +1,81 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Final Result</ion-title>
+    <ion-title>Final Result for {{key || ""}}</ion-title>
+    <ion-button (click)="downloadResult()" slot="end">
+      <ion-icon slot="icon-only" name="download" color="light"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
 
-<ion-grid class="ion-margin-top">
+<ion-grid class="ion-margin-top" #pdfTable>
   <ion-row>
-    <ion-col style="margin-top:10px;" size="7" color="light">
+    <ion-col style="margin-top:10px;" size="12" color="light">
+      <ion-text color="secondary">
+        <h1>Interpretation</h1>
+      </ion-text>
+      <br>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Priority For You</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of questionOne; let i = index">
+          <br>
+          <ion-label> {{i+ 1}} {{item.value}} </ion-label><br>
+        </ion-item>
+        <br>
+      </ion-list>
+      <br>
+
+      <ion-list>
+        <ion-list-header>
+          <ion-label>what Defines what</ion-label>
+        </ion-list-header>
+        <br>
+        <ion-item >
+          <ion-label> You are {{dogValue}} as selection in dog defines you. </ion-label>
+        </ion-item>
+        <br>
+        <ion-item >
+          <ion-label> You're future partner is {{catValue}} as selection in cat defines your future partner. </ion-label>
+        </ion-item>
+
+        <br>
+        <ion-item >
+          <ion-label> You're enemies are {{ratValue}} as selection in rat defines your enemies. </ion-label>
+        </ion-item>
+<br>
+        <ion-item>
+          <ion-label> You're view of love is {{coffeeValue}} as selection in coffee defines your view of love. </ion-label>
+        </ion-item>
+
+
+<br>        <ion-item >
+          <ion-label> You're view of life is {{seaValue}} as selection in sea defines your view of life. </ion-label>
+        </ion-item>
+      </ion-list>
+<br>
+      <ion-list>
+        <ion-item>
+          <ion-label>You will never forget your {{yellowValue}}.</ion-label>
+        </ion-item>
+<br>
+        <ion-item>
+          <ion-label>{{orangeValue}} is your true friend.</ion-label>
+        </ion-item>
+<br>
+        <ion-item>
+          <ion-label>You really love your {{redValue}}.</ion-label>
+        </ion-item>
+<br>
+        <ion-item>
+          <ion-label>{{whiteValue}} is your twin soul.</ion-label>
+        </ion-item>
+<br>
+        <ion-item>
+          <ion-label>You will never forget {{greenValue}} for your rest of the life.</ion-label>
+        </ion-item>
+      </ion-list>
       </ion-col>
   </ion-row>
 </ion-grid>

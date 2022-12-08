@@ -1,6 +1,8 @@
+import { LanguagePopoverPage } from './../../language-popover/language-popover.page';
 import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-question-one',
@@ -13,6 +15,7 @@ export class QuestionOnePage implements OnInit {
   draggedList: any[] = [];
 
   constructor(private router: Router,
+    private popoverController: PopoverController,
     private data: DataService) {
     this.listItems = [
       { key: "A. Cow", value: "CAREER" },//0
@@ -26,6 +29,14 @@ export class QuestionOnePage implements OnInit {
   ngOnInit() {
   }
 
+  async openLanguagePopOver(event){
+    const popover = await this.popoverController.create({
+      component: LanguagePopoverPage,
+      event: event
+    });
+
+    await popover.present();
+  }
   onRenderItems(event) {
     console.log(`Moving item from ${event.detail.from} to ${event.detail.to}`);
     let draggedItem = this.listItems.splice(event.detail.from, 1)[0];

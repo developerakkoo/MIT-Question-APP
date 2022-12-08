@@ -1,19 +1,17 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">02</strong><span style="color: #92949c;">/05</span></ion-title>
+    <ion-title>Please provide the details</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="primary">
+<ion-content >
 
 <ion-grid class="ion-margin-top">
   <ion-row>
     <ion-col style="margin-top:10px;" size="7" color="light">
-      <ion-text  class="ion-margin-top"  color="light">
-        <h5 style="font-weight: 500;">Select the details.</h5>
-      </ion-text>
+ 
       <ion-list style="margin-top:30px;" color="primary">
         
-          <ion-radio-group  name="auto" value="tesla">
+          <ion-radio-group (ionChange)="ageEvent($event)"  name="auto" value="above18">
             <ion-list-header>
               <ion-label>Age</ion-label>
             </ion-list-header>
@@ -28,7 +26,7 @@
           </ion-radio-group>
         
 
-          <ion-radio-group  name="auto" value="tesla">
+          <ion-radio-group (ionChange)="genderEvent($event)"  name="auto" value="male">
             <ion-list-header>
               <ion-label>Gender</ion-label>
             </ion-list-header>

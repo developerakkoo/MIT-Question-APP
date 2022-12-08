@@ -59,6 +59,14 @@ const routes: Routes = [
     path: 'first-page-task',
     loadChildren: () => import('./first-page-task/first-page-task.module').then( m => m.FirstPageTaskPageModule)
   },
+  {
+    path: 'complete-task',
+    loadChildren: () => import('./complete-task/complete-task.module').then( m => m.CompleteTaskPageModule)
+  },
+  {
+    path: 'language-popover',
+    loadChildren: () => import('./language-popover/language-popover.module').then( m => m.LanguagePopoverPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Complete Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Bonus Book For you</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of bonusBooks">
+      <ion-avatar>
+        <img [src]="item.bookImage" />
+      </ion-avatar>
+      <ion-label> {{item.bookName}} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!isTaskCompleted">
+    <ion-list-header>
+      <ion-label>Locked Books For you</ion-label>
+    </ion-list-header>
+    <ion-button *ngIf="!isTaskCompleted" (click)="openTask()" expand="block">
+      Complete task to unlock
+    </ion-button>
+
+    <ion-item *ngFor="let item of books" [disabled]="!isTaskCompleted">
+      <ion-avatar>
+        <img [src]="item.bookImage" />
+      </ion-avatar>
+      <ion-label> {{item.bookName}} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="isTaskCompleted">
+    <ion-list-header>
+      <ion-label>Unlocked Books For you</ion-label>
+    </ion-list-header>
+    <ion-button *ngIf="!isTaskCompleted" (click)="openTask()" expand="block">
+      Complete task to unlock
+    </ion-button>
+
+    <ion-item *ngFor="let item of books" [disabled]="!isTaskCompleted">
+      <ion-avatar>
+        <img [src]="item.bookImage" />
+      </ion-avatar>
+      <ion-label> {{item.bookName}} </ion-label>
+      <ion-button (click)="downloadBook(item)" slot="end">
+        <ion-icon slot="icon-only" name="download"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

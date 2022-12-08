@@ -55,7 +55,7 @@ export class QuestionThreePage implements OnInit {
   }
 
 
-  getList() {
+  async getList() {
     this.listItems = [
       {key: "A. Yellow", value: this.yellowOptionSelected},//0
       {key: "B. Orange", value: this.orangeOptionSelected},//1
@@ -69,22 +69,19 @@ export class QuestionThreePage implements OnInit {
     // console.log(this.pList);
     // console.log(this.pList.length);
     let relativeCount = this.rList.filter(x => x === true).length;
-    let friendCount = this.fList.filter(x => x === false).length;
+    let friendCount = this.rList.filter(x => x === false).length;
 
-    console.log(`Negative Words Count:- ${ relativeCount}`);
-    console.log(`Positive Words Count:- ${ friendCount}`);
+    console.log(`Relative Count:- ${ relativeCount}`);
+    console.log(`Friend Count:- ${ friendCount}`);
 
-    if(relativeCount == 0 && friendCount == 0){
-      this.presentToast("You need to answer the above question first.");
-      return;
-    }
-    // this.data.set('questionThree', this.listItems).then((value) =>{
-    //   this.router.navigate(['question-four']);
-
-    // }).catch((error) =>{
-    //   console.log(error);
-      
-    // })
+    // if(relativeCount < 5 && friendCount < 5){
+    //   this.presentToast("You need to answer the above question first.");
+    //   return;
+    // }
+    let rCount = await this.data.set('rCount', relativeCount);
+    let fCount = await this.data.set('fCount', friendCount);
+    await this.data.set('questionThree', this.listItems);
+    this.router.navigate(['question-four']);
   }
 
   async presentModal(item) {

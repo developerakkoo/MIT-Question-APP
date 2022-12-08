@@ -1573,11 +1573,11 @@ export class QuestionTwoPage implements OnInit {
      private modalController: ModalController,
      private data:  DataService) {
     this.listItems = [
-      "Dog",
-      "Cat",
-      "Rat",
-      "Coffee",
-      "Sea",
+      {key: "Dog", value: ""},
+      {key: "Cat", value: ""},
+      {key: "Rat", value: ""},
+      {key: "Coffee", value: ""},
+      {key: "Sea", value: ""},
     ];
    }
 
@@ -1615,7 +1615,13 @@ export class QuestionTwoPage implements OnInit {
 
 
   async getList() {
-  
+    this.listItems = [
+      {key: "Dog", value: this.dogOptionSelected},
+      {key: "Cat", value: this.catOptionSelected},
+      {key: "Rat", value: this.ratOptionSelected},
+      {key: "Coffee", value: this.coffeeOptionSelected},
+      {key: "Sea", value: this.seaOptionSelected},
+    ];
     this.pList = this.selectedList.map(v => v.type === 'p');
     this.nList = this.selectedList.map(v => v.type === 'n');
     // console.log(this.pList);
@@ -1633,6 +1639,7 @@ export class QuestionTwoPage implements OnInit {
 
     let pCount = await this.data.set('pCount', positiveWordCount);
     let nCount = await this.data.set('nCount', negativeWordCount);
+    await this.data.set('questionTwo', this.listItems);
     console.log("Data Stoared");
     this.router.navigate(['question-three']);
     
