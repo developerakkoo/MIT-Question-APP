@@ -1,0 +1,22 @@
+ion-content {
+    --background: url('/assets/leave.webp');
+    background-repeat: repeat;
+    --border-radius: 50px;
+}
+
+
+
+ion-button:hover{
+    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

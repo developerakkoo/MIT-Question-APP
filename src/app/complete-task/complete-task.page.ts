@@ -60,21 +60,17 @@ export class CompleteTaskPage implements OnInit {
   }
 
   openTask(){
-    let browser = this.iab.create(this.tasks[0]['taskLink'],"_blank");
+    var options = "location=yes,hidden=yes,beforeload=yes";
+    let browser = this.iab.create(this.tasks[0]['taskLink'],"_blank", options).on("exit");
     this.isTaskCompleted = true;
-    browser.on("exit").subscribe((value) =>{
+
+    browser.subscribe((value) =>{
       console.log(value);
-      console.log("Exited");
+      console.log("beforeload");
       
       
     })
 
-    browser.on("message").subscribe((value) =>{
-      console.log(value);
-      console.log("Message");
-      
-      
-    })
   }
 
   downloadBook(book){

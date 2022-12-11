@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="tertiary">
     <!-- <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">01</strong><span style="color: #92949c;">/03</span></ion-title> -->
     <ion-title> {{"FIRST-PAGE.title" | translate}} </ion-title>
     <ion-button fill="clear" slot="end" (click)="openLanguagePopOver($event)">
@@ -7,16 +7,16 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content mode="ios">
 
 <ion-grid class="ion-margin-top">
   <ion-row>
     <ion-col style="margin-top:10px;" size="7" color="light">
-      <ion-text  class="ion-margin-top"  color="primary">
+      <ion-text  class="ion-margin-top"  color="dark">
         <h5 style="font-weight: 500;"> {{ "FIRST-PAGE.question" | translate}} </h5>
       </ion-text>
       <ion-list style="margin-top:30px;" >
-        <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
+        <ion-reorder-group color="tertiary" (ionItemReorder)="onRenderItems($event)" disabled="false">
     
           <ion-item lines="none" *ngFor="let item of listItems">
             <ion-label>
@@ -52,14 +52,10 @@
   </ion-col>
 </ion-grid>
 </ion-content>
-<ion-footer>
-  <ion-toolbar color="primary">
+<ion-footer mode="ios">
+  <ion-toolbar color="tertiary">
   <ion-buttons slot="start">
-    <!-- <ion-button (click)="goBack()">
-      <ion-icon slot="start" name="add"></ion-icon>
-      Go Back
-    </ion-button> -->
-    <ion-button (click)="getList()">
+    <ion-button  (click)="getList()">
       <ion-icon slot="start" name="arrow-forward"></ion-icon>
       {{ "FIRST-PAGE.btn" | translate }}
     </ion-button>

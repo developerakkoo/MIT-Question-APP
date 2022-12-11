@@ -1,3 +1,7 @@
+ion-content {
+    --background: url('/assets/leave.webp');
+    background-repeat: repeat;
+}
 .title{
     margin-top: 130px;
         font-size: 40px;
@@ -6,12 +10,17 @@
 }
 
 .mobileInput{
-    color: white;
+    color: black;
     width: 100%;
-    border: 1px solid #ffffff;
+    border: 1px solid #e8e8e8;
     border-radius: 10px;
     height: 30px;
     padding: 20px;
-    background-color: #141A31;
 
+
+}
+
+ion-button:hover{
+    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
 }

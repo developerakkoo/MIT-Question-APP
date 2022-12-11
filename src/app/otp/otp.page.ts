@@ -1,3 +1,4 @@
+import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OtpPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -18,7 +20,11 @@ export class OtpPage implements OnInit {
     
   }
 
+  close(){
+    this.modalController.dismiss();
+  }
   Submit(){
+    this.close();
     this.router.navigate(['first-page-task'])
   }
 }
