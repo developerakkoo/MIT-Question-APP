@@ -1,3 +1,4 @@
+import { AudioService } from './../audio.service';
 import { OtpPage } from './../otp/otp.page';
 import { OtpPageModule } from './../otp/otp.module';
 import { ModalController } from '@ionic/angular';
@@ -16,9 +17,11 @@ export class AuthPage implements OnInit {
 
   constructor(private http: HttpClient,
               private router: Router,
+              private sound : AudioService,
               private modalController: ModalController) { }
 
   ngOnInit() {
+    this.sound.playBG();
   }
 
 
