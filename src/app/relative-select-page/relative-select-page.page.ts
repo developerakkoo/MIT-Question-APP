@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./relative-select-page.page.scss'],
 })
 export class RelativeSelectPagePage implements OnInit {
-
+  relativeFilter: any = { value: ""};
   relatives = [
     {value: "Mother", type: "r"},
     {value: "Father", type: "r"},

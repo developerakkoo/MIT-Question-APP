@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { QuestionTwoPageRoutingModule } from './question-two-routing.module';
 
 import { QuestionTwoPage } from './question-two.page';
-
+import { FilterPipeModule } from 'ngx-filter-pipe';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QuestionTwoPageRoutingModule
+    FilterPipeModule,
+    QuestionTwoPageRoutingModule,
   ],
   declarations: [QuestionTwoPage]
 })

@@ -13,9 +13,9 @@
     <ion-col size="6" offset="3">
       <ion-list>
         <ion-list-header>
-          <ion-label>Choose Any one Options</ion-label>
+          <ion-searchbar placeholder="Search" [(ngModel)]="userFilter.value" inputmode="decimal" type="decimal"  [debounce]="250" showCancelButton="always"></ion-searchbar>
         </ion-list-header>
-        <ion-item *ngFor="let item of allItems" (click)="onDismissByValue(item)">
+        <ion-item *ngFor="let item of allItems| filterBy: userFilter" (click)="onDismissByValue(item)">
           <ion-label> {{item.value}} </ion-label>
         </ion-item>
       </ion-list>

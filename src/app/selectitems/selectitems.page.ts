@@ -1267,6 +1267,7 @@ export class SelectitemsPage implements OnInit {
     }, 
   ];
 
+  userFilter: any = { value: '' };
  @Input() tag:string;
   constructor(private modalController: ModalController,
               private route: ActivatedRoute) {

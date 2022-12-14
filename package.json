@@ -39,6 +39,7 @@
     "ionicons": "^6.0.3",
     "jspdf": "^2.5.1",
     "ng-otp-input": "^1.8.5",
+    "ngx-filter-pipe": "^2.1.2",
     "pdfmake": "^0.2.6",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

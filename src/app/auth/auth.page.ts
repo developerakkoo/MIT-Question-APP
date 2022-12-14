@@ -21,9 +21,12 @@ export class AuthPage implements OnInit {
               private modalController: ModalController) { }
 
   ngOnInit() {
-    this.sound.playBG();
+    
   }
 
+  ionViewDidEnter(){
+    this.sound.playBG();
+  }
 
   async presentModalOtp() {
     const modal = await this.modalController.create({

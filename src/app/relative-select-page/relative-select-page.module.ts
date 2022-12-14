@@ -1,3 +1,4 @@
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +14,7 @@ import { RelativeSelectPagePage } from './relative-select-page.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    FilterPipeModule,
     RelativeSelectPagePageRoutingModule
   ],
   declarations: [RelativeSelectPagePage]
