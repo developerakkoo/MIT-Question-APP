@@ -32,6 +32,9 @@ export class QuestionFourPage implements OnInit {
   questionTwo;
   questionThree;
 
+  username;
+
+
   dogValue;
   catValue;
   ratValue;
@@ -103,6 +106,7 @@ export class QuestionFourPage implements OnInit {
     this.questionOne = await this.data.get('questionOne');
     this.questionTwo = await this.data.get('questionTwo');
     this.questionThree = await this.data.get('questionThree');
+    this.username = await this.data.get('name');
     // console.log(`Book For ${this.key}`);
     // console.log(`Question One:- ${this.questionOne}`);
     // this.questionOne.forEach(element => {

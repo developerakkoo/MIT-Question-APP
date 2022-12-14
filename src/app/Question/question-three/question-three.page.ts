@@ -3,7 +3,7 @@ import { RelativeSelectPagePage } from './../../relative-select-page/relative-se
 import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController, ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-question-three',
@@ -34,6 +34,7 @@ export class QuestionThreePage implements OnInit {
   constructor(private router: Router,
     private toastController: ToastController,
     private data: DataService,
+    private alertController: AlertController,
     private modalController: ModalController) {
     // this.listItems = [
     //   "A. Yellow",
@@ -53,7 +54,29 @@ export class QuestionThreePage implements OnInit {
 
   ngOnInit() {
   }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Enter your name',
+      buttons: [{
+        text: "Okay",
+        handler: async (value) =>{
+          console.log(value);
+          let name = value[0];
+          await this.data.set("name", name);
+          this.getList();
+          
+        }
+      }],
+      inputs: [
+        {
+          placeholder: 'Name',
+          
+        },
+      ],
+    });
 
+    await alert.present();
+  }
 
   async getList() {
     this.listItems = [

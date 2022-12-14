@@ -2,7 +2,7 @@ import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-question-two',
@@ -10,8 +10,8 @@ import { ToastController, ModalController } from '@ionic/angular';
   styleUrls: ['./question-two.page.scss'],
 })
 export class QuestionTwoPage implements OnInit {
-  listItems:any;
-  positiveItems:any[] = [
+  listItems: any;
+  positiveItems: any[] = [
     "Amorous",
     "Amicable",
     "Affectionate",
@@ -146,9 +146,9 @@ export class QuestionTwoPage implements OnInit {
     "Well-built",
     "Well-pleased",
     "Wowed",
-    "Other positive feeling" 
+    "Other positive feeling"
   ];
-  negativeItems:any[] = [
+  negativeItems: any[] = [
     "Afraid",
     "Alarmed",
     "Angry",
@@ -162,162 +162,162 @@ export class QuestionTwoPage implements OnInit {
     "Bad",
     "Bad-tempered",
     "Bashful",
-"Blue",
-"Bored",
-"Broken-hearted",
-"Bummer",
-"Cold",
-"Conceited",
-"Confused",
-"Crabby",
-"Cross",
-"Depressed",
-"Diffident",
-"Disgusted",
-"Disinterested",
-"Dismayed",
-"Displeased",
-"Dissatisfied",
-"Doleful",
-"Doubtful",
-"Down",
-"Downhearted",
-"Dull",
-"Embarrassed",
-"Enraged",
-"Envious",
-"Exasperated",
-"Fatigued",
-"Fearful",
-"Flat",
-"Frantic",
-"Frightened",
-"Frustrated",
-"Fuming",
-"Furious",
-"Gloomy",
-"Glum",
-"Grossed-out",
-"Guilty",
-"Heartbroken",
-"Hesitant",
-"Horrified",
-"Hot",
-"Hot-headed",
-"Hot-tempered",
-"Hungry",
-"Hurt",
-"Hysterical",
-"Impatient",
-"Inattentive",
-"Indecisive",
-"Indifferent",
-"Inhibited",
-"Intimidated",
-"Intolerant",
-"Introverted",
-"Irritated",
-"Jealous",
-"Jittery",
-"Jumpy",
-"Lifeless",
-"Lonely",
-"Low-spirited",
-"Mad",
-"Miserable",
-"Monotonous",
-"Mournful",
-"Nasty",
-"Nauseated",
-"Needy",
-"Nervous",
-"Offended",
-"Outraged",
-"Pained",
-"Panicky",
-"Passive",
-"Petrified",
-"Pitiful",
-"Provoked",
-"Puzzled",
-"Raging",
-"Regretful",
-"Repelled",
-"Resentful",
-"Revolted",
-"Rigid",
-"Sad",
-"Scared",
-"Self-conscious",
-"Self-doubting",
-"Shaky",
-"Shocked",
-"Shy",
-"Sick",
-"Sickened",
-"Skeptical",
-"Sleepy",
-"Small",
-"Smug",
-"Sorrowful",
-"Sorry",
-"Spiritless",
-"Spooked",
-"Stale",
-"Stodgy",
-"Stressed",
-"Stubborn",
-"Stuffy",
-"Stupid",
-"Suspicious",
-"Tamed",
-"Tedious",
-"Thirsty",
-"Terrified",
-"Timid",
-"Tired",
-"Tiresome",
-"Tiring",
-"Trashed",
-"Ugly",
-"Unassertive",
-"Uncertain",
-"Unconfident",
-"Unfortunate",
-"Unhappy",
-"Unsure",
-"Unwanted",
-"Used",
-"Violated",
-"Waspish",
-"Withdrawn",
-"Worried",
-"Wrathful",
-"Other negative feeling" 
+    "Blue",
+    "Bored",
+    "Broken-hearted",
+    "Bummer",
+    "Cold",
+    "Conceited",
+    "Confused",
+    "Crabby",
+    "Cross",
+    "Depressed",
+    "Diffident",
+    "Disgusted",
+    "Disinterested",
+    "Dismayed",
+    "Displeased",
+    "Dissatisfied",
+    "Doleful",
+    "Doubtful",
+    "Down",
+    "Downhearted",
+    "Dull",
+    "Embarrassed",
+    "Enraged",
+    "Envious",
+    "Exasperated",
+    "Fatigued",
+    "Fearful",
+    "Flat",
+    "Frantic",
+    "Frightened",
+    "Frustrated",
+    "Fuming",
+    "Furious",
+    "Gloomy",
+    "Glum",
+    "Grossed-out",
+    "Guilty",
+    "Heartbroken",
+    "Hesitant",
+    "Horrified",
+    "Hot",
+    "Hot-headed",
+    "Hot-tempered",
+    "Hungry",
+    "Hurt",
+    "Hysterical",
+    "Impatient",
+    "Inattentive",
+    "Indecisive",
+    "Indifferent",
+    "Inhibited",
+    "Intimidated",
+    "Intolerant",
+    "Introverted",
+    "Irritated",
+    "Jealous",
+    "Jittery",
+    "Jumpy",
+    "Lifeless",
+    "Lonely",
+    "Low-spirited",
+    "Mad",
+    "Miserable",
+    "Monotonous",
+    "Mournful",
+    "Nasty",
+    "Nauseated",
+    "Needy",
+    "Nervous",
+    "Offended",
+    "Outraged",
+    "Pained",
+    "Panicky",
+    "Passive",
+    "Petrified",
+    "Pitiful",
+    "Provoked",
+    "Puzzled",
+    "Raging",
+    "Regretful",
+    "Repelled",
+    "Resentful",
+    "Revolted",
+    "Rigid",
+    "Sad",
+    "Scared",
+    "Self-conscious",
+    "Self-doubting",
+    "Shaky",
+    "Shocked",
+    "Shy",
+    "Sick",
+    "Sickened",
+    "Skeptical",
+    "Sleepy",
+    "Small",
+    "Smug",
+    "Sorrowful",
+    "Sorry",
+    "Spiritless",
+    "Spooked",
+    "Stale",
+    "Stodgy",
+    "Stressed",
+    "Stubborn",
+    "Stuffy",
+    "Stupid",
+    "Suspicious",
+    "Tamed",
+    "Tedious",
+    "Thirsty",
+    "Terrified",
+    "Timid",
+    "Tired",
+    "Tiresome",
+    "Tiring",
+    "Trashed",
+    "Ugly",
+    "Unassertive",
+    "Uncertain",
+    "Unconfident",
+    "Unfortunate",
+    "Unhappy",
+    "Unsure",
+    "Unwanted",
+    "Used",
+    "Violated",
+    "Waspish",
+    "Withdrawn",
+    "Worried",
+    "Wrathful",
+    "Other negative feeling"
   ];
-  allItems:any = [
+  allItems: any = [
     {
-      value:"Amorous",
+      value: "Amorous",
       type: "p",
-      id:1
+      id: 1
     },
     {
-      value:"Amicable",
+      value: "Amicable",
       type: "p",
-      id:2
+      id: 2
     },
     {
-      value:"Affectionate",
+      value: "Affectionate",
       type: "p",
-      id:3
-    },{
-      value:"Acceptable",
+      id: 3
+    }, {
+      value: "Acceptable",
       type: "p",
-      id:4
-    },{
-      value:"Absorbed",
+      id: 4
+    }, {
+      value: "Absorbed",
       type: "p",
-      id:5
+      id: 5
     },
     {
       value: "Amused",
@@ -325,1240 +325,1240 @@ export class QuestionTwoPage implements OnInit {
       id: 6
     },
     {
-      value:"Anxiety-free",
+      value: "Anxiety-free",
       type: "p",
-      id:7
-    },{
-      value:"Athletic",
+      id: 7
+    }, {
+      value: "Athletic",
       type: "p",
-      id:8
-    },{
-      value:"Athletic",
+      id: 8
+    }, {
+      value: "Athletic",
       type: "p",
-      id:9
-    },{
-      value:"Beautiful",
+      id: 9
+    }, {
+      value: "Beautiful",
       type: "p",
-      id:10
-    },{
-      value:"Beguiled",
+      id: 10
+    }, {
+      value: "Beguiled",
       type: "p",
-      id:11
+      id: 11
     },
     {
-      value:"Blessed",
+      value: "Blessed",
       type: "p",
-      id:12
-    },{
-      value:"Buff",
+      id: 12
+    }, {
+      value: "Buff",
       type: "p",
-      id:13
-    },{
-      value:"Busy",
+      id: 13
+    }, {
+      value: "Busy",
       type: "p",
-      id:14
-    },{
-      value:"Calm",
+      id: 14
+    }, {
+      value: "Calm",
       type: "p",
-      id:15
-    },{
-      value:"Carefree",
+      id: 15
+    }, {
+      value: "Carefree",
       type: "p",
-      id:16
-    },{
-      value:"Charmed",
+      id: 16
+    }, {
+      value: "Charmed",
       type: "p",
-      id:17
-    },{
-      value:"Charming",
+      id: 17
+    }, {
+      value: "Charming",
       type: "p",
-      id:18
-    },{
-      value:"Cheered-up",
+      id: 18
+    }, {
+      value: "Cheered-up",
       type: "p",
-      id:19
-    },{
-      value:"Cheerful",
+      id: 19
+    }, {
+      value: "Cheerful",
       type: "p",
-      id:20
-    },{
-      value:"Committed",
+      id: 20
+    }, {
+      value: "Committed",
       type: "p",
-      id:21
-    },{
-      value:"Compelling",
+      id: 21
+    }, {
+      value: "Compelling",
       type: "p",
-      id:22
-    },{
-      value:"Composed",
+      id: 22
+    }, {
+      value: "Composed",
       type: "p",
-      id:23
-    },{
-      value:"Confident",
+      id: 23
+    }, {
+      value: "Confident",
       type: "p",
-      id:24
-    },{
-      value:"Content",
+      id: 24
+    }, {
+      value: "Content",
       type: "p",
-      id:25
-    },{
-      value:"Contented",
+      id: 25
+    }, {
+      value: "Contented",
       type: "p",
-      id:26
-    },{
-      value:"Controlling",
+      id: 26
+    }, {
+      value: "Controlling",
       type: "p",
-      id:27
-    },{
-      value:"Convulsed",
+      id: 27
+    }, {
+      value: "Convulsed",
       type: "p",
-      id:28
-    },{
-      value:"Cordial",
+      id: 28
+    }, {
+      value: "Cordial",
       type: "p",
-      id:29
-    },{
-      value:"Crazy",
+      id: 29
+    }, {
+      value: "Crazy",
       type: "p",
-      id:30
-    },{
-      value:"Curious",
+      id: 30
+    }, {
+      value: "Curious",
       type: "p",
-      id:31
-    },{
-      value:"Delighted",
+      id: 31
+    }, {
+      value: "Delighted",
       type: "p",
-      id:32
-    },{
-      value:"Determined",
+      id: 32
+    }, {
+      value: "Determined",
       type: "p",
-      id:33
-    },{
-      value:"Diverted",
+      id: 33
+    }, {
+      value: "Diverted",
       type: "p",
-      id:34
-    },{
-      value:"Dominant",
+      id: 34
+    }, {
+      value: "Dominant",
       type: "p",
-      id:35
-    },{
-      value:"Dreamy",
+      id: 35
+    }, {
+      value: "Dreamy",
       type: "p",
-      id:36
-    },{
-      value:"Dynamic",
+      id: 36
+    }, {
+      value: "Dynamic",
       type: "p",
-      id:37
-    },{
-      value:"Ecstatic",
+      id: 37
+    }, {
+      value: "Ecstatic",
       type: "p",
-      id:38
-    },{
-      value:"Elated",
+      id: 38
+    }, {
+      value: "Elated",
       type: "p",
-      id:39
-    },{
-      value:"Engaged",
+      id: 39
+    }, {
+      value: "Engaged",
       type: "p",
-      id:40
-    },{
-      value:"Entertained",
+      id: 40
+    }, {
+      value: "Entertained",
       type: "p",
-      id:41
-    },{
-      value:"Erotic",
+      id: 41
+    }, {
+      value: "Erotic",
       type: "p",
-      id:42
-    },{
-      value:"Euphoric",
+      id: 42
+    }, {
+      value: "Euphoric",
       type: "p",
-      id:43
-    },{
-      value:"Excited",
+      id: 43
+    }, {
+      value: "Excited",
       type: "p",
-      id:44
-    },{
-      value:"Exhilarated",
+      id: 44
+    }, {
+      value: "Exhilarated",
       type: "p",
-      id:45
-    },{
-      value:"Flexible",
+      id: 45
+    }, {
+      value: "Flexible",
       type: "p",
-      id:46
-    },{
-      value:"Fond",
+      id: 46
+    }, {
+      value: "Fond",
       type: "p",
-      id:47
+      id: 47
     },
     {
-      value:"Generous",
+      value: "Generous",
       type: "p",
-      id:48
-    },{
-      value:"Glad",
+      id: 48
+    }, {
+      value: "Glad",
       type: "p",
-      id:49
-    },{
-      value:"Glowing",
+      id: 49
+    }, {
+      value: "Glowing",
       type: "p",
-      id:50
-    },{
-      value:"Good",
+      id: 50
+    }, {
+      value: "Good",
       type: "p",
-      id:51
-    },{
-      value:"Grateful",
+      id: 51
+    }, {
+      value: "Grateful",
       type: "p",
-      id:52
-    },{
-      value:"Gratified",
+      id: 52
+    }, {
+      value: "Gratified",
       type: "p",
-      id:53
-    },{
-      value:"Happy",
+      id: 53
+    }, {
+      value: "Happy",
       type: "p",
-      id:54
-    },{
-      value:"Hard",
+      id: 54
+    }, {
+      value: "Hard",
       type: "p",
-      id:55
-    },{
-      value:"Harmonious",
+      id: 55
+    }, {
+      value: "Harmonious",
       type: "p",
-      id:56
-    },{
-      value:"Herculean",
+      id: 56
+    }, {
+      value: "Herculean",
       type: "p",
-      id:57
-    },{
-      value:"High-powered",
+      id: 57
+    }, {
+      value: "High-powered",
       type: "p",
-      id:58
-    },{
-      value:"Hopeful",
+      id: 58
+    }, {
+      value: "Hopeful",
       type: "p",
-      id:59
-    },{
-      value:"Hot",
+      id: 59
+    }, {
+      value: "Hot",
       type: "p",
-      id:60
-    },{
-      value:"Humble",
+      id: 60
+    }, {
+      value: "Humble",
       type: "p",
-      id:61
-    },{
-      value:"Idealistic",
+      id: 61
+    }, {
+      value: "Idealistic",
       type: "p",
-      id:62
-    },{
-      value:"Illicit",
+      id: 62
+    }, {
+      value: "Illicit",
       type: "p",
-      id:63
-    },{
-      value:"Important",
+      id: 63
+    }, {
+      value: "Important",
       type: "p",
-      id:64
-    },{
-      value:"Inclined",
+      id: 64
+    }, {
+      value: "Inclined",
       type: "p",
-      id:65
-    },{
-      value:"Influential",
+      id: 65
+    }, {
+      value: "Influential",
       type: "p",
-      id:66
-    },{
-      value:"Interested",
+      id: 66
+    }, {
+      value: "Interested",
       type: "p",
-      id:67
-    },{
-      value:"Intimate",
+      id: 67
+    }, {
+      value: "Intimate",
       type: "p",
-      id:68
-    },{
-      value:"Intoxicating",
+      id: 68
+    }, {
+      value: "Intoxicating",
       type: "p",
-      id:69
-    },{
-      value:"Involved",
+      id: 69
+    }, {
+      value: "Involved",
       type: "p",
-      id:70
-    },{
-      value:"Irresistible",
+      id: 70
+    }, {
+      value: "Irresistible",
       type: "p",
-      id:71
-    },{
-      value:"Isolated",
+      id: 71
+    }, {
+      value: "Isolated",
       type: "p",
-      id:72
-    },{
-      value:"Joy",
+      id: 72
+    }, {
+      value: "Joy",
       type: "p",
-      id:73
-    },{
-      value:"Joyful",
+      id: 73
+    }, {
+      value: "Joyful",
       type: "p",
-      id:74
-    },{
-      value:"Kind",
+      id: 74
+    }, {
+      value: "Kind",
       type: "p",
-      id:75
-    },{
-      value:"Lovable",
+      id: 75
+    }, {
+      value: "Lovable",
       type: "p",
-      id:76
-    },{
-      value:"Lovely",
+      id: 76
+    }, {
+      value: "Lovely",
       type: "p",
-      id:78
-    },{
-      value:"Lovesick",
+      id: 78
+    }, {
+      value: "Lovesick",
       type: "p",
-      id:79
-    },{
-      value:"Loving",
+      id: 79
+    }, {
+      value: "Loving",
       type: "p",
-      id:80
-    },{
-      value:"Lustful",
+      id: 80
+    }, {
+      value: "Lustful",
       type: "p",
-      id:81
-    },{
-      value:"Manly",
+      id: 81
+    }, {
+      value: "Manly",
       type: "p",
-      id:82
-    },{
-      value:"Mighty",
+      id: 82
+    }, {
+      value: "Mighty",
       type: "p",
-      id:83
-    },{
-      value:"Nice",
+      id: 83
+    }, {
+      value: "Nice",
       type: "p",
-      id:84
-    },{
-      value:"Optimistic",
+      id: 84
+    }, {
+      value: "Optimistic",
       type: "p",
-      id:85
-    },{
-      value:"Overjoyed",
+      id: 85
+    }, {
+      value: "Overjoyed",
       type: "p",
-      id:86
-    },{
-      value:"Passionate",
+      id: 86
+    }, {
+      value: "Passionate",
       type: "p",
-      id:87
-    },{
-      value:"Patient",
+      id: 87
+    }, {
+      value: "Patient",
       type: "p",
-      id:88
-    },{
-      value:"Persuasive",
+      id: 88
+    }, {
+      value: "Persuasive",
       type: "p",
-      id:89
-    },{
-      value:"Pleasant",
+      id: 89
+    }, {
+      value: "Pleasant",
       type: "p",
-      id:90
-    },{
-      value:"Pleased",
+      id: 90
+    }, {
+      value: "Pleased",
       type: "p",
-      id:91
-    },{
-      value:"Powerful",
+      id: 91
+    }, {
+      value: "Powerful",
       type: "p",
-      id:92
-    },{
-      value:"Preoccupied",
+      id: 92
+    }, {
+      value: "Preoccupied",
       type: "p",
-      id:93
-    },{
-      value:"Productive",
+      id: 93
+    }, {
+      value: "Productive",
       type: "p",
-      id:94
-    },{
-      value:"Proud",
+      id: 94
+    }, {
+      value: "Proud",
       type: "p",
-      id:95
-    },{
-      value:"Quiet",
+      id: 95
+    }, {
+      value: "Quiet",
       type: "p",
-      id:96
-    },{
-      value:"Radiant",
+      id: 96
+    }, {
+      value: "Radiant",
       type: "p",
-      id:97
-    },{
-      value:"Regaled",
+      id: 97
+    }, {
+      value: "Regaled",
       type: "p",
-      id:98
-    },{
-      value:"Relaxed",
+      id: 98
+    }, {
+      value: "Relaxed",
       type: "p",
-      id:99
-    },{
-      value:"Relieved",
+      id: 99
+    }, {
+      value: "Relieved",
       type: "p",
-      id:100
-    },{
-      value:"Restful",
+      id: 100
+    }, {
+      value: "Restful",
       type: "p",
-      id:101
-    },{
-      value:"Ripped",
+      id: 101
+    }, {
+      value: "Ripped",
       type: "p",
-      id:102
-    },{
-      value:"Romanticist",
+      id: 102
+    }, {
+      value: "Romanticist",
       type: "p",
-      id:103
-    },{
-      value:"Satisfied",
+      id: 103
+    }, {
+      value: "Satisfied",
       type: "p",
-      id:104
-    }, 
+      id: 104
+    },
     {
-      value:"Secure",
+      value: "Secure",
       type: "p",
-      id:105
-    }, 
+      id: 105
+    },
     {
-      value:"Self-accepting",
+      value: "Self-accepting",
       type: "p",
-      id:106
-    }, 
+      id: 106
+    },
     {
-      value:"Self-approving",
+      value: "Self-approving",
       type: "p",
-      id:107
-    }, 
+      id: 107
+    },
     {
-      value:"Serene",
+      value: "Serene",
       type: "p",
-      id:108
-    }, 
+      id: 108
+    },
     {
-      value:"Shredded",
+      value: "Shredded",
       type: "p",
-      id:109
-    }, 
+      id: 109
+    },
     {
-      value:"Shy",
+      value: "Shy",
       type: "p",
-      id:110
-    }, 
+      id: 110
+    },
     {
-      value:"Smug",
+      value: "Smug",
       type: "p",
-      id:111
-    }, 
+      id: 111
+    },
     {
-      value:"Solid",
+      value: "Solid",
       type: "p",
-      id:112
-    }, 
+      id: 112
+    },
     {
-      value:"Soothed",
+      value: "Soothed",
       type: "p",
-      id:113
-    }, 
+      id: 113
+    },
     {
-      value:"Spirituous",
+      value: "Spirituous",
       type: "p",
-      id:114
-    }, 
+      id: 114
+    },
     {
-      value:"Stable",
+      value: "Stable",
       type: "p",
-      id:115
-    }, 
+      id: 115
+    },
     {
-      value:"Stiff",
+      value: "Stiff",
       type: "p",
-      id:116
-    }, 
+      id: 116
+    },
     {
-      value:"Strong",
+      value: "Strong",
       type: "p",
-      id:117
-    }, 
+      id: 117
+    },
     {
-      value:"Sturdy",
+      value: "Sturdy",
       type: "p",
-      id:118
-    }, 
+      id: 118
+    },
     {
-      value:"Superior",
+      value: "Superior",
       type: "p",
-      id:119
-    }, 
+      id: 119
+    },
     {
-      value:"Surprised",
+      value: "Surprised",
       type: "p",
-      id:120
-    }, 
+      id: 120
+    },
     {
-      value:"Thankful",
+      value: "Thankful",
       type: "p",
-      id:121
-    }, 
+      id: 121
+    },
     {
-      value:"Thoughtful",
+      value: "Thoughtful",
       type: "p",
-      id:122
-    }, 
+      id: 122
+    },
     {
-      value:"Thrilled",
+      value: "Thrilled",
       type: "p",
-      id:123
-    }, 
+      id: 123
+    },
     {
-      value:"Thunderous",
+      value: "Thunderous",
       type: "p",
-      id:124
-    }, 
+      id: 124
+    },
     {
-      value:"Tolerant",
+      value: "Tolerant",
       type: "p",
-      id:125
-    }, 
+      id: 125
+    },
     {
-      value:"Tough",
+      value: "Tough",
       type: "p",
-      id:126
-    }, 
+      id: 126
+    },
     {
-      value:"Tranquil",
+      value: "Tranquil",
       type: "p",
-      id:127
-    }, 
+      id: 127
+    },
     {
-      value:"Undisturbed",
+      value: "Undisturbed",
       type: "p",
-      id:128
-    }, 
+      id: 128
+    },
     {
-      value:"Untroubled",
+      value: "Untroubled",
       type: "p",
-      id:129
-    }, 
+      id: 129
+    },
     {
-      value:"Unworried",
+      value: "Unworried",
       type: "p",
-      id:130
-    }, 
+      id: 130
+    },
     {
-      value:"Vigorous",
+      value: "Vigorous",
       type: "p",
-      id:131
-    }, 
+      id: 131
+    },
     {
-      value:"Well-built",
+      value: "Well-built",
       type: "p",
-      id:132
-    }, 
+      id: 132
+    },
     {
-      value:"Well-pleased",
+      value: "Well-pleased",
       type: "p",
-      id:133
-    }, 
+      id: 133
+    },
     {
-      value:"Wowed",
+      value: "Wowed",
       type: "p",
-      id:134
-    }, 
+      id: 134
+    },
     {
-      value:"Other positive feeling",
+      value: "Other positive feeling",
       type: "p",
-      id:135
-    }, 
+      id: 135
+    },
     //END OF POSITIVE WORDS
 
     // START OF NEGATIVE WORDS
     {
-      value:"Afraid",
+      value: "Afraid",
       type: "n",
-      id:136
-    }, 
+      id: 136
+    },
     {
-      value:"Alarmed",
+      value: "Alarmed",
       type: "n",
-      id:137
-    }, 
+      id: 137
+    },
     {
-      value:"Angry",
+      value: "Angry",
       type: "n",
-      id:138
-    }, 
+      id: 138
+    },
     {
-      value:"Annoyed",
+      value: "Annoyed",
       type: "n",
-      id:139
-    }, 
+      id: 139
+    },
     {
-      value:"Agitated",
+      value: "Agitated",
       type: "n",
-      id:140
-    }, 
+      id: 140
+    },
     {
-      value:"Anxious",
+      value: "Anxious",
       type: "n",
-      id:141
-    }, 
+      id: 141
+    },
     {
-      value:"Appalled",
+      value: "Appalled",
       type: "n",
-      id:47
-    }, 
+      id: 47
+    },
     {
-      value:"Apprehensive",
+      value: "Apprehensive",
       type: "n",
-      id:142
-    }, 
+      id: 142
+    },
     {
-      value:"Ashamed",
+      value: "Ashamed",
       type: "n",
-      id:143
-    }, 
+      id: 143
+    },
     {
-      value:"Awful",
+      value: "Awful",
       type: "n",
-      id:144
-    }, 
+      id: 144
+    },
     {
-      value:"Bad",
+      value: "Bad",
       type: "n",
-      id:145
-    }, 
+      id: 145
+    },
     {
-      value:"Bad-tempered",
+      value: "Bad-tempered",
       type: "n",
-      id:146
-    }, 
+      id: 146
+    },
     {
-      value:"Bashful",
+      value: "Bashful",
       type: "n",
-      id:147
-    }, 
+      id: 147
+    },
     {
-      value:"Blue",
+      value: "Blue",
       type: "n",
-      id:148
-    }, 
+      id: 148
+    },
     {
-      value:"Bored",
+      value: "Bored",
       type: "n",
-      id:149
-    }, 
+      id: 149
+    },
     {
-      value:"Broken-hearted",
+      value: "Broken-hearted",
       type: "n",
-      id:150
-    }, 
+      id: 150
+    },
     {
-      value:"Bummer",
+      value: "Bummer",
       type: "n",
-      id:151
-    }, 
+      id: 151
+    },
     {
-      value:"Cold",
+      value: "Cold",
       type: "n",
-      id:152
-    }, 
+      id: 152
+    },
     {
-      value:"Conceited",
+      value: "Conceited",
       type: "n",
-      id:153
-    }, 
+      id: 153
+    },
     {
-      value:"Confused",
+      value: "Confused",
       type: "n",
-      id:154
-    }, 
+      id: 154
+    },
     {
-      value:"Crabby",
+      value: "Crabby",
       type: "n",
-      id:155
-    }, 
+      id: 155
+    },
     {
-      value:"Cross",
+      value: "Cross",
       type: "n",
-      id:156
-    }, 
+      id: 156
+    },
     {
-      value:"Depressed",
+      value: "Depressed",
       type: "n",
-      id:157
-    }, 
+      id: 157
+    },
     {
-      value:"Diffident",
+      value: "Diffident",
       type: "n",
-      id:158
-    }, 
+      id: 158
+    },
     {
-      value:"Disgusted",
+      value: "Disgusted",
       type: "n",
-      id:159
-    }, 
+      id: 159
+    },
     {
-      value:"Disinterested",
+      value: "Disinterested",
       type: "n",
-      id:160
-    }, 
+      id: 160
+    },
     {
-      value:"Dismayed",
+      value: "Dismayed",
       type: "n",
-      id:161
-    }, 
+      id: 161
+    },
     {
-      value:"Displeased",
+      value: "Displeased",
       type: "n",
-      id:162
-    }, 
+      id: 162
+    },
     {
-      value:"Dissatisfied",
+      value: "Dissatisfied",
       type: "n",
-      id:163
-    }, 
+      id: 163
+    },
     {
-      value:"Doleful",
+      value: "Doleful",
       type: "n",
-      id:164
-    }, 
+      id: 164
+    },
     {
-      value:"Doubtful",
+      value: "Doubtful",
       type: "n",
-      id:165
-    }, 
+      id: 165
+    },
     {
-      value:"Down",
+      value: "Down",
       type: "n",
-      id:166
-    }, 
+      id: 166
+    },
     {
-      value:"Downhearted",
+      value: "Downhearted",
       type: "n",
-      id:167
-    }, 
+      id: 167
+    },
     {
-      value:"Dull",
+      value: "Dull",
       type: "n",
-      id:168
-    }, 
+      id: 168
+    },
     {
-      value:"Embarrassed",
+      value: "Embarrassed",
       type: "n",
-      id:169
-    }, 
+      id: 169
+    },
     {
-      value:"Enraged",
+      value: "Enraged",
       type: "n",
-      id:170
-    }, 
+      id: 170
+    },
     {
-      value:"Envious",
+      value: "Envious",
       type: "n",
-      id:171
-    }, 
+      id: 171
+    },
     {
-      value:"Exasperated",
+      value: "Exasperated",
       type: "n",
-      id:172
-    }, 
+      id: 172
+    },
     {
-      value:"Fatigued",
+      value: "Fatigued",
       type: "n",
-      id:173
-    }, 
+      id: 173
+    },
     {
-      value:"Fearful",
+      value: "Fearful",
       type: "n",
-      id:174
-    }, 
+      id: 174
+    },
     {
-      value:"Flat",
+      value: "Flat",
       type: "n",
-      id:175
-    }, 
+      id: 175
+    },
     {
-      value:"Frantic",
+      value: "Frantic",
       type: "n",
-      id:176
-    }, 
+      id: 176
+    },
     {
-      value:"Frightened",
+      value: "Frightened",
       type: "n",
-      id:177
-    }, 
+      id: 177
+    },
     {
-      value:"Frustrated",
+      value: "Frustrated",
       type: "n",
-      id:178
-    }, 
+      id: 178
+    },
     {
-      value:"Fuming",
+      value: "Fuming",
       type: "n",
-      id:179
-    }, 
+      id: 179
+    },
     {
-      value:"Furious",
+      value: "Furious",
       type: "n",
-      id:180
-    }, 
+      id: 180
+    },
     {
-      value:"Gloomy",
+      value: "Gloomy",
       type: "n",
-      id:181
-    }, 
+      id: 181
+    },
     {
-      value:"Glum",
+      value: "Glum",
       type: "n",
-      id:182
-    }, 
+      id: 182
+    },
     {
-      value:"Grossed-out",
+      value: "Grossed-out",
       type: "n",
-      id:183
-    }, 
+      id: 183
+    },
     {
-      value:"Guilty",
+      value: "Guilty",
       type: "n",
-      id:184
-    }, 
+      id: 184
+    },
     {
-      value:"Heartbroken",
+      value: "Heartbroken",
       type: "n",
-      id:185
-    }, 
+      id: 185
+    },
     {
-      value:"Hesitant",
+      value: "Hesitant",
       type: "n",
-      id:186
-    }, 
+      id: 186
+    },
     {
-      value:"Horrified",
+      value: "Horrified",
       type: "n",
-      id:187
-    }, 
+      id: 187
+    },
     {
-      value:"Hot",
+      value: "Hot",
       type: "n",
-      id:188
-    }, 
+      id: 188
+    },
     {
-      value:"Hungry",
+      value: "Hungry",
       type: "n",
-      id:189
-    }, 
+      id: 189
+    },
     {
-      value:"Hot-headed",
+      value: "Hot-headed",
       type: "n",
-      id:190
-    }, 
+      id: 190
+    },
     {
-      value:"Hot-tempered",
+      value: "Hot-tempered",
       type: "n",
-      id:200
-    }, 
+      id: 200
+    },
     {
-      value:"Hurt",
+      value: "Hurt",
       type: "n",
-      id:201
-    }, 
+      id: 201
+    },
     {
-      value:"Hysterical",
+      value: "Hysterical",
       type: "n",
-      id:202
-    }, 
+      id: 202
+    },
     {
-      value:"Impatient",
+      value: "Impatient",
       type: "n",
-      id:203
-    }, 
+      id: 203
+    },
     {
-      value:"Inattentive",
+      value: "Inattentive",
       type: "n",
-      id:204
-    }, 
+      id: 204
+    },
     {
-      value:"Indecisive",
+      value: "Indecisive",
       type: "n",
-      id:205
-    }, 
+      id: 205
+    },
     {
-      value:"Indifferent",
+      value: "Indifferent",
       type: "n",
-      id:206
-    }, 
+      id: 206
+    },
     {
-      value:"Inhibited",
+      value: "Inhibited",
       type: "n",
-      id:207
-    }, 
+      id: 207
+    },
     {
-      value:"Intimidated",
+      value: "Intimidated",
       type: "n",
-      id:208
-    }, 
+      id: 208
+    },
     {
-      value:"Intolerant",
+      value: "Intolerant",
       type: "n",
-      id:209
-    }, 
+      id: 209
+    },
     {
-      value:"Introverted",
+      value: "Introverted",
       type: "n",
-      id:210
-    }, 
+      id: 210
+    },
     {
-      value:"Irritated",
+      value: "Irritated",
       type: "n",
-      id:301
-    }, 
+      id: 301
+    },
     {
-      value:"Jealous",
+      value: "Jealous",
       type: "n",
-      id:302
-    }, 
+      id: 302
+    },
     {
-      value:"Jittery",
+      value: "Jittery",
       type: "n",
-      id:303
-    }, 
+      id: 303
+    },
     {
-      value:"Jumpy",
+      value: "Jumpy",
       type: "n",
-      id:304
-    }, 
+      id: 304
+    },
     {
-      value:"Lifeless",
+      value: "Lifeless",
       type: "n",
-      id:305
-    }, 
+      id: 305
+    },
     {
-      value:"Lonely",
+      value: "Lonely",
       type: "n",
-      id:306
-    }, 
+      id: 306
+    },
     {
-      value:"Low-spirited",
+      value: "Low-spirited",
       type: "n",
-      id:307
-    }, 
+      id: 307
+    },
     {
-      value:"Mad",
+      value: "Mad",
       type: "n",
-      id:308
-    }, 
+      id: 308
+    },
     {
-      value:"Miserable",
+      value: "Miserable",
       type: "n",
-      id:309
-    }, 
+      id: 309
+    },
     {
-      value:"Monotonous",
+      value: "Monotonous",
       type: "n",
-      id:310
-    }, 
+      id: 310
+    },
     {
-      value:"Mournful",
+      value: "Mournful",
       type: "n",
-      id:401
-    }, 
+      id: 401
+    },
     {
-      value:"Nasty",
+      value: "Nasty",
       type: "n",
-      id:402
-    }, 
+      id: 402
+    },
     {
-      value:"Nauseated",
+      value: "Nauseated",
       type: "n",
-      id:403
-    }, 
+      id: 403
+    },
     {
-      value:"Needy",
+      value: "Needy",
       type: "n",
-      id:404
-    }, 
+      id: 404
+    },
     {
-      value:"Nervous",
+      value: "Nervous",
       type: "n",
-      id:405
-    }, 
+      id: 405
+    },
     {
-      value:"Offended",
+      value: "Offended",
       type: "n",
-      id:406
-    }, 
+      id: 406
+    },
     {
-      value:"Outraged",
+      value: "Outraged",
       type: "n",
-      id:407
-    }, 
+      id: 407
+    },
     {
-      value:"Pained",
+      value: "Pained",
       type: "n",
-      id:408
-    }, 
+      id: 408
+    },
     {
-      value:"Panicky",
+      value: "Panicky",
       type: "n",
-      id:409
-    }, 
+      id: 409
+    },
     {
-      value:"Passive",
+      value: "Passive",
       type: "n",
-      id:410
-    }, 
+      id: 410
+    },
     {
-      value:"Petrified",
+      value: "Petrified",
       type: "n",
-      id:501
-    }, 
+      id: 501
+    },
     {
-      value:"Pitiful",
+      value: "Pitiful",
       type: "n",
-      id:502
-    }, 
+      id: 502
+    },
     {
-      value:"Provoked",
+      value: "Provoked",
       type: "n",
-      id:503
-    }, 
+      id: 503
+    },
     {
-      value:"Puzzled",
+      value: "Puzzled",
       type: "n",
-      id:504
-    }, 
+      id: 504
+    },
     {
-      value:"Raging",
+      value: "Raging",
       type: "n",
-      id:505
-    }, 
+      id: 505
+    },
     {
-      value:"Regretful",
+      value: "Regretful",
       type: "n",
-      id:506
-    }, 
+      id: 506
+    },
     {
-      value:"Repelled",
+      value: "Repelled",
       type: "n",
-      id:507
-    }, 
+      id: 507
+    },
     {
-      value:"Resentful",
+      value: "Resentful",
       type: "n",
-      id:508
-    }, 
+      id: 508
+    },
     {
-      value:"Revolted",
+      value: "Revolted",
       type: "n",
-      id:509
-    }, 
+      id: 509
+    },
     {
-      value:"Rigid",
+      value: "Rigid",
       type: "n",
-      id:510
-    }, 
+      id: 510
+    },
     {
-      value:"Sad",
+      value: "Sad",
       type: "n",
-      id:601
-    }, 
+      id: 601
+    },
     {
-      value:"Scared",
+      value: "Scared",
       type: "n",
-      id:602
-    },  {
-      value:"Self-conscious",
+      id: 602
+    }, {
+      value: "Self-conscious",
       type: "n",
-      id:603
-    },  {
-      value:"Self-doubting",
+      id: 603
+    }, {
+      value: "Self-doubting",
       type: "n",
-      id:604
-    },  {
-      value:"Shaky",
+      id: 604
+    }, {
+      value: "Shaky",
       type: "n",
-      id:605
-    },  {
-      value:"Shocked",
+      id: 605
+    }, {
+      value: "Shocked",
       type: "n",
-      id:606
-    },  {
-      value:"Shy",
+      id: 606
+    }, {
+      value: "Shy",
       type: "n",
-      id:607
-    },  {
-      value:"Sick",
+      id: 607
+    }, {
+      value: "Sick",
       type: "n",
-      id:608
-    },  {
-      value:"Sickened",
+      id: 608
+    }, {
+      value: "Sickened",
       type: "n",
-      id:609
-    },  {
-      value:"Skeptical",
+      id: 609
+    }, {
+      value: "Skeptical",
       type: "n",
-      id:610
-    },  {
-      value:"Sleepy",
+      id: 610
+    }, {
+      value: "Sleepy",
       type: "n",
-      id:701
-    },  {
-      value:"Small",
+      id: 701
+    }, {
+      value: "Small",
       type: "n",
-      id:702
-    },  {
-      value:"Smug",
+      id: 702
+    }, {
+      value: "Smug",
       type: "n",
-      id:703
-    },  {
-      value:"Sorrowful",
+      id: 703
+    }, {
+      value: "Sorrowful",
       type: "n",
-      id:704
-    },  {
-      value:"Sorry",
+      id: 704
+    }, {
+      value: "Sorry",
       type: "n",
-      id:705
-    },  {
-      value:"Spiritless",
+      id: 705
+    }, {
+      value: "Spiritless",
       type: "n",
-      id:706
-    },  {
-      value:"Spooked",
+      id: 706
+    }, {
+      value: "Spooked",
       type: "n",
-      id:707
-    },  {
-      value:"Stale",
+      id: 707
+    }, {
+      value: "Stale",
       type: "n",
-      id:708
-    },  {
-      value:"Stodgy",
+      id: 708
+    }, {
+      value: "Stodgy",
       type: "n",
-      id:709
-    },  {
-      value:"Stressed",
+      id: 709
+    }, {
+      value: "Stressed",
       type: "n",
-      id:710
-    },  {
-      value:"Stubborn",
+      id: 710
+    }, {
+      value: "Stubborn",
       type: "n",
-      id:801
-    },  {
-      value:"Stuffy",
+      id: 801
+    }, {
+      value: "Stuffy",
       type: "n",
-      id:802
-    },  {
-      value:"Stupid",
+      id: 802
+    }, {
+      value: "Stupid",
       type: "n",
-      id:803
-    },  {
-      value:"Suspicious",
+      id: 803
+    }, {
+      value: "Suspicious",
       type: "n",
-      id:804
-    },  {
-      value:"Tamed",
+      id: 804
+    }, {
+      value: "Tamed",
       type: "n",
-      id:805
-    },  {
-      value:"Tedious",
+      id: 805
+    }, {
+      value: "Tedious",
       type: "n",
-      id:806
-    },  {
-      value:"Thirsty",
+      id: 806
+    }, {
+      value: "Thirsty",
       type: "n",
-      id:807
-    },  {
-      value:"Terrified",
+      id: 807
+    }, {
+      value: "Terrified",
       type: "n",
-      id:808
-    },  {
-      value:"Timid",
+      id: 808
+    }, {
+      value: "Timid",
       type: "n",
-      id:809
-    },  {
-      value:"Tired",
+      id: 809
+    }, {
+      value: "Tired",
       type: "n",
-      id:810
-    },  {
-      value:"Tiresome",
+      id: 810
+    }, {
+      value: "Tiresome",
       type: "n",
-      id:901
-    },  {
-      value:"Tiring",
+      id: 901
+    }, {
+      value: "Tiring",
       type: "n",
-      id:902
-    },  {
-      value:"Trashed",
+      id: 902
+    }, {
+      value: "Trashed",
       type: "n",
-      id:903
-    },  {
-      value:"Ugly",
+      id: 903
+    }, {
+      value: "Ugly",
       type: "n",
-      id:904
-    },  {
-      value:"Unassertive",
+      id: 904
+    }, {
+      value: "Unassertive",
       type: "n",
-      id:905
-    },  {
-      value:"Uncertain",
+      id: 905
+    }, {
+      value: "Uncertain",
       type: "n",
-      id:906
-    },  {
-      value:"Unconfident",
+      id: 906
+    }, {
+      value: "Unconfident",
       type: "n",
-      id:907
-    },  {
-      value:"Unfortunate",
+      id: 907
+    }, {
+      value: "Unfortunate",
       type: "n",
-      id:908
-    },  {
-      value:"Unhappy",
+      id: 908
+    }, {
+      value: "Unhappy",
       type: "n",
-      id:909
-    },  {
-      value:"Unsure",
+      id: 909
+    }, {
+      value: "Unsure",
       type: "n",
-      id:910
-    },  {
-      value:"Unwanted",
+      id: 910
+    }, {
+      value: "Unwanted",
       type: "n",
-      id:1001
-    },  {
-      value:"Used",
+      id: 1001
+    }, {
+      value: "Used",
       type: "n",
-      id:1002
-    },  {
-      value:"Violated",
+      id: 1002
+    }, {
+      value: "Violated",
       type: "n",
-      id:1003
-    },  {
-      value:"Waspish",
+      id: 1003
+    }, {
+      value: "Waspish",
       type: "n",
-      id:1004
-    },  {
-      value:"Withdrawn",
+      id: 1004
+    }, {
+      value: "Withdrawn",
       type: "n",
-      id:1005
-    },  {
-      value:"Worried",
+      id: 1005
+    }, {
+      value: "Worried",
       type: "n",
-      id:1006
-    },  {
-      value:"Wrathful",
+      id: 1006
+    }, {
+      value: "Wrathful",
       type: "n",
-      id:1007
-    },  {
-      value:"Other negative feeling",
+      id: 1007
+    }, {
+      value: "Other negative feeling",
       type: "n",
-      id:1008
-    }, 
+      id: 1008
+    },
   ]
-  selectedList:any[] = [
+  selectedList: any[] = [
 
   ]
 
-  pList:any[]= [];
-  nList:any[] = [];
+  pList: any[] = [];
+  nList: any[] = [];
 
   dogOptionSelected;
   catOptionSelected;
@@ -1569,17 +1569,19 @@ export class QuestionTwoPage implements OnInit {
 
 
   constructor(private router: Router,
-     private toastController: ToastController,
-     private modalController: ModalController,
-     private data:  DataService) {
+    private toastController: ToastController,
+    private modalController: ModalController,
+    private alertController: AlertController,
+    private data: DataService) {
+
     this.listItems = [
-      {key: "Dog", value: ""},
-      {key: "Cat", value: ""},
-      {key: "Rat", value: ""},
-      {key: "Coffee", value: ""},
-      {key: "Sea", value: ""},
+      { key: "Dog", value: "" },
+      { key: "Cat", value: "" },
+      { key: "Rat", value: "" },
+      { key: "Coffee", value: "" },
+      { key: "Sea", value: "" },
     ];
-   }
+  }
 
   ngOnInit() {
   }
@@ -1592,35 +1594,35 @@ export class QuestionTwoPage implements OnInit {
     toast.present();
   }
 
-  handleChange(ev, item){
+  handleChange(ev, item) {
     console.log(ev.detail.value);
     console.log(item);
 
-    if(this.selectedList.length == 6){
+    if (this.selectedList.length == 6) {
       this.presentToast("Refersh the page to try again.");
       return;
     }
     //Same object will not go
-   if (this.selectedList.includes(ev.detail.value)) {
-    this.presentToast("You cannot use same words twice.");
-    return;
+    if (this.selectedList.includes(ev.detail.value)) {
+      this.presentToast("You cannot use same words twice.");
+      return;
 
-   };
+    };
 
-   this.selectedList.push(ev.detail.value);
+    this.selectedList.push(ev.detail.value);
     console.log(this.selectedList.includes(ev.detail.value));
     console.log(this.selectedList);
-    
+
   }
 
 
   async getList() {
     this.listItems = [
-      {key: "Dog", value: this.dogOptionSelected},
-      {key: "Cat", value: this.catOptionSelected},
-      {key: "Rat", value: this.ratOptionSelected},
-      {key: "Coffee", value: this.coffeeOptionSelected},
-      {key: "Sea", value: this.seaOptionSelected},
+      { key: "Dog", value: this.dogOptionSelected },
+      { key: "Cat", value: this.catOptionSelected },
+      { key: "Rat", value: this.ratOptionSelected },
+      { key: "Coffee", value: this.coffeeOptionSelected },
+      { key: "Sea", value: this.seaOptionSelected },
     ];
     this.pList = this.selectedList.map(v => v.type === 'p');
     this.nList = this.selectedList.map(v => v.type === 'n');
@@ -1629,10 +1631,10 @@ export class QuestionTwoPage implements OnInit {
     let positiveWordCount = this.pList.filter(x => x === true).length;
     let negativeWordCount = this.pList.filter(x => x === false).length;
 
-    console.log(`Negative Words Count:- ${ negativeWordCount}`);
-    console.log(`Positive Words Count:- ${ positiveWordCount}`);
+    console.log(`Negative Words Count:- ${negativeWordCount}`);
+    console.log(`Positive Words Count:- ${positiveWordCount}`);
 
-    if(positiveWordCount == 0 && negativeWordCount == 0){
+    if (positiveWordCount == 0 && negativeWordCount == 0) {
       this.presentToast("You need to answer the above question first.");
       return;
     }
@@ -1642,154 +1644,154 @@ export class QuestionTwoPage implements OnInit {
     await this.data.set('questionTwo', this.listItems);
     console.log("Data Stoared");
     this.router.navigate(['question-three']);
-    
 
-  
+
+
   }
   async presentModal(item) {
     const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
+      component: SelectitemsPage,
+      componentProps: { value: item }
     });
-  
+
     await modal.present();
-  
+
     const data = await modal.onDidDismiss();
     console.log(data);
     this.dogOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
+
+    };
+
+
+
+    this.selectedList.push(data.data);
+    console.log(this.selectedList.includes(data.data));
+    console.log(this.selectedList);
+
   }
 
   async presentModalCat(item) {
     const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
+      component: SelectitemsPage,
+      componentProps: { value: item }
     });
-  
+
     await modal.present();
-  
+
     const data = await modal.onDidDismiss();
     console.log(data);
     this.catOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
+
+    };
+
+
+
+    this.selectedList.push(data.data);
+    console.log(this.selectedList.includes(data.data));
+    console.log(this.selectedList);
+
   }
 
   async presentModalRat(item) {
     const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
+      component: SelectitemsPage,
+      componentProps: { value: item }
     });
-  
+
     await modal.present();
-  
+
     const data = await modal.onDidDismiss();
     console.log(data);
     this.ratOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
+
+    };
+
+
+
+    this.selectedList.push(data.data);
+    console.log(this.selectedList.includes(data.data));
+    console.log(this.selectedList);
+
   }
 
   async presentModalCoffee(item) {
     const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
+      component: SelectitemsPage,
+      componentProps: { value: item }
     });
-  
+
     await modal.present();
-  
+
     const data = await modal.onDidDismiss();
     console.log(data);
     this.coffeeOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
+
+    };
+
+
+
+    this.selectedList.push(data.data);
+    console.log(this.selectedList.includes(data.data));
+    console.log(this.selectedList);
+
   }
 
   async presentModalSea(item) {
     const modal = await this.modalController.create({
-    component: SelectitemsPage,
-    componentProps: { value: item }
+      component: SelectitemsPage,
+      componentProps: { value: item }
     });
-  
+
     await modal.present();
-  
+
     const data = await modal.onDidDismiss();
     console.log(data);
     this.seaOptionSelected = data.data['value'];
     if (this.selectedList.includes(data.data)) {
       this.presentToast("You cannot use same words twice.");
       return;
-  
-     };
-  
-  
-     
-     this.selectedList.push(data.data);
-      console.log(this.selectedList.includes(data.data));
-      console.log(this.selectedList);
-  
+
+    };
+
+
+
+    this.selectedList.push(data.data);
+    console.log(this.selectedList.includes(data.data));
+    console.log(this.selectedList);
+
   }
 
-  openSelectPage(item){
+  openSelectPage(item) {
     console.log(item);
-    if(item == "DOG"){
+    if (item == "DOG") {
       this.presentModal(item);
 
     }
-else if(item == "CAT"){
-  this.presentModalCat(item);
-}
-else if(item == "RAT"){
-  this.presentModalRat(item)
-}else if(item == "COFFEE"){
-  this.presentModalCoffee(item);
-}
-else if(item == "SEA"){
-  this.presentModalSea(item);
-}
+    else if (item == "CAT") {
+      this.presentModalCat(item);
+    }
+    else if (item == "RAT") {
+      this.presentModalRat(item)
+    } else if (item == "COFFEE") {
+      this.presentModalCoffee(item);
+    }
+    else if (item == "SEA") {
+      this.presentModalSea(item);
+    }
     // this.router.navigate(['selectitems', item])
-    
+
   }
 
 }
