@@ -7,16 +7,16 @@ export class AudioService {
   bg = new Howl({
     src: ['assets/background.mp3'],
     html5: true,
-    loop: true,
+    loop: false,
     preload: true,
     autoplay:true
   });
 
 
-  // success = new Howl({
-  //   src: ['assets/success.ogg'],
-  //   html5: true
-  // });
+  success = new Howl({
+    src: ['assets/success.ogg'],
+    html5: true
+  });
 
 
   constructor() { }
@@ -28,7 +28,12 @@ export class AudioService {
     this.bg.play();
   }
 
-  // playSuccess(){
-  //   this.success.play();
-  // }
+  playSuccess(){
+    this.success.play();
+  }
+
+
+  buttonClick(){
+    
+  }
 }

@@ -18,7 +18,7 @@ export class QuestionOnePage implements OnInit {
     private popoverController: PopoverController,
     private data: DataService) {
     this.listItems = [
-      { key: "A. Cow", value: "CAREER" },//0
+      { key: "A. Cow", value: "CAREER", icon:" " },//0
       { key: "B. Tiger", value: "PRIDE" },//1
       { key: "C. Sheep", value: "LOVE" },//2
       { key: "D. Horse", value: "FAMILY" },//3

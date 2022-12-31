@@ -1,9 +1,10 @@
+import { QuotesService } from './../services/quotes.service';
 import { AudioService } from './../audio.service';
 import { OtpPage } from './../otp/otp.page';
 import { OtpPageModule } from './../otp/otp.module';
-import { ModalController } from '@ionic/angular';
+import { IonSlide, IonSlides, ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,15 +15,40 @@ import { Router } from '@angular/router';
 export class AuthPage implements OnInit {
 
   mobileNo: number;
+  @ViewChild('slides') slides: IonSlides;
 
+
+  quotesArray:any;
+
+  slideOpts = {
+    initialSlide: 1,
+    loop: true,
+    autoplay: {
+      delay:1500
+    },
+    speed: 400
+  };
   constructor(private http: HttpClient,
               private router: Router,
               private sound : AudioService,
+              private quotes: QuotesService,
               private modalController: ModalController) { }
 
   ngOnInit() {
-    
+    this.quotes.getQuotes().subscribe((quote) =>{
+      this.quotesArray = quote['results'];
+      console.log(quote);
+      
+    }, (err) =>{
+      console.log(err);
+      
+    }, ()=>{
+      console.log("Completed Quotes subscription");
+      this.slides.startAutoplay();
+      
+    })
   }
+
 
   ionViewDidEnter(){
     this.sound.playBG();
@@ -33,13 +59,11 @@ export class AuthPage implements OnInit {
     component: OtpPage,
    
     });
-  
     await modal.present();
-  
   }
+
 
   Submit(){
     this.presentModalOtp();
-
   }
 }

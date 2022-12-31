@@ -1,9 +1,14 @@
 <ion-content mode="ios">
-
+  <ion-slides #slides mode="ios" pager="ios" scrollbar="ios">
+    <ion-slide  *ngFor="let q of quotesArray">
+      <h1> {{q?.content}} </h1>
+    </ion-slide>
+  </ion-slides>
 
   <ion-grid fixed>
     <ion-row>
       <ion-col sizeLg="6" offsetLg="3" sizeSm="12" sizeXs="12">
+       
         <ion-text class="ion-text-center" color="tertiary">
           <h1  class="title animate__animated animate__backInDown">Quizy</h1>
         </ion-text>
