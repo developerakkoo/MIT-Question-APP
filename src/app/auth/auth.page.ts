@@ -64,6 +64,7 @@ export class AuthPage implements OnInit {
 
 
   Submit(){
+    this.sound.buttonClick();
     this.presentModalOtp();
   }
 }

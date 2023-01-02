@@ -1,3 +1,4 @@
+import { AudioService } from './../audio.service';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class OtpPage implements OnInit {
 
   constructor(private router: Router,
+    private sound: AudioService,
     private modalController: ModalController) { }
 
   ngOnInit() {
@@ -24,6 +26,8 @@ export class OtpPage implements OnInit {
     this.modalController.dismiss();
   }
   Submit(){
+    this.sound.buttonClick();
+
     this.close();
     this.router.navigate(['first-page-task'])
   }

@@ -1,3 +1,4 @@
+import { AudioService } from './../../audio.service';
 import { DataService } from './../../data.service';
 import { RelativeSelectPagePage } from './../../relative-select-page/relative-select-page.page';
 import { SelectitemsPage } from './../../selectitems/selectitems.page';
@@ -34,6 +35,7 @@ export class QuestionThreePage implements OnInit {
   constructor(private router: Router,
     private toastController: ToastController,
     private data: DataService,
+    private sound: AudioService,
     private alertController: AlertController,
     private modalController: ModalController) {
     // this.listItems = [
@@ -63,6 +65,8 @@ export class QuestionThreePage implements OnInit {
           console.log(value);
           let name = value[0];
           await this.data.set("name", name);
+    this.sound.buttonClick();
+
           this.getList();
           
         }
@@ -129,6 +133,13 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
+      if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+        this.presentAlert();
+
+    
+        }
   
   }
   async presentToast(msg) {
@@ -161,7 +172,13 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-  
+      if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+        this.presentAlert();
+
+    
+        }
   }
 
   async presentModalOrange(item) {
@@ -186,7 +203,13 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-  
+      if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+        this.presentAlert();
+
+    
+        }
   }
 
   async presentModalRed(item) {
@@ -211,7 +234,13 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-  
+      if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+        this.presentAlert();
+
+    
+        }
   }
 
   async presentModalWhite(item) {
@@ -235,7 +264,12 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-  
+      if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+        this.presentAlert();
+    
+        }
   }
 
 

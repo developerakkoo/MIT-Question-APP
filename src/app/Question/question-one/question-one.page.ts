@@ -1,3 +1,4 @@
+import { AudioService } from './../../audio.service';
 import { LanguagePopoverPage } from './../../language-popover/language-popover.page';
 import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
@@ -16,13 +17,14 @@ export class QuestionOnePage implements OnInit {
 
   constructor(private router: Router,
     private popoverController: PopoverController,
+    private sound: AudioService,
     private data: DataService) {
     this.listItems = [
-      { key: "A. Cow", value: "CAREER", icon:" " },//0
-      { key: "B. Tiger", value: "PRIDE" },//1
-      { key: "C. Sheep", value: "LOVE" },//2
-      { key: "D. Horse", value: "FAMILY" },//3
-      { key: "E. Pig", value: "MONEY" },//4
+      { key: "A. Cow", value: "CAREER", icon:"128014;" },//0
+      { key: "B. Tiger", value: "PRIDE",icon:"&#128014;" },//1
+      { key: "C. Sheep", value: "LOVE",icon:"&#128014;" },//2
+      { key: "D. Horse", value: "FAMILY",icon:"&#128014;" },//3
+      { key: "E. Pig", value: "MONEY",icon:"&#128014;" },//4
     ];
   }
 
@@ -70,6 +72,8 @@ export class QuestionOnePage implements OnInit {
     console.log(this.listItems);
     this.data.set('questionOne', this.listItems).then((value) => {
       this.router.navigate(['question-two']);
+    this.sound.buttonClick();
+
 
     }).catch((error) => {
       console.log(error);

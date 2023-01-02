@@ -15,7 +15,17 @@ export class AudioService {
 
   success = new Howl({
     src: ['assets/success.ogg'],
-    html5: true
+    html5: true,
+    preload: true,
+
+  });
+
+
+  click = new Howl({
+    src: ['assets/click.wav'],
+    html5: true,
+    preload: true,
+
   });
 
 
@@ -34,6 +44,6 @@ export class AudioService {
 
 
   buttonClick(){
-    
+    this.click.play(); 
   }
 }

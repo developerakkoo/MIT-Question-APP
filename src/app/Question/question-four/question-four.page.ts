@@ -1,12 +1,13 @@
+import { AudioService } from './../../audio.service';
 import { BooksService } from './../../services/books.service';
 import { DataService } from './../../data.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs/operators';
-
+import * as confetti from 'canvas-confetti';
 import jsPDF from 'jspdf';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -47,6 +48,9 @@ export class QuestionFourPage implements OnInit {
   whiteValue;
   greenValue;
 
+  public clicked = false;
+  interval;
+  confettiInterval;
 
   key: string;
   booksDoc: AngularFirestoreCollection<any>;
@@ -71,7 +75,10 @@ export class QuestionFourPage implements OnInit {
   constructor(private router: Router,
     private iab: InAppBrowser,
     private data: DataService,
+    private renderer2: Renderer2,
+    private elementRef: ElementRef,
     private booksService: BooksService,
+    private sound: AudioService,
     private afs: AngularFirestore) {
     this.booksDoc = this.afs.collection<any>('Books');
     this.tasksDoc = this.afs.collection<any>('Tasks');
@@ -95,6 +102,7 @@ export class QuestionFourPage implements OnInit {
 
   ngOnInit() {
     this.getDataStored();
+    this.surprise();
   }
 
   async getDataStored() {
@@ -135,6 +143,36 @@ export class QuestionFourPage implements OnInit {
     return this[Math.floor((Math.random() * array.length))];
   }
 
+  randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  ionViewDidLeave(){
+    clearInterval(this.confettiInterval);
+  }
+
+  public surprise() {
+ 
+    var duration = 15 * 1000;
+    var animationEnd = Date.now() + duration;
+    var defaults = { startVelocity: 30,angle: 60, spread: 360, ticks: 60, zIndex: 1000, resize: true };
+    var timeLeft = animationEnd - Date.now();
+    var particleCount = 2;
+    const canvas = document.getElementById('canvas');
+ 
+    // this.renderer2.appendChild(this.elementRef.nativeElement, canvas);
+ 
+ 
+   
+    const myConfetti = confetti.create(canvas, { angle: 60, spread: 50, particleCount: 2, zIndex:1000, resize: true, useWorker: true, origin: { x: 0}});
+ 
+   this.confettiInterval =  setInterval(() =>{
+      myConfetti();
+      // myConfetti2();
+    }, 3000)
+
+    this.clicked = true;
+  }
 
   downloadResult(){
     console.log("Download");
@@ -147,6 +185,8 @@ export class QuestionFourPage implements OnInit {
     var html = htmlToPdfmake(pdfTable.innerHTML);
   
     const documentDefinition = { content: html };
+    this.sound.buttonClick();
+
     pdfMake.createPdf(documentDefinition).open(); 
   }
 
@@ -1631,6 +1671,8 @@ export class QuestionFourPage implements OnInit {
     let bonusBooks = this.booksService.getBonusBooks();
     console.log(books);
     console.log(bonusBooks);
+    this.sound.buttonClick();
+
     this.router.navigate(['question-five']);
     
     

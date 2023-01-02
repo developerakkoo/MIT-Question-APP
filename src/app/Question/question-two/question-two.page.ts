@@ -1,3 +1,4 @@
+import { AudioService } from './../../audio.service';
 import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
@@ -1572,6 +1573,7 @@ export class QuestionTwoPage implements OnInit {
     private toastController: ToastController,
     private modalController: ModalController,
     private alertController: AlertController,
+    private sound: AudioService,
     private data: DataService) {
 
     this.listItems = [
@@ -1594,6 +1596,9 @@ export class QuestionTwoPage implements OnInit {
     toast.present();
   }
 
+  ionViewDidLeave(){
+    this.selectedList = [];
+  }
   handleChange(ev, item) {
     console.log(ev.detail.value);
     console.log(item);
@@ -1643,6 +1648,8 @@ export class QuestionTwoPage implements OnInit {
     let nCount = await this.data.set('nCount', negativeWordCount);
     await this.data.set('questionTwo', this.listItems);
     console.log("Data Stoared");
+    this.sound.buttonClick();
+
     this.router.navigate(['question-three']);
 
 
@@ -1670,6 +1677,12 @@ export class QuestionTwoPage implements OnInit {
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
     console.log(this.selectedList);
+    if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+    this.router.navigate(['question-three']);
+
+    }
 
   }
 
@@ -1695,6 +1708,12 @@ export class QuestionTwoPage implements OnInit {
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
     console.log(this.selectedList);
+    if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+      this.router.navigate(['question-three']);
+  
+      }
 
   }
 
@@ -1720,6 +1739,12 @@ export class QuestionTwoPage implements OnInit {
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
     console.log(this.selectedList);
+    if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+      this.router.navigate(['question-three']);
+  
+      }
 
   }
 
@@ -1745,6 +1770,12 @@ export class QuestionTwoPage implements OnInit {
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
     console.log(this.selectedList);
+    if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+      this.router.navigate(['question-three']);
+  
+      }
 
   }
 
@@ -1770,6 +1801,12 @@ export class QuestionTwoPage implements OnInit {
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
     console.log(this.selectedList);
+    if(this.selectedList.length == 5){
+    this.sound.buttonClick();
+
+      this.router.navigate(['question-three']);
+  
+      }
 
   }
 

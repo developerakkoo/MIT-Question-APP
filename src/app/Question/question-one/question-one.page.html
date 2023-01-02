@@ -21,14 +21,14 @@
     
           <ion-item lines="none" *ngFor="let item of listItems">
             <ion-label>
-              {{item.key}}
+              {{item.key}} <p>&#128014;</p>
             </ion-label>
             <ion-reorder></ion-reorder>
           </ion-item>
     
         </ion-reorder-group>
       </ion-list>
-    </ion-col>
+    </ion-col>  
   </ion-row>
 </ion-grid>
 
@@ -40,14 +40,12 @@
     </ion-text>
     <ion-list style="margin-top:30px;" >
       <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
-  
         <ion-item lines="none" *ngFor="let item of draggedList">
           <ion-label>
             {{item.key}}
           </ion-label>
           <ion-reorder></ion-reorder>
         </ion-item>
-  
       </ion-reorder-group>
     </ion-list>
   </ion-col>
@@ -55,7 +53,6 @@
 </ion-content>
 <ion-footer mode="ios">
   <ion-toolbar color="tertiary">
-
     <ion-button fill="clear" color="light" size="large"  (click)="getList()">
       <ion-icon slot="start" name="arrow-forward"></ion-icon>
       {{ "FIRST-PAGE.btn" | translate }}

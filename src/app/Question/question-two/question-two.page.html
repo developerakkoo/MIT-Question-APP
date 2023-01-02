@@ -13,21 +13,21 @@
       </ion-text>
       <ion-list style="margin-top:30px;" >
         <ion-item detail (click)="openSelectPage('DOG')">
-          <ion-label> DOG - {{dogOptionSelected || "Click to select"}}</ion-label>
+          <ion-label> DOG  <p style="float: right;">{{dogOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
         <ion-item detail (click)="openSelectPage('CAT')">
-          <ion-label> CAT - {{catOptionSelected || "Click to select"}}</ion-label>
+          <ion-label> CAT <p style="float: right;">{{catOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
         <ion-item detail (click)="openSelectPage('RAT')">
-          <ion-label> RAT - {{ratOptionSelected || "Click to select"}}</ion-label>
+          <ion-label> RAT <p style="float:right;">{{ratOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
         <ion-item detail (click)="openSelectPage('COFFEE')">
-          <ion-label> COFFEE - {{coffeeOptionSelected || "Click to select"}}</ion-label>
+          <ion-label> COFFEE <p style="float: right;"> {{coffeeOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
         <ion-item detail (click)="openSelectPage('SEA')">
-          <ion-label> SEA - {{seaOptionSelected || "Click to select"}}</ion-label>
+          <ion-label> SEA <p style="float: right;">  {{seaOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
       </ion-list>
@@ -36,11 +36,11 @@
 </ion-grid>
 
 </ion-content>
-<ion-footer mode="ios">
+<!-- <ion-footer mode="ios">
   <ion-toolbar color="tertiary">
   <ion-button color="light" (click)="getList()" fill="clear" size="large" >
     <ion-icon slot="end" name="chevron-forward" color="light"></ion-icon>
     Next
   </ion-button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
