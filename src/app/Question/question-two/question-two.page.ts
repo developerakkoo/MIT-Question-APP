@@ -1567,8 +1567,12 @@ export class QuestionTwoPage implements OnInit {
   coffeeOptionSelected;
   seaOptionSelected;
 
+  dogicon = "🐕";
 
-
+  caticon ="🐈"
+raticon ="🐀"
+ coffeeicon = "☕"
+seaicon = "🌊"
   constructor(private router: Router,
     private toastController: ToastController,
     private modalController: ModalController,
@@ -1577,11 +1581,11 @@ export class QuestionTwoPage implements OnInit {
     private data: DataService) {
 
     this.listItems = [
-      { key: "Dog", value: "" },
-      { key: "Cat", value: "" },
-      { key: "Rat", value: "" },
-      { key: "Coffee", value: "" },
-      { key: "Sea", value: "" },
+      { key: "Dog", value: "", icon:"🐕" },
+      { key: "Cat", value: "", icon:"🐈" },
+      { key: "Rat", value: "", icon:"🐀" },
+      { key: "Coffee", value: "", icon:"☕" },
+      { key: "Sea", value: "", icon:"🌊" },
     ];
   }
 
