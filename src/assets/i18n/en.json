@@ -5,5 +5,14 @@
         "note":"You can drag only once.",
         "list-title": "List will appear below",
         "btn": "Continue"
+    },
+    "SECOND-PAGE":{
+        "title": "Question 02/03",
+        "question":"Write a word to describe each one of the following."
+    },
+
+    "THIRD-PAGE":{
+        "title": "Question 03/03",
+        "question":"Think of someone (who also knows you and is important to you) that you can relate to the following colors: (Please do not repeat your answer twice. Name just one person for each color.)."
     }
 }

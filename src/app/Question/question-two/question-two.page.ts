@@ -3,7 +3,8 @@ import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ToastController, ModalController, AlertController } from '@ionic/angular';
+import { ToastController, ModalController, AlertController, PopoverController } from '@ionic/angular';
+import { LanguagePopoverPage } from 'src/app/language-popover/language-popover.page';
 
 @Component({
   selector: 'app-question-two',
@@ -1577,6 +1578,7 @@ seaicon = "🌊"
     private toastController: ToastController,
     private modalController: ModalController,
     private alertController: AlertController,
+    private popoverController: PopoverController,
     private sound: AudioService,
     private data: DataService) {
 
@@ -1592,6 +1594,15 @@ seaicon = "🌊"
   ngOnInit() {
   }
 
+
+  async openLanguagePopOver(event){
+    const popover = await this.popoverController.create({
+      component: LanguagePopoverPage,
+      event: event
+    });
+
+    await popover.present();
+  }
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,

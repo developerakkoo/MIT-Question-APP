@@ -1,19 +1,20 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">03</strong><span
-        style="color: #92949c;">/03</span></ion-title>
+    <ion-title> {{"THIRD-PAGE.title" | translate}} </ion-title>
+    <ion-button fill="clear" slot="end" (click)="openLanguagePopOver($event)">
+      <ion-icon color="light" slot="start" name="planet"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content mode="ios">
+  <a href="https://web.whatsapp.com/send?text=www.google.com" data-text="Take a look at this awesome website:" class="wa_btn wa_btn_s" >Share1</a>
+  <a href="whatsapp://send?text=www.google.com" data-text="Take a look at this awesome website:" class="wa_btn wa_btn_s" >Share1</a>
 
   <ion-grid class="ion-margin-top">
     <ion-row>
-      <ion-col style="margin-top:10px;" size="7" color="light">
+      <ion-col style="margin-top:10px;" sizeLg="7" sizeMd="12" sizeSm="12" offsetSm="3" color="light">
         <ion-text class="ion-margin-top" color="dark">
-          <h5 style="font-weight: 500;">Think of someone (who also knows you and is important to you) that you can
-            relate
-            to the following colors: (Please do not repeat your answer twice. Name just one
-            person for each color.) .</h5>
+          <h5 style="font-weight: 500;"> {{"THIRD-PAGE.question" | translate}} </h5>
         </ion-text>
         <ion-list style="margin-top:30px;">
           <ion-item detail (click)="openSelectPage('Yellow')">
@@ -40,11 +41,3 @@
   </ion-grid>
 
 </ion-content>
-<!-- <ion-footer mode="ios">
-  <ion-toolbar color="tertiary">
-    <ion-button color="light" (click)="presentAlert()" fill="clear" size="large">
-      <ion-icon slot="end" name="chevron-forward" color="light"></ion-icon>
-      Next
-    </ion-button>
-  </ion-toolbar>
-</ion-footer> -->

@@ -9,7 +9,8 @@ export class AudioService {
     html5: true,
     loop: false,
     preload: true,
-    autoplay:true
+    autoplay:true,
+    volume: 0.5
   });
 
 

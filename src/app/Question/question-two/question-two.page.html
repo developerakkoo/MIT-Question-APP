@@ -1,7 +1,11 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-    <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">02</strong><span style="color: #92949c;">/05</span></ion-title>
+    <ion-title>{{ "SECOND-PAGE.title" | translate}}</ion-title>
+    <ion-button fill="clear" slot="end" (click)="openLanguagePopOver($event)">
+      <ion-icon color="light" slot="start" name="planet"></ion-icon>
+    </ion-button>
   </ion-toolbar>
+  
 </ion-header>
 <ion-content mode="ios">
 
@@ -9,7 +13,7 @@
   <ion-row>
     <ion-col style="margin-top:10px;" size="7" color="light">
       <ion-text  class="ion-margin-top"  color="dark">
-        <h5 style="font-weight: 500;">Write a word to describe each one of the following.</h5>
+        <h5 style="font-weight: 500;"> {{"SECOND-PAGE.question" | translate}} </h5>
       </ion-text>
       <ion-list style="margin-top:30px;" >
         <ion-item detail (click)="openSelectPage('DOG')">
@@ -36,11 +40,3 @@
 </ion-grid>
 
 </ion-content>
-<!-- <ion-footer mode="ios">
-  <ion-toolbar color="tertiary">
-  <ion-button color="light" (click)="getList()" fill="clear" size="large" >
-    <ion-icon slot="end" name="chevron-forward" color="light"></ion-icon>
-    Next
-  </ion-button>
-  </ion-toolbar>
-</ion-footer> -->

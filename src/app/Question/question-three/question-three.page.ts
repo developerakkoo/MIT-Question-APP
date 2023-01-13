@@ -4,7 +4,8 @@ import { RelativeSelectPagePage } from './../../relative-select-page/relative-se
 import { SelectitemsPage } from './../../selectitems/selectitems.page';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController, AlertController } from '@ionic/angular';
+import { ModalController, ToastController, AlertController, PopoverController } from '@ionic/angular';
+import { LanguagePopoverPage } from 'src/app/language-popover/language-popover.page';
 
 @Component({
   selector: 'app-question-three',
@@ -35,6 +36,7 @@ export class QuestionThreePage implements OnInit {
   constructor(private router: Router,
     private toastController: ToastController,
     private data: DataService,
+    private popoverController: PopoverController,
     private sound: AudioService,
     private alertController: AlertController,
     private modalController: ModalController) {
@@ -55,6 +57,14 @@ export class QuestionThreePage implements OnInit {
    }
 
   ngOnInit() {
+  }
+  async openLanguagePopOver(event){
+    const popover = await this.popoverController.create({
+      component: LanguagePopoverPage,
+      event: event
+    });
+
+    await popover.present();
   }
   async presentAlert() {
     const alert = await this.alertController.create({

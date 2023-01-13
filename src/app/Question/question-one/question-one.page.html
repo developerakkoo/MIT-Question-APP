@@ -19,12 +19,14 @@
       <ion-list style="margin-top:30px;" >
         <ion-reorder-group color="tertiary" (ionItemReorder)="onRenderItems($event)" disabled="false">
     
-          <ion-item lines="none" *ngFor="let item of listItems">
+          <ion-reorder *ngFor="let item of listItems">
+          <ion-item lines="none" >
             <ion-label>
               {{item.key}} <span>{{item.icon}} </span> 
             </ion-label>
-            <ion-reorder></ion-reorder>
+            <ion-badge color="primary" slot="end" mode="ios">DRAG HERE</ion-badge>
           </ion-item>
+        </ion-reorder>
     
         </ion-reorder-group>
       </ion-list>
