@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { QuestionFourPageRoutingModule } from './question-four-routing.module';
 
 import { QuestionFourPage } from './question-four.page';
-
+import * as CanvasJSAngularChart from './../../../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,6 @@ import { QuestionFourPage } from './question-four.page';
     IonicModule,
     QuestionFourPageRoutingModule
   ],
-  declarations: [QuestionFourPage]
+  declarations: [QuestionFourPage,CanvasJSChart]
 })
 export class QuestionFourPageModule {}

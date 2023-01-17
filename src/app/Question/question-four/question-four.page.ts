@@ -14,7 +14,8 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from 'html-to-pdfmake';
 
-
+import * as CanvasJS from './../../../assets/canvasjs.min.js';
+CanvasJS.addColorSet("customColorSet1",["#ffcb06", "#ce1249", "#3a943c","#df7f2e", "#e3e3e3"]);
 @Component({
   selector: 'app-question-four',
   templateUrl: './question-four.page.html',
@@ -22,7 +23,7 @@ import htmlToPdfmake from 'html-to-pdfmake';
 })
 export class QuestionFourPage implements OnInit {
 
-  @ViewChild('pdfTable', {read: ElementRef}) pdfTable: ElementRef;
+  @ViewChild('doc', { read: ElementRef }) pdfTable: ElementRef;
   listItems: any;
   positiveItems;
   negativeItems;
@@ -34,6 +35,12 @@ export class QuestionFourPage implements OnInit {
   questionThree;
 
   username;
+
+  valueOne;
+  valueTwo;
+  valueThree;
+  valueFour;
+  valueFive;
 
 
   dogValue;
@@ -72,6 +79,50 @@ export class QuestionFourPage implements OnInit {
   top150Books: any[];
   top50Books: any[];
   top30Books: any[];
+
+  chartOptionsPie = {
+    animationEnabled: true,
+    title: {
+      text: "Social Media Engagement"
+    },
+    data: [{
+      type: "pie",
+      startAngle: 45,
+      indexLabel: "{name}: {y}",
+      indexLabelPlacement: "inside",
+      yValueFormatString: "#,###.##'%'",
+      dataPoints: [
+        { y: 21.3, name: "Facebook" },
+        { y: 27.7, name: "Instagram" },
+        { y: 17, name: "Twitter" },
+        { y: 14.9, name: "LinkedIn" },
+        { y: 10.6, name: "Pinterest" },
+        { y: 8.5, name: "Others" }
+      ]
+    }]
+  }
+
+  chartOptionsPyramid = {
+    animationEnabled: true,
+    theme: "light2",
+    title: {
+      // text: "Product Manufacturing Expenses"
+    },
+    data: [{
+      type: "pyramid",
+      indexLabelFontSize: 18,
+      showInLegend: true,
+      legendText: "{indexLabel}",
+      toolTipContent: "{indexLabel}: {y}%",
+      dataPoints: [
+        // { y: 20, indexLabel: "Research and Design" },
+        // { y: 20, indexLabel: "Manufacturing" },
+        // { y: 20, indexLabel: "Marketing" },
+        // { y: 20, indexLabel: "Shipping" },
+        // { y: 20, indexLabel: "Retail" }
+      ]
+    }]
+  }
   constructor(private router: Router,
     private iab: InAppBrowser,
     private data: DataService,
@@ -82,59 +133,123 @@ export class QuestionFourPage implements OnInit {
     private afs: AngularFirestore) {
     this.booksDoc = this.afs.collection<any>('Books');
     this.tasksDoc = this.afs.collection<any>('Tasks');
-    // this.books = this.booksDoc.snapshotChanges().pipe(
-    //   map(actions => actions.map(a => {
-    //     const data = a.payload.doc.data();
-    //     const id = a.payload.doc.id;
-    //     return { id, ...data };
-    //   }))
-    // );
 
-    // this.tasks = this.tasksDoc.snapshotChanges().pipe(
-    //   map(actions => actions.map(a => {
-    //     const data = a.payload.doc.data();
-    //     const id = a.payload.doc.id;
-    //     return { id, ...data };
-    //   }))
-    // );
-
+    
   }
 
   ngOnInit() {
+
     this.getDataStored();
-    this.surprise();
+  }
+  
+  ionViewDidEnter() {
+    
   }
 
+
+  plotChart() {
+    
+    let chart = new CanvasJS.Chart("chartContainer", {
+      theme: "light1",
+      data: [
+        {
+          type: "pyramid",
+          indexLabelFontSize: 18,
+          indexLabelPlacement: "inside",
+          // showInLegend: true,
+          // legendText: "{label}",
+          // toolTipContent: "{label}: {y}%",
+          dataPoints: [
+            { label: this.valueFive, y:20 },
+            { label: this.valueFour, y: 20 },
+            { label: this.valueThree, y:20 },
+            { label: this.valueTwo, y: 20 },
+            { label: this.valueOne, y: 20 }
+          ]
+        }
+      ]
+    });
+    chart.render();
+
+    let barChart = new CanvasJS.Chart("barContainer", {
+      theme: "light1",
+      colorSet:  "customColorSet1",
+
+      data: [{
+        type: "pie",
+        startAngle: 45,
+        indexLabel: "{name}: {y}",
+        indexLabelPlacement: "inside",
+        yValueFormatString: "#,###.##'%'",
+        dataPoints: [
+          { y: 20, name: this.username + " " + "will never forget " + this.yellowValue  },
+          { y: 20, name: this.username + " really loves "+ this.redValue },
+          { y: 20, name: this.username + " will never forget "+  this.greenValue + " for the rest of the life"},
+          { y: 20, name: this.orangeValue + " is "+ this.username + " true friend"},
+          { y: 20, name: this.whiteValue + " is "+ this.username+ " twin soul" },
+        ]
+      }]
+    });
+    barChart.render();
+
+    let doChart = new CanvasJS.Chart("donutContainer", {
+      theme: "light1",
+      colorSet:  "customColorSet1",
+
+      data: [{
+        type: "doughnut",
+        startAngle: 45,
+        indexLabel: "{name}: {y}",
+        indexLabelPlacement: "inside",
+        yValueFormatString: "#,###.##'%'",
+        dataPoints: [
+          { y: 20, name: this.username + " " + "will never forget " + this.yellowValue  },
+          { y: 20, name: this.username + " really loves "+ this.redValue },
+          { y: 20, name: this.username + " will never forget "+  this.greenValue + " for the rest of the life"},
+          { y: 20, name: this.orangeValue + " is "+ this.username + " true friend"},
+          { y: 20, name: this.whiteValue + " is "+ this.username+ " twin soul" },
+        ]
+      }]
+    });
+    doChart.render();
+
+  }
+
+
   async getDataStored() {
+
+
     this.positiveItems = await this.data.get('pCount');
     this.negativeItems = await this.data.get('nCount');
     this.relativeCount = await this.data.get('rCount');
     this.friendCount = await this.data.get('fCount');
     this.key = await this.data.get('key');
-    this.questionOne = await this.data.get('questionOne');
-    this.questionTwo = await this.data.get('questionTwo');
-    this.questionThree = await this.data.get('questionThree');
-    this.username = await this.data.get('name');
-    // console.log(`Book For ${this.key}`);
-    // console.log(`Question One:- ${this.questionOne}`);
-    // this.questionOne.forEach(element => {
-    //   console.log(element);
 
-    // });
+    this.username = await this.data.get('name');
+    this.questionOne = await this.data.get('questionOne');
+    this.valueOne = this.questionOne[0]['value'];
+    this.valueTwo = this.questionOne[1]['value'];
+    this.valueThree = this.questionOne[2]['value'];
+    this.valueFour = this.questionOne[3]['value'];
+    this.valueFive = this.questionOne[4]['value'];
+    // this.questionTwo = await this.data.get('questionTwo');
+
+    this.questionThree = await this.data.get('questionThree');
+
     console.log("Positive count:- " + this.positiveItems);
     console.log("Negative Count:- " + this.negativeItems);
-    this.dogValue = this.questionTwo[0]['value'];
-    this.catValue = this.questionTwo[1]['value'];
-    this.ratValue = this.questionTwo[2]['value'];
-    this.coffeeValue = this.questionTwo[3]['value'];
-    this.seaValue = this.questionTwo[4]['value'];
+    // this.dogValue = this.questionTwo[0]['value'];
+    // this.catValue = this.questionTwo[1]['value'];
+    // this.ratValue = this.questionTwo[2]['value'];
+    // this.coffeeValue = this.questionTwo[3]['value'];
+    // this.seaValue = this.questionTwo[4]['value'];
 
     this.yellowValue = this.questionThree[0]['value'];
     this.orangeValue = this.questionThree[1]['value'];
     this.redValue = this.questionThree[2]['value'];
     this.whiteValue = this.questionThree[3]['value'];
     this.greenValue = this.questionThree[4]['value'];
-
+    this.plotChart();
     this.logic();
 
 
@@ -147,26 +262,24 @@ export class QuestionFourPage implements OnInit {
     return Math.random() * (max - min) + min;
   }
 
-  ionViewDidLeave(){
-    clearInterval(this.confettiInterval);
-  }
+
 
   public surprise() {
- 
+
     var duration = 15 * 1000;
     var animationEnd = Date.now() + duration;
-    var defaults = { startVelocity: 30,angle: 60, spread: 360, ticks: 60, zIndex: 1000, resize: true };
+    var defaults = { startVelocity: 30, angle: 60, spread: 360, ticks: 60, zIndex: 1000, resize: true };
     var timeLeft = animationEnd - Date.now();
     var particleCount = 2;
     const canvas = document.getElementById('canvas');
- 
+
     // this.renderer2.appendChild(this.elementRef.nativeElement, canvas);
- 
- 
-   
-    const myConfetti = confetti.create(canvas, { angle: 60, spread: 50, particleCount: 2, zIndex:1000, resize: true, useWorker: true, origin: { x: 0}});
- 
-   this.confettiInterval =  setInterval(() =>{
+
+
+
+    const myConfetti = confetti.create(canvas, { angle: 60, spread: 50, particleCount: 2, zIndex: 1000, resize: true, useWorker: true, origin: { x: 0 } });
+
+    this.confettiInterval = setInterval(() => {
       myConfetti();
       // myConfetti2();
     }, 3000)
@@ -174,20 +287,20 @@ export class QuestionFourPage implements OnInit {
     this.clicked = true;
   }
 
-  downloadResult(){
+  downloadResult() {
     console.log("Download");
     const doc = new jsPDF();
-   
+
     const pdfTable = this.pdfTable.nativeElement;
     console.log(pdfTable);
-    
-    
+
+
     var html = htmlToPdfmake(pdfTable.innerHTML);
-  
+
     const documentDefinition = { content: html };
     this.sound.buttonClick();
 
-    pdfMake.createPdf(documentDefinition).open(); 
+    pdfMake.createPdf(documentDefinition).open();
   }
 
   getBooksFromDB(isFamily, isMoney, isPride, isCareer, isLove, bookCount) {
@@ -208,6 +321,7 @@ export class QuestionFourPage implements OnInit {
   }
 
   logic() {
+
     let key = this.key;
     if (key == "Year") {
       console.log("3 Books from Family, Pride, Love , Career, Money");
@@ -973,7 +1087,7 @@ export class QuestionFourPage implements OnInit {
       this.getBookFromFamilyPrideLoveCareerMoney(1);
       if (this.positiveItems == 5) {
         console.log("year and 5 positive run same filter");
-      this.getBookFromFamilyPrideLoveCareerMoney(1);
+        this.getBookFromFamilyPrideLoveCareerMoney(1);
 
         //Bonus book logic
         if (this.relativeCount == 5) {
@@ -1234,7 +1348,7 @@ export class QuestionFourPage implements OnInit {
       this.getBookFromFamilyPrideLoveCareerMoney(2);
       if (this.positiveItems == 5) {
         console.log("year and 5 positive run same filter");
-      this.getBookFromFamilyPrideLoveCareerMoney(2);
+        this.getBookFromFamilyPrideLoveCareerMoney(2);
 
 
 
@@ -1611,7 +1725,7 @@ export class QuestionFourPage implements OnInit {
       console.log(`Family Books`);
       console.log(this.familyBooks);
       this.booksService.setBooks(this.familyBooks);
-      
+
 
 
     });
@@ -1674,7 +1788,7 @@ export class QuestionFourPage implements OnInit {
     this.sound.buttonClick();
 
     this.router.navigate(['question-five']);
-    
-    
-   }
+
+
+  }
 }

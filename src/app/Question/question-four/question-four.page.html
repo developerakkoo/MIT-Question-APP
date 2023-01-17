@@ -7,78 +7,20 @@
   </ion-toolbar>
 </ion-header>
 <ion-content >
-
-<ion-grid class="ion-margin-top" #pdfTable>
-  <ion-row>
-    <ion-col style="margin-top:10px;" size="12" color="light">
-      <ion-text color="secondary">
-        <h1>{{username}}'s Interpretation</h1>
-      </ion-text>
-      <br>
-      <ion-list>
-        <ion-list-header>
-          <ion-label> {{username}}'s Priority</ion-label>
-        </ion-list-header>
-        <ion-item *ngFor="let item of questionOne; let i = index">
-          <br>
-          <ion-label> {{i+ 1}} {{item.value}} </ion-label><br>
-        </ion-item>
-        <br>
-      </ion-list>
-      <br>
-
-      <ion-list>
-        <ion-list-header>
-          <ion-label>what defines {{username}}</ion-label>
-        </ion-list-header>
-        <br>
-        <ion-item >
-          <ion-label> {{username}} is {{dogValue}}. </ion-label>
-        </ion-item>
-        <br>
-        <ion-item >
-          <ion-label> {{username}}'s future partner is {{catValue}}. </ion-label>
-        </ion-item>
-
-        <br>
-        <ion-item >
-          <ion-label> {{username}}'s enemies are {{ratValue}}. </ion-label>
-        </ion-item>
-<br>
-        <ion-item>
-          <ion-label> {{username}}'s view of love is {{coffeeValue}}. </ion-label>
-        </ion-item>
-
-
-<br>        <ion-item >
-          <ion-label> {{username}}'s view of life is {{seaValue}}. </ion-label>
-        </ion-item>
-      </ion-list>
-<br>
-      <ion-list>
-        <ion-item>
-          <ion-label>{{username}} will never forget {{yellowValue}}.</ion-label>
-        </ion-item>
-<br>
-        <ion-item>
-          <ion-label>{{orangeValue}} is {{username}}'s true friend.</ion-label>
-        </ion-item>
-<br>
-        <ion-item>
-          <ion-label>{{username}} really loves {{redValue}}.</ion-label>
-        </ion-item>
-<br>
-        <ion-item>
-          <ion-label>{{whiteValue}} is {{username}}'s twin soul.</ion-label>
-        </ion-item>
-<br>
-        <ion-item>
-          <ion-label>{{username}} will never forget {{greenValue}} for the rest of the life.</ion-label>
-        </ion-item>
-      </ion-list>
-      </ion-col>
-  </ion-row>
-</ion-grid>
+<div id="doc" #doc>
+  <ion-text color="primary" class="ion-text-center">
+    <h1> {{username}} Priority </h1>
+  </ion-text>
+  <div id="chartContainer" style="height: 570px; width: 800px; margin:auto;"></div>
+  <ion-text color="primary" class="ion-text-center">
+    <h1> What Defines {{username}}</h1>
+  </ion-text>
+  <div id="barContainer" style="height: 670px; width: 100%; margin:auto;"></div>
+  <ion-text color="primary" class="ion-text-center">
+    <h1> {{username}} Relations</h1>
+  </ion-text>
+  <div id="donutContainer" style="height: 670px; width: 100%; margin:auto;"></div>
+</div>
 
 </ion-content>
 <ion-footer>

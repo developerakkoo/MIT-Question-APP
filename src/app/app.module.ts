@@ -20,6 +20,8 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -38,6 +40,7 @@ const firebaseConfig = {
   imports: [BrowserModule, IonicModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireDatabaseModule, AngularFirestoreModule, AppRoutingModule,
+    
     HttpClientModule,NgOtpInputModule, 
     IonicStorageModule.forRoot({
     name: "mitest"
