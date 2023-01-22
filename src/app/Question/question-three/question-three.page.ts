@@ -76,8 +76,7 @@ export class QuestionThreePage implements OnInit {
           let name = value[0];
           await this.data.set("name", name);
     this.sound.buttonClick();
-
-          this.getList();
+          this.presentAlertEmail();
           
         }
       }],
@@ -92,6 +91,31 @@ export class QuestionThreePage implements OnInit {
     await alert.present();
   }
 
+  async presentAlertEmail() {
+    const alert = await this.alertController.create({
+      header: 'Enter your email. We will send the report on it',
+      buttons: [{
+        text: "Okay",
+        handler: async (value) =>{
+          console.log(value);
+          let name = value[0];
+          await this.data.set("email", name);
+    this.sound.buttonClick();
+
+    this.getList();
+          
+        }
+      }],
+      inputs: [
+        {
+          placeholder: 'Email',
+          
+        },
+      ],
+    });
+
+    await alert.present();
+  }
   async getList() {
     this.listItems = [
       {key: "A. Yellow", value: this.yellowOptionSelected},//0

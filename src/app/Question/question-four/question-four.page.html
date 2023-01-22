@@ -1,25 +1,61 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Final Result for {{username}}'s {{key || ""}}</ion-title>
+    <ion-title>Final Result for {{username | uppercase}}'s {{key || ""}}</ion-title>
     <ion-button (click)="downloadResult()" slot="end">
       <ion-icon slot="icon-only" name="download" color="light"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content >
+  <!-- <ion-button (click)="sendmail()" expand="block" fill="clear" shape="round">
+    Click me
+  </ion-button> -->
 <div id="doc" #doc>
   <ion-text color="primary" class="ion-text-center">
-    <h1> {{username}} Priority </h1>
+    <h1> {{username | uppercase}} Priority </h1>
   </ion-text>
-  <div id="chartContainer" style="height: 570px; width: 800px; margin:auto;"></div>
+  <div id="chartContainer" style="height: 570px; width: 100%; max-width: 400px; margin:auto;"></div>
+  <div class="container">
+    <h4 style="    font-size: 15px;
+    position: absolute;
+    top: 230px;
+    left: 43px;
+    text-align: left;"> {{username | uppercase}}</h4>
+
+    <h4 style="font-size: 15px;
+    position: absolute;
+    top: 130px;
+    left: 190px;
+    text-align: left;"> {{wordOne}} </h4>
+    <h4 style="    font-size: 15px;
+    position: absolute;
+    top: 180px;
+    left: 237px;
+    text-align: left;"> {{wordTwo}} </h4>
+    
+    <h4 style="    font-size: 15px;
+    position: absolute;
+    top: 230px;
+    left: 235px;
+    text-align: left;"> {{wordThree}} </h4>
+    <h4 style="    font-size: 15px;
+    position: absolute;
+    top: 277px;
+    left: 233px;
+    text-align: left;"> {{wordFour}} </h4>
+    <h4 style="    font-size: 15px;
+    position: absolute;
+    top: 332px;
+    left: 193px;
+    text-align: left;"> {{wordFive}} </h4>
+    <img style="max-width: 360px;" src="./../../../assets/Empty-template-middle-page.jpg" alt="">
+
+  </div>
   <ion-text color="primary" class="ion-text-center">
-    <h1> What Defines {{username}}</h1>
+    <h1> What Defines {{username | uppercase}}</h1>
   </ion-text>
-  <div id="barContainer" style="height: 670px; width: 100%; margin:auto;"></div>
-  <ion-text color="primary" class="ion-text-center">
-    <h1> {{username}} Relations</h1>
-  </ion-text>
-  <div id="donutContainer" style="height: 670px; width: 100%; margin:auto;"></div>
+  <div id="barContainer" style="height: 670px; width: 100%; max-width: 400px; margin:auto;"></div>
+
 </div>
 
 </ion-content>

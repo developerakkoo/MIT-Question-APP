@@ -1,5 +1,5 @@
 import { AudioService } from './../audio.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { DataService } from './../data.service';
 import { Component, OnInit } from '@angular/core';
@@ -46,6 +46,7 @@ export class CompleteTaskPage implements OnInit {
     private iab: InAppBrowser,
     private alertController: AlertController,
     private booksService: BooksService,
+    private loadingController: LoadingController,
     private afs: AngularFirestore,
     private router: Router,
     private sound: AudioService
@@ -54,12 +55,14 @@ export class CompleteTaskPage implements OnInit {
 
               }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.bonusBooks = this.booksService.getBonusBooks();
     this.books = this.booksService.getBooks();
+    this.type = await this.data.get("gender");
+    this.ageGroup = await this.data.get("age");
     console.log(this.bonusBooks);
     console.log(this.books);
-    this.getTaskBy("indian", "above18");
+    this.getTaskBy("indian", this.ageGroup);
     
   }
 
@@ -107,16 +110,22 @@ export class CompleteTaskPage implements OnInit {
     await alert.present();
   }
 
-  openTask(){
+  async openTask(){
+    let loading = await this.loadingController.create({
+      message:"Complete the task..."
+    })
+    await loading.present();
     var options = "location=yes,hidden=yes,beforeload=yes";
     let browser = this.iab.create(this.tasks[0]['taskLink'],"_blank", options);
 
-    this.openTaskInterval = setInterval(() =>{
+    this.openTaskInterval = setInterval(async() =>{
       this.count += 1;
       console.log(this.count);
       
       if(this.count == 60){
     this.isTaskCompleted = true;
+    await loading.dismiss();
+
     clearInterval(this.openTaskInterval);
 
       }

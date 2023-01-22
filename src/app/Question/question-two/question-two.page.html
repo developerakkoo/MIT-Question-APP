@@ -11,27 +11,27 @@
 
 <ion-grid class="ion-margin-top">
   <ion-row>
-    <ion-col style="margin-top:10px;" size="7" color="light">
+    <ion-col style="margin-top:10px;" sizeLg="7" sizeSm="12" color="light">
       <ion-text  class="ion-margin-top"  color="dark">
         <h5 style="font-weight: 500;"> {{"SECOND-PAGE.question" | translate}} </h5>
       </ion-text>
       <ion-list style="margin-top:30px;" >
         <ion-item detail (click)="openSelectPage('DOG')">
-          <ion-label> DOG <span> {{dogicon}}</span> <p style="float: right;">{{dogOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-label class="ion-text-wrap"> DOG <span> {{dogicon}}</span> <p style="float: right;">{{dogOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
         <ion-item detail (click)="openSelectPage('CAT')">
-          <ion-label> CAT {{caticon}} <p style="float: right;">{{catOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-label class="ion-text-wrap"> CAT {{caticon}} <p style="float: right;">{{catOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
         <ion-item detail (click)="openSelectPage('RAT')">
-          <ion-label> RAT {{raticon}} <p style="float:right;">{{ratOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-label class="ion-text-wrap"> RAT {{raticon}} <p style="float:right;">{{ratOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
         <ion-item detail (click)="openSelectPage('COFFEE')">
-          <ion-label> COFFEE {{coffeeicon}} <p style="float: right;"> {{coffeeOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-label class="ion-text-wrap"> COFFEE {{coffeeicon}} <p style="float: right;"> {{coffeeOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
         <ion-item detail (click)="openSelectPage('SEA')">
-          <ion-label> SEA {{seaicon}} <p style="float: right;">  {{seaOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-label class="ion-text-wrap"> SEA {{seaicon}} <p style="float: right;">  {{seaOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
       </ion-list>

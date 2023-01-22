@@ -14,6 +14,9 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from 'html-to-pdfmake';
 
+import {Email} from "../../../assets/icon/smtp.js"; //file path may change → 
+declare let Email: any;
+
 import * as CanvasJS from './../../../assets/canvasjs.min.js';
 CanvasJS.addColorSet("customColorSet1",["#ffcb06", "#ce1249", "#3a943c","#df7f2e", "#e3e3e3"]);
 @Component({
@@ -35,6 +38,7 @@ export class QuestionFourPage implements OnInit {
   questionThree;
 
   username;
+  email;
 
   valueOne;
   valueTwo;
@@ -55,6 +59,12 @@ export class QuestionFourPage implements OnInit {
   whiteValue;
   greenValue;
 
+  wordOne;
+  wordTwo;
+  wordThree;
+  wordFour;
+  wordFive;
+  wordList;
   public clicked = false;
   interval;
   confettiInterval;
@@ -215,6 +225,27 @@ export class QuestionFourPage implements OnInit {
 
   }
 
+  sendmail(){
+    Email.send({
+      Host : 'smtp.elasticemail.com',
+      Username : 'developerakshayjadhav@gmail.com',
+      Password : 'BADE58F6BACE5661AF70523FC088DEF975A0',
+      To : this.email,
+      From : `developerakshayjadhav@gmail.com`,
+      Subject : "subject",
+      Body : `
+      <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${"Akshy"} <br /> <b>Email: </b>akshay@gmai..com<br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
+      ,Attachments : [
+        {
+          name : "Report.pdf",
+          path : "https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
+        }]  
+    
+    }).then( message => {alert(message); } );
+        
+      }
+        
+  
 
   async getDataStored() {
 
@@ -226,6 +257,7 @@ export class QuestionFourPage implements OnInit {
     this.key = await this.data.get('key');
 
     this.username = await this.data.get('name');
+    this.email = await this.data.get('email');
     this.questionOne = await this.data.get('questionOne');
     this.valueOne = this.questionOne[0]['value'];
     this.valueTwo = this.questionOne[1]['value'];
@@ -234,6 +266,12 @@ export class QuestionFourPage implements OnInit {
     this.valueFive = this.questionOne[4]['value'];
     // this.questionTwo = await this.data.get('questionTwo');
 
+    this.wordList = await this.data.get('wordList');
+    this.wordOne = await this.wordList[0]['value'];
+    this.wordTwo = await this.wordList[1]['value'];
+    this.wordThree = await this.wordList[2]['value'];
+    this.wordFour = await this.wordList[3]['value'];
+    this.wordFive = await this.wordList[4]['value'];
     this.questionThree = await this.data.get('questionThree');
 
     console.log("Positive count:- " + this.positiveItems);

@@ -1562,6 +1562,7 @@ export class QuestionTwoPage implements OnInit {
   pList: any[] = [];
   nList: any[] = [];
 
+  countWord;
   dogOptionSelected;
   catOptionSelected;
   ratOptionSelected;
@@ -1661,6 +1662,7 @@ seaicon = "🌊"
 
     let pCount = await this.data.set('pCount', positiveWordCount);
     let nCount = await this.data.set('nCount', negativeWordCount);
+  await this.data.set('wordList', this.selectedList)
     await this.data.set('questionTwo', this.listItems);
     console.log("Data Stoared");
     this.sound.buttonClick();
@@ -1671,6 +1673,7 @@ seaicon = "🌊"
 
   }
   async presentModal(item) {
+    this.countWord = 0;
     const modal = await this.modalController.create({
       component: SelectitemsPage,
       componentProps: { value: item }
@@ -1691,9 +1694,10 @@ seaicon = "🌊"
 
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
-    console.log(this.selectedList);
+    console.log(this.selectedList.length);
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+  await this.data.set('wordList', this.selectedList)
 
     this.router.navigate(['question-three']);
 
@@ -1722,9 +1726,11 @@ seaicon = "🌊"
 
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
-    console.log(this.selectedList);
+    console.log(this.selectedList.length);
+
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+  await this.data.set('wordList', this.selectedList)
 
       this.router.navigate(['question-three']);
   
@@ -1753,9 +1759,11 @@ seaicon = "🌊"
 
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
-    console.log(this.selectedList);
+    console.log(this.selectedList.length);
+
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    await this.data.set('wordList', this.selectedList)
 
       this.router.navigate(['question-three']);
   
@@ -1784,9 +1792,11 @@ seaicon = "🌊"
 
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
-    console.log(this.selectedList);
+    console.log(this.selectedList.length);
+
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    await this.data.set('wordList', this.selectedList)
 
       this.router.navigate(['question-three']);
   
@@ -1815,9 +1825,11 @@ seaicon = "🌊"
 
     this.selectedList.push(data.data);
     console.log(this.selectedList.includes(data.data));
-    console.log(this.selectedList);
+    console.log(this.selectedList.length);
+
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+  await this.data.set('wordList', this.selectedList)
 
       this.router.navigate(['question-three']);
   
