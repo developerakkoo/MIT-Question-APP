@@ -1,19 +1,5 @@
 ion-content {
-    --background: url('/assets/leave.webp');
+    --background: url('/assets/Hexagon.svg');
     background-repeat: repeat;
 }
 
-.container{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-ion-card{
-    background-color: white;
-    height: 200px;
-    width: 100%;
-    border-radius: 20px;
-    border: 2px solid #e8e8e8;
-}
