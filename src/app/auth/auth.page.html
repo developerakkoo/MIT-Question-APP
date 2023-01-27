@@ -1,7 +1,7 @@
 <ion-content mode="ios">
   <ion-slides #slides mode="ios" pager="ios" scrollbar="ios">
     <ion-slide  *ngFor="let q of quotesArray">
-      <h1> {{q?.content}} </h1>
+      <h1 style="color: white; font-size: 15px;"> {{q?.content}} </h1>
     </ion-slide>
   </ion-slides>
 
@@ -9,18 +9,18 @@
     <ion-row>
       <ion-col sizeLg="6" offsetLg="3" sizeSm="12" sizeXs="12">
        
-        <ion-text class="ion-text-center" color="tertiary">
-          <h1  class="title animate__animated animate__backInDown">Quizy</h1>
+        <ion-text class="ion-text-center" color="primary">
+          <h1  class="title animate__animated animate__backInDown">Mind Labyrinth</h1>
         </ion-text>
         <ion-text color="dark">
           <h2>Welcome back!</h2>
         </ion-text>
         <input placeholder="Enter your mobile number" class="mobileInput" type="number" name="number"
           [(ngModel)]="mobileNo" id="" max="10">
-        <ion-text class="ion-text-center" color="medium">
+        <ion-text class="ion-text-center" color="light">
           <p style="font-size: 12px ;">We will text you a verification code.</p>
         </ion-text>
-        <ion-button  size="large" shape="block" color="tertiary" (click)="Submit()">
+        <ion-button  size="large" shape="block" color="primary" (click)="Submit()">
           <ion-icon class="animate__animated animate__shakeX animate__slower	4s animate__3" slot="end" name="chevron-forward" color="light"></ion-icon>
           Continue
         </ion-button>

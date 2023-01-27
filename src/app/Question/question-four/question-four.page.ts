@@ -12,13 +12,15 @@ import jsPDF from 'jspdf';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 import htmlToPdfmake from 'html-to-pdfmake';
 
 import {Email} from "../../../assets/icon/smtp.js"; //file path may change → 
 declare let Email: any;
 
 import * as CanvasJS from './../../../assets/canvasjs.min.js';
-CanvasJS.addColorSet("customColorSet1",["#ffcb06", "#ce1249", "#3a943c","#df7f2e", "#e3e3e3"]);
+// CanvasJS.addColorSet("customColorSet1",["#ffcb06", "#ce1249", "#3a943c","#df7f2e", "#e3e3e3"]);
+// CanvasJS.set("theme", "light2");
 @Component({
   selector: 'app-question-four',
   templateUrl: './question-four.page.html',
@@ -91,6 +93,7 @@ export class QuestionFourPage implements OnInit {
   top30Books: any[];
 
   chartOptionsPie = {
+    theme: "light2",
     animationEnabled: true,
     title: {
       text: "Social Media Engagement"
@@ -160,7 +163,7 @@ export class QuestionFourPage implements OnInit {
   plotChart() {
     
     let chart = new CanvasJS.Chart("chartContainer", {
-      theme: "light1",
+      theme: "light2",
       data: [
         {
           type: "pyramid",
@@ -182,8 +185,8 @@ export class QuestionFourPage implements OnInit {
     chart.render();
 
     let barChart = new CanvasJS.Chart("barContainer", {
-      theme: "light1",
-      colorSet:  "customColorSet1",
+      theme: "light2",
+      // colorSet:  "customColorSet1",
 
       data: [{
         type: "pie",
@@ -202,26 +205,26 @@ export class QuestionFourPage implements OnInit {
     });
     barChart.render();
 
-    let doChart = new CanvasJS.Chart("donutContainer", {
-      theme: "light1",
-      colorSet:  "customColorSet1",
+    // let doChart = new CanvasJS.Chart("donutContainer", {
+    //   theme: "light2",
+    //   colorSet:  "customColorSet1",
 
-      data: [{
-        type: "doughnut",
-        startAngle: 45,
-        indexLabel: "{name}: {y}",
-        indexLabelPlacement: "inside",
-        yValueFormatString: "#,###.##'%'",
-        dataPoints: [
-          { y: 20, name: this.username + " " + "will never forget " + this.yellowValue  },
-          { y: 20, name: this.username + " really loves "+ this.redValue },
-          { y: 20, name: this.username + " will never forget "+  this.greenValue + " for the rest of the life"},
-          { y: 20, name: this.orangeValue + " is "+ this.username + " true friend"},
-          { y: 20, name: this.whiteValue + " is "+ this.username+ " twin soul" },
-        ]
-      }]
-    });
-    doChart.render();
+    //   data: [{
+    //     type: "doughnut",
+    //     startAngle: 45,
+    //     indexLabel: "{name}: {y}",
+    //     indexLabelPlacement: "inside",
+    //     yValueFormatString: "#,###.##'%'",
+    //     dataPoints: [
+    //       { y: 20, name: this.username + " " + "will never forget " + this.yellowValue  },
+    //       { y: 20, name: this.username + " really loves "+ this.redValue },
+    //       { y: 20, name: this.username + " will never forget "+  this.greenValue + " for the rest of the life"},
+    //       { y: 20, name: this.orangeValue + " is "+ this.username + " true friend"},
+    //       { y: 20, name: this.whiteValue + " is "+ this.username+ " twin soul" },
+    //     ]
+    //   }]
+    // });
+    // doChart.render();
 
   }
 
@@ -331,14 +334,29 @@ export class QuestionFourPage implements OnInit {
 
     const pdfTable = this.pdfTable.nativeElement;
     console.log(pdfTable);
+    // pdfMake.fonts = {
+    //   Roboto: {
+    //   normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
+    //   bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
+    //   italics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
+    //   bolditalics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf'
+    //   }};
 
 
-    var html = htmlToPdfmake(pdfTable.innerHTML);
+    // var html = htmlToPdfmake(pdfTable.innerHTML, {ignoreStyles:['font-family']});
 
-    const documentDefinition = { content: html };
+    // const documentDefinition = { content: html,
+    //   defaultStyle: {
+    //     font: "Helvetica",
+    // }
+    
+    // };
+    var dataUrl = pdfTable.toDataURL();
+    // doc.addImage(dataURL, 'JPEG', 0, 0);
+    doc.save("download.pdf");
     this.sound.buttonClick();
 
-    pdfMake.createPdf(documentDefinition).open();
+    // pdfMake.createPdf(documentDefinition).open();
   }
 
   getBooksFromDB(isFamily, isMoney, isPride, isCareer, isLove, bookCount) {

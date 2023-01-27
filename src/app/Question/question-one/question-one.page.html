@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar color="primary">
     <!-- <ion-title>Question <strong style="font-size: 30px; font-weight: 700 ;">01</strong><span style="color: #92949c;">/03</span></ion-title> -->
     <ion-title> {{"FIRST-PAGE.title" | translate}} </ion-title>
     <ion-button fill="clear" slot="end" (click)="openLanguagePopOver($event)">
@@ -17,18 +17,22 @@
         <h5 style="font-weight: 500;"> {{ "FIRST-PAGE.question" | translate}} </h5>
       </ion-text>
       <ion-list style="margin-top:30px;" >
-        <ion-reorder-group color="tertiary" (ionItemReorder)="onRenderItems($event)" disabled="false">
-    
-          <ion-reorder *ngFor="let item of listItems">
-          <ion-item lines="none" >
+        
+        
+          <ion-item lines="none"  *ngFor="let item of listItems">
             <ion-label>
               {{item.key}} <span>{{item.icon}} </span> 
             </ion-label>
-            <ion-badge color="primary" slot="end" mode="ios">DRAG HERE</ion-badge>
+            <ion-range
+          min="0" max="100"
+          dualKnobs="false" pin="true"
+          snaps="true" step="1"
+          ticks="true" value="0"
+          color="primary"
+          (ionChange)="rangeChange($event, item)">
+        </ion-range>
           </ion-item>
-        </ion-reorder>
     
-        </ion-reorder-group>
       </ion-list>
     </ion-col>  
   </ion-row>
@@ -41,20 +45,15 @@
       <h6>{{ "FIRST-PAGE.list-title" | translate }}</h6>
     </ion-text>
     <ion-list style="margin-top:30px;">
-      <ion-reorder-group color="primary" (ionItemReorder)="onRenderItems($event)" disabled="false">
         <ion-item lines="none" *ngFor="let item of draggedList">
-          <ion-label class="ion-text-wrap">
-            {{item.key}}
-          </ion-label>
-          <ion-reorder></ion-reorder>
+          
         </ion-item>
-      </ion-reorder-group>
     </ion-list>
   </ion-col>
 </ion-grid>
 </ion-content>
 <ion-footer mode="ios">
-  <ion-toolbar color="tertiary">
+  <ion-toolbar color="primary">
     <ion-button fill="clear" color="light" size="large"  (click)="getList()">
       <ion-icon slot="start" name="arrow-forward"></ion-icon>
       {{ "FIRST-PAGE.btn" | translate }}

@@ -13,12 +13,26 @@
     
    
   </ion-list>
-  <ion-slides   style="height: 200px; width: auto;" [options]="slides" mode="ios" pager="ios" scrollbar="ios">
+  <ion-slides  style="height: 350px; width: auto; background-color: lightgrey;" mode="ios" pager="ios" scrollbar="ios">
+    <ion-slide >
+    <img style="height: 350px; width: auto;" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
+    </ion-slide>
+    <ion-slide >
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
+      </ion-slide>
+      <ion-slide >
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
+        </ion-slide>
+        <ion-slide >
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
+          </ion-slide>
+  </ion-slides>
+  <!-- <ion-slides   style="height: 200px; width: auto;" [options]="slides" mode="ios" pager="ios" scrollbar="ios">
     <ion-slide *ngFor="let item of bonusBooks" >
       <img [src]="item.bookImage" />
 
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
   <ion-list *ngIf="!isTaskCompleted">
     <ion-list-header>
       <ion-label>Locked Books For you</ion-label>

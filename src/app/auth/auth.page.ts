@@ -24,7 +24,7 @@ export class AuthPage implements OnInit {
     initialSlide: 1,
     loop: true,
     autoplay: {
-      delay:1500
+      delay:5500
     },
     speed: 400
   };

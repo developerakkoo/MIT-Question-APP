@@ -20,11 +20,11 @@ export class QuestionOnePage implements OnInit {
     private sound: AudioService,
     private data: DataService) {
     this.listItems = [
-      { key: "A. Cow", value: "CAREER", icon:"🐄" },//0
-      { key: "B. Tiger", value: "PRIDE",icon:"🐅" },//1
-      { key: "C. Sheep", value: "LOVE",icon:"🐐" },//2
-      { key: "D. Horse", value: "FAMILY",icon:"🐎" },//3
-      { key: "E. Pig", value: "MONEY",icon:"🐖" },//4
+      { key: "A. Cow", value: "CAREER", icon:"🐄",points:0 },//0
+      { key: "B. Tiger", value: "PRIDE",icon:"🐅" , points: 0},//1
+      { key: "C. Sheep", value: "LOVE",icon:"🐐", points:0 },//2
+      { key: "D. Horse", value: "FAMILY",icon:"🐎" , points:0},//3
+      { key: "E. Pig", value: "MONEY",icon:"🐖", points:0 },//4
     ];
   }
 
@@ -39,27 +39,16 @@ export class QuestionOnePage implements OnInit {
 
     await popover.present();
   }
-  onRenderItems(event) {
-    console.log(`Moving item from ${event.detail.from} to ${event.detail.to}`);
-    let draggedItem = this.listItems.splice(event.detail.from, 1)[0];
-    this.listItems.splice(event.detail.to, 0, draggedItem);
-    console.log(this.listItems[event.detail.to]);
-    // let obj = this.draggedList.find((value, index) => value = value.key === this.listItems[event.detail.to].key);
-    // console.log(obj);
 
-    let isFound = this.draggedList.includes(this.listItems[event.detail.to])
-    console.log(isFound);
-    if (!isFound) {
-      this.draggedList.push(this.listItems[event.detail.to]);
-
-      console.log(this.draggedList);
-    }
-
-
-
-    //this.listItems = reorderArray(this.listItems, event.detail.from, event.detail.to);
-    event.detail.complete();
+  rangeChange(ev, item){
+    console.log(ev.detail.value + " " + item.key);
+    item.points = ev.detail.value;
+    console.log(item);
+    
+    
+    
   }
+  
 
   uniqBy(a, key) {
     var seen = {};
@@ -69,8 +58,12 @@ export class QuestionOnePage implements OnInit {
     })
   }
   getList() {
-    console.log(this.listItems);
-    this.data.set('questionOne', this.listItems).then((value) => {
+    // console.log(this.listItems);
+    // console.log(this.listItems.sort((a, b) => b.points-a.points));
+    let dataList = this.listItems.sort((a, b) => b.points-a.points);
+    console.log(dataList);
+    
+    this.data.set('questionOne',dataList).then((value) => {
       this.router.navigate(['question-two']);
     this.sound.buttonClick();
 
