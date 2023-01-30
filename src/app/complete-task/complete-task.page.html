@@ -9,33 +9,18 @@
     <ion-list-header>
       <ion-label>Bonus Book For you</ion-label>
     </ion-list-header>
-
-    
-   
   </ion-list>
-  <ion-slides  style="height: 350px; width: auto; background-color: lightgrey;" mode="ios" pager="ios" scrollbar="ios">
-    <ion-slide >
-    <img style="height: 350px; width: auto;" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
-    </ion-slide>
-    <ion-slide >
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
-      </ion-slide>
-      <ion-slide >
-        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
-        </ion-slide>
-        <ion-slide >
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg" alt="" srcset="">
-          </ion-slide>
-  </ion-slides>
-  <!-- <ion-slides   style="height: 200px; width: auto;" [options]="slides" mode="ios" pager="ios" scrollbar="ios">
-    <ion-slide *ngFor="let item of bonusBooks" >
-      <img [src]="item.bookImage" />
+  <h1 *ngIf="showTimer" class="counter"> 00:{{count}} </h1>
 
+  <ion-slides   style="height: 100%; width:100%; background-color: lightgrey;" [options]="slides" mode="ios" pager="ios" scrollbar="ios">
+    <ion-slide centeredSlides="true" zoom="true" class="image-slider" loop="true" slidesPerView="1" *ngFor="let item of bonusBooks" >
+      <img style="max-width:100%; text-align: center; max-height:100%;" [src]="item.bookImage" />
+      
     </ion-slide>
-  </ion-slides> -->
+  </ion-slides>
   <ion-list *ngIf="!isTaskCompleted">
     <ion-list-header>
-      <ion-label>Locked Books For you</ion-label>
+      <ion-label>Locked Books waititng for you</ion-label>
     </ion-list-header>
     <ion-button *ngIf="!isTaskCompleted" (click)="presentAlertConfirm()" expand="block">
       Complete task to unlock

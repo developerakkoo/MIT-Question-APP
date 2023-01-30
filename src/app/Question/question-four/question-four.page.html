@@ -15,42 +15,49 @@
     <h1> {{username | uppercase}} Priority </h1>
   </ion-text>
   <div id="chartContainer" style="height: 570px; width: 100%; max-width: 400px; margin:auto;"></div>
-  <div class="container">
-    <h4 style="    font-size: 15px;
-    position: absolute;
-    top: 230px;
-    left: 43px;
-    text-align: left;"> {{username | uppercase}}</h4>
-
-    <h4 style="font-size: 15px;
-    position: absolute;
-    top: 130px;
-    left: 190px;
-    text-align: left;"> {{wordOne}} </h4>
-    <h4 style="    font-size: 15px;
-    position: absolute;
-    top: 180px;
-    left: 237px;
-    text-align: left;"> {{wordTwo}} </h4>
-    
-    <h4 style="    font-size: 15px;
-    position: absolute;
-    top: 230px;
-    left: 235px;
-    text-align: left;"> {{wordThree}} </h4>
-    <h4 style="    font-size: 15px;
-    position: absolute;
-    top: 277px;
-    left: 233px;
-    text-align: left;"> {{wordFour}} </h4>
-    <h4 style="    font-size: 15px;
-    position: absolute;
-    top: 332px;
-    left: 193px;
-    text-align: left;"> {{wordFive}} </h4>
-    <img style="max-width: 360px;" src="./../../../assets/Empty-template-middle-page.jpg" alt="">
-
-  </div>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col sizeLg="6" offsetLg="3" sizeSm="12" sizeMd="12">
+        <div class="container">
+          <h4 style="    font-size: 15px;
+          position: absolute;
+          top: 230px;
+          left: 43px;
+          text-align: left;"> {{username | uppercase}}</h4>
+      
+          <h4 style="font-size: 15px;
+          position: absolute;
+          top: 130px;
+          left: 190px;
+          text-align: left;"> {{wordOne}} </h4>
+          <h4 style="    font-size: 15px;
+          position: absolute;
+          top: 180px;
+          left: 237px;
+          text-align: left;"> {{wordTwo}} </h4>
+          
+          <h4 style="    font-size: 15px;
+          position: absolute;
+          top: 230px;
+          left: 235px;
+          text-align: left;"> {{wordThree}} </h4>
+          <h4 style="    font-size: 15px;
+          position: absolute;
+          top: 277px;
+          left: 233px;
+          text-align: left;"> {{wordFour}} </h4>
+          <h4 style="    font-size: 15px;
+          position: absolute;
+          top: 332px;
+          left: 193px;
+          text-align: left;"> {{wordFive}} </h4>
+          <img style="max-width: 360px;" src="./../../../assets/Empty-template-middle-page.jpg" alt="">
+      
+        </div>
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-text color="primary" class="ion-text-center">
     <h1> What Defines {{username | uppercase}}</h1>
   </ion-text>

@@ -16,8 +16,10 @@ import { Observable } from 'rxjs';
 export class CompleteTaskPage implements OnInit {
 
   openTaskInterval;
-  count:number = 1;
-
+  count:number = 60;
+  showTimer: boolean = false;
+  secondsInaterval;
+  seconds =  60;
   isTaskCompleted: boolean = false;
   bonusBooks:any[] = [
     {
@@ -41,12 +43,15 @@ export class CompleteTaskPage implements OnInit {
   tasksDoc: AngularFirestoreCollection<any>;
   // tasks: Observable<any>;
 
+
+  
   slides = {
     // Default parameters
     freeMode: true,
-    slidesPerView: 3.5,
+    centeredSlides: true,
+    slidesPerView: 1,
     slidesOffsetBefore:11,
-    spaceBetween: 10,
+    // spaceBetween: 10,
     direction: 'horizontal',
     initialSlide: 0
     // Responsive breakpoints
@@ -96,6 +101,7 @@ export class CompleteTaskPage implements OnInit {
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
+      backdropDismiss: false,
       message: 'Please complete the task within<strong> 60 seconds</strong> to unlock!!!',
       buttons: [
         {
@@ -110,6 +116,7 @@ export class CompleteTaskPage implements OnInit {
           handler: () => {
             console.log('Confirm Okay');
     this.sound.buttonClick();
+    this.showTimer = true;
 
             this.openTask();
           }
@@ -129,12 +136,13 @@ export class CompleteTaskPage implements OnInit {
     let browser = this.iab.create(this.tasks[0]['taskLink'],"_blank", options);
 
     this.openTaskInterval = setInterval(async() =>{
-      this.count += 1;
+      this.count -= 1;
       console.log(this.count);
       
-      if(this.count == 60){
+      if(this.count == 0){
     this.isTaskCompleted = true;
     await loading.dismiss();
+    this.showTimer = false;
 
     clearInterval(this.openTaskInterval);
 

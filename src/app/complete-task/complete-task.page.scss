@@ -1,0 +1,20 @@
+ion-slides.image-slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter{
+    margin-top: 20px;
+    font-size: 56px;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    text-align: center;
+    z-index: 61;
+    color: white;
+    background-color: red;
+    border-radius: 20px;
+    padding: 20px;
+}

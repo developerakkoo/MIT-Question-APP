@@ -18,21 +18,22 @@
         </ion-text>
         <ion-list style="margin-top:30px;">
           <ion-item detail (click)="openSelectPage('Yellow')">
-            <ion-label> YELLOW <p style="float: right;"> {{yellowOptionSelected || "Click to select"}}</p></ion-label>
+            <ion-label> <ion-badge color="warning" mode="ios">YELLOW</ion-badge>
+              <p style="float: right;"> {{yellowOptionSelected || "Click to select"}}</p></ion-label>
           </ion-item>
-          <ion-item detail (click)="openSelectPage('Orange')">
-            <ion-label> ORANGE  <p style="float: right;">{{orangeOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-item  detail (click)="openSelectPage('Orange')">
+            <ion-label> <ion-badge style="--background: orange;" mode="ios">ORANGE</ion-badge>  <p style="float: right;">{{orangeOptionSelected || "Click to select"}}</p></ion-label>
           </ion-item>
           <ion-item detail (click)="openSelectPage('Red')">
-            <ion-label> RED <p style="float: right;">{{redOptionSelected || "Click to select"}}</p></ion-label>
+            <ion-label> <ion-badge color="danger" mode="ios">RED</ion-badge> <p style="float: right;">{{redOptionSelected || "Click to select"}}</p></ion-label>
           </ion-item>
 
           <ion-item detail (click)="openSelectPage('White')">
-            <ion-label> WHITE <p style="float: right;">{{whiteOptionSelected || "Click to select"}}</p></ion-label>
+            <ion-label> <ion-badge color="light" mode="ios">WHITE</ion-badge> <p style="float: right;">{{whiteOptionSelected || "Click to select"}}</p></ion-label>
           </ion-item>
 
           <ion-item detail (click)="openSelectPage('Green')">
-            <ion-label> GREEN <p style="float: right;"> {{greenOptionSelected || "Click to select"}} </p></ion-label>
+            <ion-label> <ion-badge color="success" mode="ios">GREEN</ion-badge> <p style="float: right;"> {{greenOptionSelected || "Click to select"}} </p></ion-label>
           </ion-item>
 
         </ion-list>

@@ -1,6 +1,9 @@
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-selectitems',
@@ -1267,15 +1270,54 @@ export class SelectitemsPage implements OnInit {
     }, 
   ];
 
+  word:string;
+  wordsDoc: AngularFirestoreCollection<any>;
+  words: Observable<any>;
+
   userFilter: any = { value: '' };
  @Input() tag:string;
   constructor(private modalController: ModalController,
+    private loadingController: LoadingController,
+    private afs: AngularFirestore,
               private route: ActivatedRoute) {
          
-                
+                this.wordsDoc = this.afs.collection<any>('Words');
+                this.words = this.wordsDoc.snapshotChanges().pipe(
+                  map(actions => actions.map(a => {
+                    const data = a.payload.doc.data();
+                    const id = a.payload.doc.id;
+                    return { id, ...data };
+                  }))
+                );
               }
 
   ngOnInit() {
+  }
+  async saveWord(){
+    let loading = await this.loadingController.create({
+      message:"Saving Word..."
+    })
+
+    await loading.present();
+    let obj = {
+    value: this.userFilter.value,
+    type: "n",
+    emoji:"▫️"
+    }
+
+    console.log(obj);
+    let id = this.afs.createId();
+    this.wordsDoc.doc(id).set(obj).then(async (obj) =>{
+      console.log(obj);
+      await loading.dismiss();
+      
+    }).catch(async (error) =>{
+      console.log(error);
+      await loading.dismiss();
+
+      
+    })
+    
   }
   onDismissByValue(value){
     this.modalController.dismiss(value);

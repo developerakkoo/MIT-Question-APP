@@ -20,11 +20,11 @@ export class QuestionOnePage implements OnInit {
     private sound: AudioService,
     private data: DataService) {
     this.listItems = [
-      { key: "A. Cow", value: "CAREER", icon:"🐄",points:0 },//0
-      { key: "B. Tiger", value: "PRIDE",icon:"🐅" , points: 0},//1
-      { key: "C. Sheep", value: "LOVE",icon:"🐐", points:0 },//2
-      { key: "D. Horse", value: "FAMILY",icon:"🐎" , points:0},//3
-      { key: "E. Pig", value: "MONEY",icon:"🐖", points:0 },//4
+      { key: "A.", value: "CAREER", icon:"🐄",points:0 },//0
+      { key: "B.", value: "PRIDE",icon:"🐅" , points: 0},//1
+      { key: "C.", value: "LOVE",icon:"🐐", points:0 },//2
+      { key: "D.", value: "FAMILY",icon:"🐎" , points:0},//3
+      { key: "E.", value: "MONEY",icon:"🐖", points:0 },//4
     ];
   }
 

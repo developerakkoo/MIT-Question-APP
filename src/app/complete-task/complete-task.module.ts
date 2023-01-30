@@ -13,6 +13,7 @@ import { CompleteTaskPage } from './complete-task.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    
     CompleteTaskPageRoutingModule,
   ],
   declarations: [CompleteTaskPage,]
