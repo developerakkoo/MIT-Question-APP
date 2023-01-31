@@ -16,7 +16,7 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
-
+import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -39,7 +39,7 @@ const firebaseConfig = {
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig), 
-    AngularFireDatabaseModule, AngularFirestoreModule, AppRoutingModule,
+    AngularFireDatabaseModule, AngularFirestoreModule, AngularFireStorageModule, AppRoutingModule,
     
     HttpClientModule,NgOtpInputModule, 
     IonicStorageModule.forRoot({

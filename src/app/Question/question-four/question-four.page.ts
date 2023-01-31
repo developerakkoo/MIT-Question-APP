@@ -1,3 +1,4 @@
+import { LoadingController } from '@ionic/angular';
 import { AudioService } from './../../audio.service';
 import { BooksService } from './../../services/books.service';
 import { DataService } from './../../data.service';
@@ -6,7 +7,7 @@ import { Router } from '@angular/router';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import * as confetti from 'canvas-confetti';
 import jsPDF from 'jspdf';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -15,10 +16,11 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import htmlToPdfmake from 'html-to-pdfmake';
 
-import {Email} from "../../../assets/icon/smtp.js"; //file path may change → 
+import { Email } from "../../../assets/icon/smtp.js"; //file path may change → 
 declare let Email: any;
 
 import * as CanvasJS from './../../../assets/canvasjs.min.js';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 // CanvasJS.addColorSet("customColorSet1",["#ffcb06", "#ce1249", "#3a943c","#df7f2e", "#e3e3e3"]);
 // CanvasJS.set("theme", "light2");
 @Component({
@@ -84,7 +86,8 @@ export class QuestionFourPage implements OnInit {
   moneyBooks: any[];
   loveBooks: any[];
 
-
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
   bonusBooks: any[];
   top200Books: any[];
   top100Books: any[];
@@ -92,50 +95,7 @@ export class QuestionFourPage implements OnInit {
   top50Books: any[];
   top30Books: any[];
 
-  chartOptionsPie = {
-    theme: "light2",
-    animationEnabled: true,
-    title: {
-      text: "Social Media Engagement"
-    },
-    data: [{
-      type: "pie",
-      startAngle: 45,
-      indexLabel: "{name}: {y}",
-      indexLabelPlacement: "inside",
-      yValueFormatString: "#,###.##'%'",
-      dataPoints: [
-        { y: 21.3, name: "Facebook" },
-        { y: 27.7, name: "Instagram" },
-        { y: 17, name: "Twitter" },
-        { y: 14.9, name: "LinkedIn" },
-        { y: 10.6, name: "Pinterest" },
-        { y: 8.5, name: "Others" }
-      ]
-    }]
-  }
 
-  chartOptionsPyramid = {
-    animationEnabled: true,
-    theme: "light2",
-    title: {
-      // text: "Product Manufacturing Expenses"
-    },
-    data: [{
-      type: "pyramid",
-      indexLabelFontSize: 18,
-      showInLegend: true,
-      legendText: "{indexLabel}",
-      toolTipContent: "{indexLabel}: {y}%",
-      dataPoints: [
-        // { y: 20, indexLabel: "Research and Design" },
-        // { y: 20, indexLabel: "Manufacturing" },
-        // { y: 20, indexLabel: "Marketing" },
-        // { y: 20, indexLabel: "Shipping" },
-        // { y: 20, indexLabel: "Retail" }
-      ]
-    }]
-  }
   constructor(private router: Router,
     private iab: InAppBrowser,
     private data: DataService,
@@ -143,112 +103,54 @@ export class QuestionFourPage implements OnInit {
     private elementRef: ElementRef,
     private booksService: BooksService,
     private sound: AudioService,
+    private storage: AngularFireStorage,
+    private loadingController: LoadingController,
     private afs: AngularFirestore) {
     this.booksDoc = this.afs.collection<any>('Books');
     this.tasksDoc = this.afs.collection<any>('Tasks');
 
-    
+
   }
 
   ngOnInit() {
 
     this.getDataStored();
   }
-  
+
   ionViewDidEnter() {
-    
-  }
-
-
-  plotChart() {
-    
-    let chart = new CanvasJS.Chart("chartContainer", {
-      theme: "light2",
-      data: [
-        {
-          type: "pyramid",
-          indexLabelFontSize: 18,
-          indexLabelPlacement: "inside",
-          // showInLegend: true,
-          // legendText: "{label}",
-          // toolTipContent: "{label}: {y}%",
-          dataPoints: [
-            { label: this.valueFive, y:20 },
-            { label: this.valueFour, y: 20 },
-            { label: this.valueThree, y:20 },
-            { label: this.valueTwo, y: 20 },
-            { label: this.valueOne, y: 20 }
-          ]
-        }
-      ]
-    });
-    chart.render();
-
-    let barChart = new CanvasJS.Chart("barContainer", {
-      theme: "light2",
-      // colorSet:  "customColorSet1",
-
-      data: [{
-        type: "pie",
-        startAngle: 45,
-        indexLabel: "{name}: {y}",
-        indexLabelPlacement: "inside",
-        yValueFormatString: "#,###.##'%'",
-        dataPoints: [
-          { y: 20, name: this.username + " " + "will never forget " + this.yellowValue  },
-          { y: 20, name: this.username + " really loves "+ this.redValue },
-          { y: 20, name: this.username + " will never forget "+  this.greenValue + " for the rest of the life"},
-          { y: 20, name: this.orangeValue + " is "+ this.username + " true friend"},
-          { y: 20, name: this.whiteValue + " is "+ this.username+ " twin soul" },
-        ]
-      }]
-    });
-    barChart.render();
-
-    // let doChart = new CanvasJS.Chart("donutContainer", {
-    //   theme: "light2",
-    //   colorSet:  "customColorSet1",
-
-    //   data: [{
-    //     type: "doughnut",
-    //     startAngle: 45,
-    //     indexLabel: "{name}: {y}",
-    //     indexLabelPlacement: "inside",
-    //     yValueFormatString: "#,###.##'%'",
-    //     dataPoints: [
-    //       { y: 20, name: this.username + " " + "will never forget " + this.yellowValue  },
-    //       { y: 20, name: this.username + " really loves "+ this.redValue },
-    //       { y: 20, name: this.username + " will never forget "+  this.greenValue + " for the rest of the life"},
-    //       { y: 20, name: this.orangeValue + " is "+ this.username + " true friend"},
-    //       { y: 20, name: this.whiteValue + " is "+ this.username+ " twin soul" },
-    //     ]
-    //   }]
-    // });
-    // doChart.render();
 
   }
 
-  sendmail(){
+
+  blobToFile(theBlob, fileName) {
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
+  }
+
+
+  sendmail(fileurl) {
     Email.send({
-      Host : 'smtp.elasticemail.com',
-      Username : 'developerakshayjadhav@gmail.com',
-      Password : 'BADE58F6BACE5661AF70523FC088DEF975A0',
-      To : this.email,
-      From : `developerakshayjadhav@gmail.com`,
-      Subject : "subject",
-      Body : `
+      Host: 'smtp.elasticemail.com',
+      Username: 'developerakshayjadhav@gmail.com',
+      Password: 'BADE58F6BACE5661AF70523FC088DEF975A0',
+      To: this.email,
+      From: `developerakshayjadhav@gmail.com`,
+      Subject: "subject",
+      Body: `
       <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${"Akshy"} <br /> <b>Email: </b>akshay@gmai..com<br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
-      ,Attachments : [
+      , Attachments: [
         {
-          name : "Report.pdf",
-          path : "https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
-        }]  
-    
-    }).then( message => {alert(message); } );
-        
-      }
-        
-  
+          name: "Report.pdf",
+          path: fileurl
+        }]
+
+    }).then(message => { alert(message); });
+
+  }
+
+
 
   async getDataStored() {
 
@@ -290,7 +192,6 @@ export class QuestionFourPage implements OnInit {
     this.redValue = this.questionThree[2]['value'];
     this.whiteValue = this.questionThree[3]['value'];
     this.greenValue = this.questionThree[4]['value'];
-    this.plotChart();
     this.logic();
 
 
@@ -328,37 +229,86 @@ export class QuestionFourPage implements OnInit {
     this.clicked = true;
   }
 
-  downloadResult() {
+  async downloadResult() {
     console.log("Download");
     const doc = new jsPDF();
 
+    let loading = await this.loadingController.create({
+      message:"Creating pdf..."
+    })
+
+    await loading.present();
     const pdfTable = this.pdfTable.nativeElement;
     console.log(pdfTable);
-    // pdfMake.fonts = {
-    //   Roboto: {
-    //   normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
-    //   bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
-    //   italics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Italic.ttf',
-    //   bolditalics: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-MediumItalic.ttf'
-    //   }};
 
 
-    // var html = htmlToPdfmake(pdfTable.innerHTML, {ignoreStyles:['font-family']});
 
-    // const documentDefinition = { content: html,
-    //   defaultStyle: {
-    //     font: "Helvetica",
-    // }
-    
-    // };
-    var dataUrl = pdfTable.toDataURL();
-    // doc.addImage(dataURL, 'JPEG', 0, 0);
-    doc.save("download.pdf");
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = {
+      content: html,
+      // image: this.getBase64ImageFromURL('./../../../assets/Empty-template-middle-page.jpg')
+
+    };
+
     this.sound.buttonClick();
 
-    // pdfMake.createPdf(documentDefinition).open();
+    const pdf = await pdfMake.createPdf(documentDefinition);
+    pdf.getBlob((blob) => {
+      console.log(blob);
+      let file = this.blobToFile(blob, "report.pdf")
+      console.log(file);
+      const filePath = `reports/${this.username}.pdf`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+  
+      // observe percentage changes
+      this.uploadPercent = task.percentageChanges();
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(async (url) =>{
+              console.log(url);
+              await loading.dismiss();
+              this.sendmail(url);
+
+              
+            })
+          } )
+       )
+      .subscribe((url) =>{
+             
+      })
+    })
+
+    
   }
 
+  getBase64ImageFromURL(url) {
+    return new Promise((resolve, reject) => {
+      var img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
+
+      img.onload = () => {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+
+        resolve(dataURL);
+      };
+
+      img.onerror = error => {
+        reject(error);
+      };
+
+      img.src = url;
+    });
+  }
   getBooksFromDB(isFamily, isMoney, isPride, isCareer, isLove, bookCount) {
     this.afs.collection('Books', ref => ref.where("isFamily", "==", isFamily)
       .where("isPride", "==", isPride)

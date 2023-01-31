@@ -13,7 +13,7 @@
     <ion-col sizeLg="6" offsetLg="3" sizeSm="12">
       <ion-list>
         <ion-list-header>
-          <ion-searchbar placeholder="Search" [(ngModel)]="relativeFilter.value" inputmode="decimal" type="decimal"  [debounce]="250" showCancelButton="always"></ion-searchbar>
+          <ion-searchbar placeholder="Search" [(ngModel)]="relativeFilter.value" inputmode="text" type="text"  [debounce]="250" showCancelButton="always"></ion-searchbar>
 
         </ion-list-header>
         <ion-item *ngFor="let item of relatives | filterBy: relativeFilter" (click)="onDismissByValue(item)">
