@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class AuthPage implements OnInit {
 
   mobileNo: number;
+  otp;
   @ViewChild('slides') slides: IonSlides;
 
 
@@ -62,9 +63,27 @@ export class AuthPage implements OnInit {
     await modal.present();
   }
 
+  generateOTP() {
+          
+    // Declare a digits variable 
+    // which stores all digits
+    var digits = '0123456789';
+    let OTP = '';
+    for (let i = 0; i < 4; i++ ) {
+        OTP += digits[Math.floor(Math.random() * 10)];
+    }
+    return OTP;
+  }
 
-  Submit(){
+  async Submit(){
     this.sound.buttonClick();
+    this.otp = this.generateOTP();
+    this.http
+    .get(`https://sms.k7marketinghub.com/app/smsapi/index.php?key=56391A88208C8A&campaign=14827&routeid=30&type=text&contacts=${this.mobileNo}&senderid=WBMCCE&msg=Dear%20Customer,%20Your%20OTP%20is%20${this.otp}%20for%20The%20Mind%20Labyrinth.%20Do%20not%20share%20this%20OTP%20to%20anyone%20for%20security%20reasons.%20-App%20Institute&template_id=1707167514169508879`)
+    .subscribe((data) =>{
+      console.log(data);
+      
+    })
     this.presentModalOtp();
   }
 }
