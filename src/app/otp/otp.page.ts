@@ -1,7 +1,7 @@
 import { AudioService } from './../audio.service';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-otp',
@@ -10,16 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OtpPage implements OnInit {
 
+  @Input() otp;
+  userotp;
   constructor(private router: Router,
     private sound: AudioService,
     private modalController: ModalController) { }
 
   ngOnInit() {
+    console.log(this.otp);
+    
   }
 
   onOtpChange(ev){
     console.log(ev);
-    
+    this.userotp = ev;
   }
 
   close(){
@@ -27,8 +31,15 @@ export class OtpPage implements OnInit {
   }
   Submit(){
     this.sound.buttonClick();
+    if(this.otp === this.userotp){
+      this.close();
+      this.router.navigate(['first-page-task'])
 
-    this.close();
-    this.router.navigate(['first-page-task'])
+    }
+
+    if(this.otp !== this.userotp){
+      console.log("Incorrect OTP!");
+      
+    }
   }
 }

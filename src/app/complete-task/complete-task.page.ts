@@ -22,15 +22,15 @@ export class CompleteTaskPage implements OnInit {
   seconds =  60;
   isTaskCompleted: boolean = false;
   bonusBooks:any[] = [
-    {
-      bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
-    },
-    {
-      bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
-    },
-    {
-      bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
-    }
+    // {
+    //   bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
+    // },
+    // {
+    //   bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
+    // },
+    // {
+    //   bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
+    // }
   ];
 
   books: any[];

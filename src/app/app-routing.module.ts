@@ -67,6 +67,14 @@ const routes: Routes = [
     path: 'language-popover',
     loadChildren: () => import('./language-popover/language-popover.module').then( m => m.LanguagePopoverPageModule)
   },
+  {
+    path: 'above18',
+    loadChildren: () => import('./modal/above18/above18.module').then( m => m.Above18PageModule)
+  },
+  {
+    path: 'below18',
+    loadChildren: () => import('./modal/below18/below18.module').then( m => m.Below18PageModule)
+  },
 ];
 
 @NgModule({

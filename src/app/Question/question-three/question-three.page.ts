@@ -76,7 +76,7 @@ export class QuestionThreePage implements OnInit {
           let name = value[0];
           await this.data.set("name", name);
     this.sound.buttonClick();
-          this.presentAlertEmail();
+          this.getList();
           
         }
       }],

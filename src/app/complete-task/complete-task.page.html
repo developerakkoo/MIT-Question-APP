@@ -10,7 +10,14 @@
       <ion-label>Bonus Book For you</ion-label>
     </ion-list-header>
   </ion-list>
-  <h1 *ngIf="showTimer" class="counter"> 00:{{count}} </h1>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col sizeLg="6" sizeSm="12" offsetLg="3">
+        <h1 *ngIf="showTimer" class="counter"> 00:{{count}} </h1>
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-slides   style="height: 100%; width:100%; background-color: lightgrey;" [options]="slides" mode="ios" pager="ios" scrollbar="ios">
     <ion-slide centeredSlides="true" zoom="true" class="image-slider" loop="true" slidesPerView="1" *ngFor="let item of bonusBooks" >

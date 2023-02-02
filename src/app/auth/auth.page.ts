@@ -55,10 +55,11 @@ export class AuthPage implements OnInit {
     this.sound.playBG();
   }
 
-  async presentModalOtp() {
+  async presentModalOtp(otp) {
     const modal = await this.modalController.create({
     component: OtpPage,
-   
+  backdropDismiss: false,
+      componentProps:{otp: otp}
     });
     await modal.present();
   }
@@ -78,12 +79,14 @@ export class AuthPage implements OnInit {
   async Submit(){
     this.sound.buttonClick();
     this.otp = this.generateOTP();
+    console.log(this.otp);
+    
     this.http
     .get(`https://sms.k7marketinghub.com/app/smsapi/index.php?key=56391A88208C8A&campaign=14827&routeid=30&type=text&contacts=${this.mobileNo}&senderid=WBMCCE&msg=Dear%20Customer,%20Your%20OTP%20is%20${this.otp}%20for%20The%20Mind%20Labyrinth.%20Do%20not%20share%20this%20OTP%20to%20anyone%20for%20security%20reasons.%20-App%20Institute&template_id=1707167514169508879`)
     .subscribe((data) =>{
       console.log(data);
       
     })
-    this.presentModalOtp();
+    this.presentModalOtp(this.otp);
   }
 }
