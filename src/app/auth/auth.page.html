@@ -18,12 +18,25 @@
         <ion-text color="light">
           <h2>Welcome back!</h2>
         </ion-text>
-        <input placeholder="Enter your mobile number" class="mobileInput" type="number" name="number"
-          [(ngModel)]="mobileNo" id="" max="10">
-        <ion-text class="ion-text-center" color="light">
+        <form [formGroup]="ionicForm" (ngSubmit)="onSubmit()">
+       
+          <ion-item>
+            <ion-label position="floating">Mobile Number <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input  class="mobileInput"  required formControlName="mobileNo" type="number"></ion-input>
+          </ion-item>
+          <ion-item  lines="none">
+            <ion-text color="danger" class="form-error">
+              Please enter your mobile number.
+            </ion-text>
+          </ion-item>
+         
+        </form>
+    
+       
+        <ion-text class="ion-text-center" color="light" required>
           <p style="font-size: 12px ;">We will text you a verification code.</p>
         </ion-text>
-        <ion-button  size="large" shape="block" color="light" (click)="Submit()">
+        <ion-button  size="large" shape="block" color="light" (click)="onSubmit()">
           <ion-icon class="animate__animated animate__shakeX animate__slower	4s animate__3" slot="end" name="chevron-forward" color="light"></ion-icon>
           Continue
         </ion-button>

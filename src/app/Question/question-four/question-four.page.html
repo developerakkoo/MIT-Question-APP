@@ -7,11 +7,31 @@
   </ion-toolbar>
 </ion-header>
 <ion-content >
+  <div id="doc" #doc>
+ <ion-text color="primary" class="ion-text-center">
+    <h1> {{username | uppercase}} Priority </h1>
+  </ion-text>
+<ion-text class="ion-text-center">
+  <p> <strong style="color: red"> {{username}} </strong> is <strong style="color: green;">{{wordOne}}</strong>  </p>
+<p> <strong style="color: red"> {{username}}'s </strong>partner is <strong style="color: green;"> {{wordTwo}}</strong> </p>
+<p> <strong style="color: red"> {{username}}'s </strong> enemies are <strong style="color: green;">{{wordThree}}</strong> </p>
+<p> <strong style="color: red"> {{username}}</strong> is <strong style="color: green;">{{wordFour}}</strong>  in love </p>
+<p> <strong style="color: red"> {{username}}'s </strong> view of life is<strong style="color: green;">{{wordFive}}</strong> </p>
+
+<p> <strong style="color: red"> {{username}} </strong> will never forget <strong style="color: green;">{{yellowValue}}</strong>  </p>
+
+<p> <strong style="color: red"> {{username}}</strong> considers <strong style="color: green;"> {{orangeValue}}</strong> is his true friend </p>
+<p> <strong style="color: red"> {{username}} </strong> truly loves <strong style="color: green;">{{redValue}}</strong> </p>
+<p> <strong style="color: red"> {{username}}'s</strong> twin soul is <strong style="color: green;">{{whiteValue}}</strong>  in love </p>
+<p> <strong style="color: red"> {{username}} </strong> will remember<strong style="color: green;">{{greenValue}}</strong> for rest of the life</p>
+</ion-text>
+
+</div>
   <!-- <ion-button (click)="sendmail()" expand="block" fill="clear" shape="round">
     Click me
   </ion-button> -->
-<div id="doc" #doc>
-  <ion-text color="primary" class="ion-text-center">
+<!-- <div id="doc" #doc> -->
+  <!-- <ion-text color="primary" class="ion-text-center">
     <h1> {{username | uppercase}} Priority </h1>
   </ion-text>
 
@@ -144,7 +164,7 @@
   </ion-grid>
  
   
-</div>
+</div> -->
 
 </ion-content>
 <ion-footer>

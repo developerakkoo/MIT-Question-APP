@@ -6,6 +6,8 @@ import { IonSlide, IonSlides, ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -15,10 +17,12 @@ import { Router } from '@angular/router';
 export class AuthPage implements OnInit {
 
   mobileNo: number;
+
+  ionicForm: FormGroup;
   otp;
   @ViewChild('slides') slides: IonSlides;
 
-
+  setError:boolean = false;
   quotesArray:any;
 
   slideOpts = {
@@ -33,7 +37,13 @@ export class AuthPage implements OnInit {
               private router: Router,
               private sound : AudioService,
               private quotes: QuotesService,
-              private modalController: ModalController) { }
+              private fb: FormBuilder,
+              private data: DataService,
+              private modalController: ModalController) { 
+                this.ionicForm = this.fb.group({
+                  mobileNo:[, [Validators.required, Validators.min(10)]]
+                })
+              }
 
   ngOnInit() {
     this.quotes.getQuotes().subscribe((quote) =>{
@@ -76,13 +86,17 @@ export class AuthPage implements OnInit {
     return OTP;
   }
 
-  async Submit(){
+  async onSubmit(){
+
+    console.log(this.mobileNo);
+    
+   
     this.sound.buttonClick();
     this.otp = this.generateOTP();
     console.log(this.otp);
-    
-    this.http
-    .get(`https://sms.k7marketinghub.com/app/smsapi/index.php?key=56391A88208C8A&campaign=14827&routeid=30&type=text&contacts=${this.mobileNo}&senderid=WBMCCE&msg=Dear%20Customer,%20Your%20OTP%20is%20${this.otp}%20for%20The%20Mind%20Labyrinth.%20Do%20not%20share%20this%20OTP%20to%20anyone%20for%20security%20reasons.%20-App%20Institute&template_id=1707167514169508879`)
+    await this.data.set("number", this.mobileNo);
+    this.http 
+    .get(`https://sms.k7marketinghub.com/app/smsapi/index.php?key=56391A88208C8A&campaign=14827&routeid=30&type=text&contacts=${this.ionicForm.value.mobileNo}&senderid=WBMCCE&msg=Dear%20Customer,%20Your%20OTP%20is%20${this.otp}%20for%20The%20Mind%20Labyrinth.%20Do%20not%20share%20this%20OTP%20to%20anyone%20for%20security%20reasons.%20-App%20Institute&template_id=1707167514169508879`)
     .subscribe((data) =>{
       console.log(data);
       

@@ -15,6 +15,7 @@ export class QuestionFivePage implements OnInit {
   gender ="male";
   age = "above18";
   email;
+  occupation = 'Health Care';
   constructor(private router: Router,
               private data: DataService,
               private modalController: ModalController) { }
@@ -28,6 +29,7 @@ export class QuestionFivePage implements OnInit {
     let age = await this.data.set("age", this.age);
     await this.data.set("gender", this.gender);
     await this.data.set("email", this.email);
+    await this.data.set("occupation", this.occupation);
     // this.router.navigate(['complete-task']);
     if(age == "above18"){
       this.presentModalAbove18();
@@ -70,6 +72,12 @@ export class QuestionFivePage implements OnInit {
   ageEvent(ev){
     console.log(ev.detail.value);
     this.age = ev.detail.value;
+    
+  }
+
+  occupationEvent(ev){
+    this.occupation = ev.detail.value;
+    console.log(this.occupation);
     
   }
 }

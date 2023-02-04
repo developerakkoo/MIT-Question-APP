@@ -7,14 +7,15 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background:  assets('./../../../assets/congratualtions-image-MIT22.jpg'); ">
+<ion-content>
     <!-- <ion-grid fixed>
         <ion-row>
             <ion-col size="6" offset="3"> -->
 <img src="./../../../assets/MIT-vertical3.jpg" alt="" srcset="">
-
-<ion-button color="success" style="position: absolute; top: 674px; left: 100px;" (click)="onClick()" expand="block" shape="round">
-    <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
-    Whatsapp
-  </ion-button>
+    <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send?phone=918080794699&text=I am Interested to know!" class="wa_btn wa_btn_s" #btn>Share on whatsapp</a>
+<img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset="">
+<ion-button color="success" style="position: absolute; top: 600px; left: 100px;" (click)="openWhatsapp(btn)" expand="block" shape="round">
+  <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+  Whatsapp
+</ion-button>
 </ion-content>

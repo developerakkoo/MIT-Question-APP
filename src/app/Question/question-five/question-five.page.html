@@ -53,14 +53,14 @@
 
    <ion-item>
     <ion-label>Occupation</ion-label>
-    <ion-select  value="Health Care" multiple="false" placeholder="Select Occupation">
-      <ion-select-option value="peperoni">Health Care</ion-select-option>
-      <ion-select-option value="hawaii">Sports</ion-select-option>
-      <ion-select-option value="hawaii">Education</ion-select-option>
-      <ion-select-option value="hawaii">Civil</ion-select-option>
-      <ion-select-option value="hawaii">Sales</ion-select-option>
-      <ion-select-option value="hawaii">Services</ion-select-option>
-      <ion-select-option value="hawaii">Social</ion-select-option>
+    <ion-select (ionChange)="occupationEvent($event)" value="Health Care" multiple="false" placeholder="Select Occupation">
+      <ion-select-option value="Health Care">Health Care</ion-select-option>
+      <ion-select-option value="Sports">Sports</ion-select-option>
+      <ion-select-option value="Education">Education</ion-select-option>
+      <ion-select-option value="Civil">Civil</ion-select-option>
+      <ion-select-option value="Sales">Sales</ion-select-option>
+      <ion-select-option value="Services">Services</ion-select-option>
+      <ion-select-option value="Social">Social</ion-select-option>
     </ion-select>
    </ion-item>
     </ion-col>
