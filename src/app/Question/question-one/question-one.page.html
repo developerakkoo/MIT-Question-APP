@@ -8,21 +8,29 @@
   </ion-toolbar>
 </ion-header>
 <ion-content mode="ios">
+  <img style="margin: auto; height: 200px; display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;" src="./../../assets/icon/logo.svg" alt="">
 
 <ion-grid class="ion-margin-top">
   <ion-row>
-    <ion-col style="margin-top:10px;" sizeLg="7" sizeSm="12" color="light">
-      <ion-text  class="ion-margin-top"  color="dark">
+    <ion-col style="margin-top:10px;" sizeLg="6" offsetSm="3" sizeSm="12" color="dark">
+      <ion-text class="ion-text-center" class="ion-margin-top"  color="primary">
         
-        <h5 style="font-weight: 500; color: white;"> {{ "FIRST-PAGE.question" | translate}} </h5>
+        <h3 style="font-weight: 800; font-size: 20px; text-align: center;"> {{ "FIRST-PAGE.question" | translate}} </h3>
       </ion-text>
       <ion-list style="margin-top:30px;" >
         
         
           <ion-item lines="none"  *ngFor="let item of listItems">
-            <ion-label>
-              {{item.key}} <span>{{item.icon}} </span> 
+            
+            <ion-label style="font-weight: 800;" color="primary">
+              {{item.name}} 
             </ion-label>
+            <ion-thumbnail>
+              <img [src]="item.icon" />
+            </ion-thumbnail>
             <ion-range
           min="0" max="100"
           dualKnobs="false" pin="true"
@@ -34,29 +42,20 @@
           </ion-item>
     
       </ion-list>
+
+      <ion-button style="margin-top: 20px;"  color="primary" size="large" shape="block"  (click)="getList()">
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        {{ "FIRST-PAGE.btn" | translate }}
+      </ion-button>
     </ion-col>  
   </ion-row>
 </ion-grid>
 
-<ion-grid >
-  <ion-col style="margin-top:10px;" sizeLg="7" sizeSm="12" color="light">
-    <ion-text  class="ion-margin-top"  color="primary">
-      <h5 style="font-weight: 500; color: white;">{{ "FIRST-PAGE.note" | translate }}</h5>
-      <h6 style="color: white;">{{ "FIRST-PAGE.list-title" | translate }}</h6>
-    </ion-text>
-    <ion-list style="margin-top:30px;">
-        <ion-item lines="none" *ngFor="let item of draggedList">
-          
-        </ion-item>
-    </ion-list>
-  </ion-col>
-</ion-grid>
 </ion-content>
-<ion-footer mode="ios">
-  <ion-toolbar color="primary">
-    <ion-button fill="clear" color="light" size="large"  (click)="getList()">
-      <ion-icon slot="start" name="arrow-forward"></ion-icon>
-      {{ "FIRST-PAGE.btn" | translate }}
-    </ion-button>
+<ion-footer>
+  <ion-toolbar>
+    <ion-text color="medium" class="ion-text-center">
+      <p>Version 1.0 Developed By Mind Labyrinth.</p>
+    </ion-text>
   </ion-toolbar>
 </ion-footer>

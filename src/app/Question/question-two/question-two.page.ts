@@ -1562,6 +1562,7 @@ export class QuestionTwoPage implements OnInit {
   pList: any[] = [];
   nList: any[] = [];
 
+  buttonEvent: boolean = true;
   countWord;
   dogOptionSelected;
   catOptionSelected;
@@ -1569,12 +1570,12 @@ export class QuestionTwoPage implements OnInit {
   coffeeOptionSelected;
   seaOptionSelected;
 
-  dogicon = "🐕";
+  dogicon = "./../../../assets/dog.svg";
 
-  caticon ="🐈"
-raticon ="🐀"
- coffeeicon = "☕"
-seaicon = "🌊"
+  caticon ="./../../../assets/cat.svg"
+raticon ="./../../../assets/rat.svg"
+ coffeeicon = "./../../../assets/coffee.svg"
+seaicon = "./../../../assets/sea.svg"
   constructor(private router: Router,
     private toastController: ToastController,
     private modalController: ModalController,
@@ -1584,11 +1585,11 @@ seaicon = "🌊"
     private data: DataService) {
 
     this.listItems = [
-      { key: "Dog", value: "", icon:"🐕" },
-      { key: "Cat", value: "", icon:"🐈" },
-      { key: "Rat", value: "", icon:"🐀" },
-      { key: "Coffee", value: "", icon:"☕" },
-      { key: "Sea", value: "", icon:"🌊" },
+      { key: "Dog", value: "", icon:"./../../../assets/dog.svg" },
+      { key: "Cat", value: "", icon:"./../../../assets/cat.svg" },
+      { key: "Rat", value: "", icon:"./../../../assets/rat.svg" },
+      { key: "Coffee", value: "", icon:"./../../../assets/coffee.svg" },
+      { key: "Sea", value: "", icon:"./../../../assets/sea.svg" },
     ];
   }
 
@@ -1698,7 +1699,7 @@ seaicon = "🌊"
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
   await this.data.set('wordList', this.selectedList)
-
+      this.buttonEvent = false;
     this.router.navigate(['question-three']);
 
     }
@@ -1731,6 +1732,7 @@ seaicon = "🌊"
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
   await this.data.set('wordList', this.selectedList)
+  this.buttonEvent = false;
 
       this.router.navigate(['question-three']);
   
@@ -1764,6 +1766,7 @@ seaicon = "🌊"
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
     await this.data.set('wordList', this.selectedList)
+    this.buttonEvent = false;
 
       this.router.navigate(['question-three']);
   
@@ -1797,6 +1800,7 @@ seaicon = "🌊"
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
     await this.data.set('wordList', this.selectedList)
+    this.buttonEvent = false;
 
       this.router.navigate(['question-three']);
   
@@ -1830,6 +1834,7 @@ seaicon = "🌊"
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
   await this.data.set('wordList', this.selectedList)
+  this.buttonEvent = false;
 
       this.router.navigate(['question-three']);
   

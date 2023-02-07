@@ -4,6 +4,7 @@ import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Below18Page } from 'src/app/modal/below18/below18.page';
+import { AudioService } from 'src/app/audio.service';
 
 @Component({
   selector: 'app-question-five',
@@ -18,6 +19,7 @@ export class QuestionFivePage implements OnInit {
   occupation = 'Health Care';
   constructor(private router: Router,
               private data: DataService,
+              private audio: AudioService,
               private modalController: ModalController) { }
 
   ngOnInit() {
@@ -33,10 +35,13 @@ export class QuestionFivePage implements OnInit {
     // this.router.navigate(['complete-task']);
     if(age == "above18"){
       this.presentModalAbove18();
+      this.audio.buttonClick();
+
       console.log("Open Above 18 page");
       
     }
     if(age == "below18"){
+      this.audio.buttonClick();
       this.presentModalBelow18();
       console.log("Open Below 18 page");
 

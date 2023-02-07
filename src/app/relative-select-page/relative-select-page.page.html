@@ -19,6 +19,9 @@
         <ion-item *ngFor="let item of relatives | filterBy: relativeFilter" (click)="onDismissByValue(item)">
           <ion-label> {{item.value}} </ion-label>
         </ion-item>
+        <ion-button *ngIf="(relatives | async | filterBy: relativeFilter.length === 0)" (click)="saveRelative()" expand="block" fill="outline">
+          Add Relative
+          </ion-button>
       </ion-list>
     </ion-col>
   </ion-row>

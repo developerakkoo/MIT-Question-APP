@@ -7,36 +7,44 @@
   </ion-toolbar>
 </ion-header>
 <ion-content mode="ios">
+  <img style="margin: auto; height: 200px; display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;" src="./../../assets/icon/logo.svg" alt="">
   <!-- <a href="https://web.whatsapp.com/send?text=www.google.com" data-text="Take a look at this awesome website:" class="wa_btn wa_btn_s" >Share1</a> -->
-  <a id="sharelink" href="whatsapp://send?text=www.google.com" data-text="Take a look at this awesome website:" class="wa_btn wa_btn_s" >Share on whatsapp</a>
+  <!-- <a id="sharelink" href="whatsapp://send?text=www.google.com" data-text="Take a look at this awesome website:" class="wa_btn wa_btn_s" >Share on whatsapp</a> -->
 
   <ion-grid class="ion-margin-top">
     <ion-row>
-      <ion-col style="margin-top:10px;" sizeLg="7" sizeMd="12" sizeSm="12" offsetSm="3" color="light">
-        <ion-text class="ion-margin-top" color="dark">
-          <h5 style="font-weight: 500; color: white;"> {{"THIRD-PAGE.question" | translate}} </h5>
+      <ion-col style="margin-top:10px;" sizeLg="7" sizeMd="12" sizeSm="12" offsetSm="3" color="primary">
+        <ion-text class="ion-margin-top" color="primary" class="ion-text-center">
+          <h5 style="font-weight: 800; font-size: 20px; text-align: center;"> {{"THIRD-PAGE.question" | translate}} </h5>
         </ion-text>
         <ion-list style="margin-top:30px;">
-          <ion-item detail (click)="openSelectPage('Yellow')">
-            <ion-label> <ion-badge color="warning" mode="ios">YELLOW</ion-badge>
+          <ion-item lines="none" detail (click)="openSelectPage('Yellow')" style="height: 48px; border: 1px solid #666666; border-radius: 12px;">
+            <ion-label> <ion-badge style="color: white; padding: 10px;" color="warning" mode="ios">YELLOW</ion-badge>
               <p style="float: right;"> {{yellowOptionSelected || "Click to select"}}</p></ion-label>
           </ion-item>
-          <ion-item  detail (click)="openSelectPage('Orange')">
-            <ion-label> <ion-badge style="--background: orange;" mode="ios">ORANGE</ion-badge>  <p style="float: right;">{{orangeOptionSelected || "Click to select"}}</p></ion-label>
-          </ion-item>
-          <ion-item detail (click)="openSelectPage('Red')">
-            <ion-label> <ion-badge color="danger" mode="ios">RED</ion-badge> <p style="float: right;">{{redOptionSelected || "Click to select"}}</p></ion-label>
-          </ion-item>
-
-          <ion-item detail (click)="openSelectPage('White')">
-            <ion-label> <ion-badge color="light" mode="ios">WHITE</ion-badge> <p style="float: right;">{{whiteOptionSelected || "Click to select"}}</p></ion-label>
+          <ion-item lines="none"  detail (click)="openSelectPage('Orange')" style="height: 48px; border: 1px solid #666666; border-radius: 12px; margin-top: 23px;">
+            <ion-label> <ion-badge style="--background: orange; padding: 10px;" mode="ios">ORANGE</ion-badge>  <p style="float: right;">{{orangeOptionSelected || "Click to select"}}</p></ion-label>
+          </ion-item >
+          <ion-item lines="none" detail (click)="openSelectPage('Red')" style="height: 48px; border: 1px solid #666666; border-radius: 12px; margin-top: 23px;">
+            <ion-label> <ion-badge style=" padding: 10px;" color="danger" mode="ios">RED</ion-badge> <p style="float: right;">{{redOptionSelected || "Click to select"}}</p></ion-label>
           </ion-item>
 
-          <ion-item detail (click)="openSelectPage('Green')">
-            <ion-label> <ion-badge color="success" mode="ios">GREEN</ion-badge> <p style="float: right;"> {{greenOptionSelected || "Click to select"}} </p></ion-label>
+          <ion-item lines="none" detail (click)="openSelectPage('White')" style="height: 48px; border: 1px solid #666666; border-radius: 12px; margin-top: 23px;">
+            <ion-label> <ion-badge style=" padding: 10px;" color="light" mode="ios">WHITE</ion-badge> <p style="float: right;">{{whiteOptionSelected || "Click to select"}}</p></ion-label>
+          </ion-item>
+
+          <ion-item lines="none"  detail (click)="openSelectPage('Green')" style="height: 48px; border: 1px solid #666666; border-radius: 12px; margin-top: 23px;">
+            <ion-label> <ion-badge style="color: white; padding: 10px;" color="success" mode="ios">GREEN</ion-badge> <p style="float: right;"> {{greenOptionSelected || "Click to select"}} </p></ion-label>
           </ion-item>
 
         </ion-list>
+        <ion-button [disabled]="buttonEvent" style="margin-top: 20px;"  color="primary" size="large" shape="block"  (click)="presentAlert()">
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          {{ "FIRST-PAGE.btn" | translate }}
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

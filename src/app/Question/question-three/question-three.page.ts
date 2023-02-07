@@ -21,7 +21,7 @@ export class QuestionThreePage implements OnInit {
   whiteOptionSelected;
   greenOptionSelected;
   dogOptionSelected: any;
-
+  buttonEvent: boolean = true;
   selectedList:any[] = [
 
   ]
@@ -169,7 +169,7 @@ export class QuestionThreePage implements OnInit {
       console.log(this.selectedList);
       if(this.selectedList.length == 5){
     this.sound.buttonClick();
-
+        this.buttonEvent = false;
         this.presentAlert();
 
     
@@ -208,6 +208,7 @@ export class QuestionThreePage implements OnInit {
       console.log(this.selectedList);
       if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.buttonEvent = false;
 
         this.presentAlert();
 
@@ -239,6 +240,7 @@ export class QuestionThreePage implements OnInit {
       console.log(this.selectedList);
       if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.buttonEvent = false;
 
         this.presentAlert();
 
@@ -270,6 +272,7 @@ export class QuestionThreePage implements OnInit {
       console.log(this.selectedList);
       if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.buttonEvent = false;
 
         this.presentAlert();
 
@@ -300,6 +303,7 @@ export class QuestionThreePage implements OnInit {
       console.log(this.selectedList);
       if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.buttonEvent = false;
 
         this.presentAlert();
     

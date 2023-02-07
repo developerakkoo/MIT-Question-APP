@@ -23,7 +23,7 @@ export class AudioService {
 
 
   click = new Howl({
-    src: ['assets/click.wav'],
+    src: ['assets/cork-85200.mp3'],
     html5: true,
     preload: true,
 

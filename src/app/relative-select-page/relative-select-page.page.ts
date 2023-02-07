@@ -95,6 +95,9 @@ export class RelativeSelectPagePage implements OnInit {
     this.modalController.dismiss(value);
   }
 
+  saveRelative(){
+    
+  }
   onDismiss(){
     this.modalController.dismiss();
   }

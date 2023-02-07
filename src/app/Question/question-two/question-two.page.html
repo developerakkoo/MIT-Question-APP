@@ -8,33 +8,57 @@
   
 </ion-header>
 <ion-content mode="ios">
+  <img style="margin: auto; height: 200px; display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;" src="./../../assets/icon/logo.svg" alt="">
 
 <ion-grid class="ion-margin-top">
   <ion-row>
-    <ion-col style="margin-top:10px;" sizeLg="7" sizeMd="12" sizeSm="12" offsetSm="3" color="light">
-      <ion-text  class="ion-margin-top"  color="dark">
-        <h5 style="font-weight: 500; color: white;"> {{"SECOND-PAGE.question" | translate}} </h5>
+    <ion-col style="margin-top:10px;" sizeLg="7" sizeMd="12" sizeSm="12" offsetSm="3" color="primary">
+      <ion-text   class="ion-text-center" class="ion-margin-top"  color="primary">
+        <h5 style="font-weight: 800; font-size: 20px; text-align: center;"> {{"SECOND-PAGE.question" | translate}} </h5>
       </ion-text>
+
       <ion-list style="margin-top:30px;" >
-        <ion-item detail (click)="openSelectPage('DOG')">
-          <ion-label class="ion-text-wrap"> DOG <span> {{dogicon}}</span> <p style="float: right;">{{dogOptionSelected || "Click to select"}}</p></ion-label>
+        <ion-item lines="none" detail (click)="openSelectPage('DOG')" style="height: 48px; border: 1px solid #666666; border-radius: 12px;">
+          <ion-thumbnail>
+            <img src="./../../../assets/dog.svg" />
+          </ion-thumbnail>
+          <ion-label color="primary" class="ion-text-wrap"> DOG  <p style="float: right;">{{dogOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
-        <ion-item detail (click)="openSelectPage('CAT')">
-          <ion-label class="ion-text-wrap"> CAT {{caticon}} <p style="float: right;">{{catOptionSelected || "Click to select"}}</p></ion-label>
+        <ion-item lines="none" detail (click)="openSelectPage('CAT')" style="height: 48px; border: 1px solid #666666; margin-top: 20px; border-radius: 12px;">
+          <ion-thumbnail>
+            <img src="./../../../assets/cat.svg" />
+          </ion-thumbnail>
+          <ion-label color="primary" class="ion-text-wrap"> CAT <p style="float: right;">{{catOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
-        <ion-item detail (click)="openSelectPage('RAT')">
-          <ion-label class="ion-text-wrap"> RAT {{raticon}} <p style="float:right;">{{ratOptionSelected || "Click to select"}}</p></ion-label>
+        <ion-item lines="none"  detail (click)="openSelectPage('RAT')" style="height: 48px; border: 1px solid #666666; margin-top: 20px; border-radius: 12px;">
+          <ion-thumbnail>
+            <img src="./../../../assets/rat.svg" />
+          </ion-thumbnail>
+          <ion-label color="primary" class="ion-text-wrap"> RAT  <p style="float:right;">{{ratOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
-        <ion-item detail (click)="openSelectPage('COFFEE')">
-          <ion-label class="ion-text-wrap"> COFFEE {{coffeeicon}} <p style="float: right;"> {{coffeeOptionSelected || "Click to select"}}</p></ion-label>
+        <ion-item lines="none"  detail (click)="openSelectPage('COFFEE')" style="height: 48px; border: 1px solid #666666; margin-top: 20px; border-radius: 12px;">
+          <ion-thumbnail>
+            <img src="./../../../assets/coffee.svg" />
+          </ion-thumbnail>
+          <ion-label color="primary" class="ion-text-wrap"> COFFEE  <p style="float: right;"> {{coffeeOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
-        <ion-item detail (click)="openSelectPage('SEA')">
-          <ion-label class="ion-text-wrap"> SEA {{seaicon}} <p style="float: right;">  {{seaOptionSelected || "Click to select"}}</p></ion-label>
+        <ion-item lines="none"  detail (click)="openSelectPage('SEA')" style="height: 48px; border: 1px solid #666666; margin-top: 20px; border-radius: 12px;">
+          <ion-thumbnail>
+            <img src="./../../../assets/ocean.svg" />
+          </ion-thumbnail>
+          <ion-label color="primary" class="ion-text-wrap"> SEA  <p style="float: right;">  {{seaOptionSelected || "Click to select"}}</p></ion-label>
         </ion-item>
 
       </ion-list>
+      <ion-button [disabled]="buttonEvent" style="margin-top: 20px;"  color="primary" size="large" shape="block"  (click)="getList()">
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        {{ "FIRST-PAGE.btn" | translate }}
+      </ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>

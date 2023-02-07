@@ -1,7 +1,7 @@
 <ion-content mode="ios">
   <ion-slides #slides mode="ios" pager="ios" scrollbar="ios">
     <ion-slide  *ngFor="let q of quotesArray">
-      <h1 style="color: white; font-size: 15px;"> {{q?.content}} </h1>
+      <h1 style="color: black; font-size: 15px;"> {{q?.content}} </h1>
     </ion-slide>
   </ion-slides>
 
@@ -13,18 +13,18 @@
           <img style="margin: auto; height: 50%; display: block;
           margin-left: auto;
           margin-right: auto;
-          width: 50%;" class="title animate__animated animate__backInDown" src="./../../assets/icon/logo6.png" alt="">
+          width: 50%;" class="title animate__animated animate__backInDown" src="./../../assets/icon/logo.svg" alt="">
         </ion-text>
-        <ion-text color="light">
-          <h2>Welcome back!</h2>
+        <ion-text class="ion-text-center" color="dark">
+          <h2>Self <span style="color: #FFCD2E;">Assessment & Evaluation</span> Application</h2>
         </ion-text>
         <form [formGroup]="ionicForm" (ngSubmit)="onSubmit()">
        
-          <ion-item>
-            <ion-label position="floating">Mobile Number <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input  class="mobileInput"  required formControlName="mobileNo" type="number"></ion-input>
+          <ion-item lines="none">
+            <ion-label position="stacked">Phone Number <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input style="height: 48px;" (ionChange)="checkNumber($event)"  class="mobileInput"  required formControlName="mobileNo" type="number"></ion-input>
           </ion-item>
-          <ion-item  lines="none">
+          <ion-item *ngIf="showError" lines="none">
             <ion-text color="danger" class="form-error">
               Please enter your mobile number.
             </ion-text>
@@ -33,10 +33,10 @@
         </form>
     
        
-        <ion-text class="ion-text-center" color="light" required>
+        <ion-text class="ion-text-center" color="medium" required>
           <p style="font-size: 12px ;">We will text you a verification code.</p>
         </ion-text>
-        <ion-button  size="large" shape="block" color="light" (click)="onSubmit()">
+        <ion-button  size="large" shape="block" color="primary" (click)="onSubmit()">
           <ion-icon class="animate__animated animate__shakeX animate__slower	4s animate__3" slot="end" name="chevron-forward" color="light"></ion-icon>
           Continue
         </ion-button>
@@ -44,3 +44,11 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-text color="medium" class="ion-text-center">
+      <p>Version 1.0 Developed By Mind Labyrinth.</p>
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>

@@ -21,7 +21,7 @@ export class AuthPage implements OnInit {
   ionicForm: FormGroup;
   otp;
   @ViewChild('slides') slides: IonSlides;
-
+  showError: boolean = false;
   setError:boolean = false;
   quotesArray:any;
 
@@ -65,6 +65,22 @@ export class AuthPage implements OnInit {
     this.sound.playBG();
   }
 
+
+  checkNumber(ev){
+    console.log(ev.detail.value);
+    let number = ev.detail.value;
+
+    if(number.toString().length == 10){
+      console.log("Number correct");
+      this.showError = false;
+    }
+
+    if(number.toString().length < 10){
+      console.log("Check number again");
+      this.showError = true;
+      
+    }
+  }
   async presentModalOtp(otp) {
     const modal = await this.modalController.create({
     component: OtpPage,
