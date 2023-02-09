@@ -4,16 +4,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
+  <!-- <img style="margin: auto; height: 50%; display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;" src="./../../assets/icon/logo.svg" alt=""> -->
 
-
+  <ion-modal [isOpen]="isStepModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeStepModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <img style="height: 100%; width: 100%;" src="./../../../assets/data/steps.jpg" alt="" srcset="">
+        <ion-button color="success" style="position: absolute; top: 611px; left: 90px;" (click)="openAuth()" expand="block" shape="round">
+          <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
+          Next
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
   <ion-grid>
     <ion-row>
-      <ion-col sizeLg="6" sizeSm="12">
-        <ion-card style="--background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,74,145,1) 53%);
-        " (click)="BookForYear()" class="animate__animated animate__bounceInLeft animate__delay-1s	1s">
+      <ion-col sizeLg="6" sizeMd="12" sizeSm="12">
+        <ion-card style="--background: #39B5E0;" (click)="BookForYear()" class="animate__animated animate__bounceInLeft animate__delay-1s	2s">
           <ion-card-header>
-            <ion-card-subtitle color="light">Go to Quiz</ion-card-subtitle>
+            
             <ion-card-title class="ion-text-center" color="light"> Book for year</ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -25,11 +45,9 @@
         </ion-card>
 
       </ion-col>
-      <ion-col sizeLg="6" sizeSm="12">
-        <ion-card style="--background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,74,145,1) 53%);
-        " (click)="BookForMonth()" class="animate__animated animate__bounceInLeft animate__delay-2s	2s">
+      <ion-col sizeLg="6" sizeMd="12" sizeSm="12">
+        <ion-card style="--background: #EFA3C8;" (click)="BookForMonth()" class="animate__animated animate__bounceInLeft animate__delay-2s	2s">
           <ion-card-header>
-            <ion-card-subtitle color="light">Go to Quiz</ion-card-subtitle>
             <ion-card-title color="light" class="ion-text-center"> Book for month</ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -42,11 +60,9 @@
       </ion-col>
 
 
-      <ion-col sizeLg="6" sizeSm="12">
-        <ion-card style="--background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,74,145,1) 53%);
-        " (click)="BookForWeek()" class="animate__animated animate__bounceInLeft animate__delay-3s	3s">
+      <ion-col sizeLg="6" sizeMd="12" sizeSm="12">
+        <ion-card style="--background: #03C988;" (click)="BookForWeek()" class="animate__animated animate__bounceInLeft animate__delay-3s	3s">
           <ion-card-header>
-            <ion-card-subtitle color="light">Go to Quiz</ion-card-subtitle>
             <ion-card-title color="light" class="ion-text-center"> Book for week</ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -59,11 +75,9 @@
 
 
       </ion-col>
-      <ion-col sizeLg="6" sizeSm="12">
-        <ion-card style="--background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,74,145,1) 53%);
-        " (click)="BookForDay()" class="animate__animated animate__bounceInLeft animate__delay-4s	4s">
+      <ion-col sizeLg="6" sizeMd="12" sizeSm="12">
+        <ion-card style="--background: #009EFF;"  (click)="BookForDay()" class="animate__animated animate__bounceInLeft animate__delay-4s	4s">
           <ion-card-header>
-            <ion-card-subtitle color="light">Go to Quiz</ion-card-subtitle>
             <ion-card-title color="light" class="ion-text-center"> Book for day</ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -75,11 +89,9 @@
         </ion-card>
 
       </ion-col>
-      <ion-col sizeLg="6" sizeSm="12">
-        <ion-card style="--background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,74,145,1) 53%);
-        " (click)="BookForLife()" class="animate__animated animate__bounceInLeft animate__delay-5s	5s">
+      <ion-col sizeLg="12" sizeSm="12">
+        <ion-card style="--background: #B08BBB;" (click)="BookForLife()" class="animate__animated animate__bounceInLeft animate__delay-5s	5s">
           <ion-card-header>
-            <ion-card-subtitle color="light" >Go to Quiz</ion-card-subtitle>
             <ion-card-title color="light"  class="ion-text-center"> Book for Life</ion-card-title>
           </ion-card-header>
           <ion-card-content>

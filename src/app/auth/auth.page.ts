@@ -46,6 +46,7 @@ export class AuthPage implements OnInit {
               }
 
   ngOnInit() {
+    this.modalController.dismiss();
     this.quotes.getQuotes().subscribe((quote) =>{
       this.quotesArray = quote['results'];
       console.log(quote);

@@ -1661,8 +1661,8 @@ seaicon = "./../../../assets/sea.svg"
       return;
     }
 
-    let pCount = await this.data.set('pCount', positiveWordCount);
-    let nCount = await this.data.set('nCount', negativeWordCount);
+    await this.data.set('pCount', positiveWordCount);
+    await this.data.set('nCount', negativeWordCount);
   await this.data.set('wordList', this.selectedList)
     await this.data.set('questionTwo', this.listItems);
     console.log("Data Stoared");
@@ -1698,6 +1698,17 @@ seaicon = "./../../../assets/sea.svg"
     console.log(this.selectedList.length);
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.pList = this.selectedList.map(v => v.type === 'p');
+    this.nList = this.selectedList.map(v => v.type === 'n');
+    // console.log(this.pList);
+    // console.log(this.pList.length);
+    let positiveWordCount = this.pList.filter(x => x === true).length;
+    let negativeWordCount = this.pList.filter(x => x === false).length;
+
+    console.log(`Negative Words Count:- ${negativeWordCount}`);
+    console.log(`Positive Words Count:- ${positiveWordCount}`);
+    await this.data.set('pCount', positiveWordCount);
+    await this.data.set('nCount', negativeWordCount);
   await this.data.set('wordList', this.selectedList)
       this.buttonEvent = false;
     this.router.navigate(['question-three']);
@@ -1731,6 +1742,17 @@ seaicon = "./../../../assets/sea.svg"
 
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.pList = this.selectedList.map(v => v.type === 'p');
+    this.nList = this.selectedList.map(v => v.type === 'n');
+    // console.log(this.pList);
+    // console.log(this.pList.length);
+    let positiveWordCount = this.pList.filter(x => x === true).length;
+    let negativeWordCount = this.pList.filter(x => x === false).length;
+
+    console.log(`Negative Words Count:- ${negativeWordCount}`);
+    console.log(`Positive Words Count:- ${positiveWordCount}`);
+    await this.data.set('pCount', positiveWordCount);
+    await this.data.set('nCount', negativeWordCount);
   await this.data.set('wordList', this.selectedList)
   this.buttonEvent = false;
 
@@ -1765,6 +1787,17 @@ seaicon = "./../../../assets/sea.svg"
 
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.pList = this.selectedList.map(v => v.type === 'p');
+    this.nList = this.selectedList.map(v => v.type === 'n');
+    // console.log(this.pList);
+    // console.log(this.pList.length);
+    let positiveWordCount = this.pList.filter(x => x === true).length;
+    let negativeWordCount = this.pList.filter(x => x === false).length;
+
+    console.log(`Negative Words Count:- ${negativeWordCount}`);
+    console.log(`Positive Words Count:- ${positiveWordCount}`);
+    await this.data.set('pCount', positiveWordCount);
+    await this.data.set('nCount', negativeWordCount);
     await this.data.set('wordList', this.selectedList)
     this.buttonEvent = false;
 
@@ -1799,6 +1832,17 @@ seaicon = "./../../../assets/sea.svg"
 
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.pList = this.selectedList.map(v => v.type === 'p');
+    this.nList = this.selectedList.map(v => v.type === 'n');
+    // console.log(this.pList);
+    // console.log(this.pList.length);
+    let positiveWordCount = this.pList.filter(x => x === true).length;
+    let negativeWordCount = this.pList.filter(x => x === false).length;
+
+    console.log(`Negative Words Count:- ${negativeWordCount}`);
+    console.log(`Positive Words Count:- ${positiveWordCount}`);
+    await this.data.set('pCount', positiveWordCount);
+    await this.data.set('nCount', negativeWordCount);
     await this.data.set('wordList', this.selectedList)
     this.buttonEvent = false;
 
@@ -1833,6 +1877,17 @@ seaicon = "./../../../assets/sea.svg"
 
     if(this.selectedList.length == 5){
     this.sound.buttonClick();
+    this.pList = this.selectedList.map(v => v.type === 'p');
+    this.nList = this.selectedList.map(v => v.type === 'n');
+    // console.log(this.pList);
+    // console.log(this.pList.length);
+    let positiveWordCount = this.pList.filter(x => x === true).length;
+    let negativeWordCount = this.pList.filter(x => x === false).length;
+
+    console.log(`Negative Words Count:- ${negativeWordCount}`);
+    console.log(`Positive Words Count:- ${positiveWordCount}`);
+    await this.data.set('pCount', positiveWordCount);
+    await this.data.set('nCount', negativeWordCount);
   await this.data.set('wordList', this.selectedList)
   this.buttonEvent = false;
 

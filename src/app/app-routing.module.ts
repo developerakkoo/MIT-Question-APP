@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'question-two',
+    redirectTo: 'first-page-task',
     pathMatch: 'full'
   },
   {

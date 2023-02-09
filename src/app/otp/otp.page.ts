@@ -33,7 +33,7 @@ export class OtpPage implements OnInit {
     this.sound.buttonClick();
     if(this.otp === this.userotp){
       this.close();
-      this.router.navigate(['first-page-task'])
+      this.router.navigate(['question-one'])
 
     }
 

@@ -71,8 +71,8 @@ export class CompleteTaskPage implements OnInit {
               }
 
   async ngOnInit() {
-    this.bonusBooks = this.booksService.getBonusBooks();
-    this.books = this.booksService.getBooks();
+    this.bonusBooks = await  this.data.get('bonusBooks');
+    this.books = await this.data.get('books');
     this.type = await this.data.get("gender");
     this.ageGroup = await this.data.get("age");
     console.log(this.bonusBooks);
@@ -102,7 +102,7 @@ export class CompleteTaskPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Confirm!',
       backdropDismiss: false,
-      message: 'Please complete the task within<strong> 60 seconds</strong> to unlock!!!',
+      message: 'Have you shared<strong> 60 seconds</strong> to unlock!!!',
       buttons: [
         {
           text: 'Cancel',

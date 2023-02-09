@@ -133,8 +133,8 @@ export class QuestionFourPage implements OnInit {
   sendmail(fileurl) {
     Email.send({
       Host: 'smtp.elasticemail.com',
-      Username: 'developerakshayjadhav@gmail.com',
-      Password: 'BADE58F6BACE5661AF70523FC088DEF975A0',
+      Username: 'labyrinththemind@gmail.com',
+      Password: 'BCF20BC019EF4CE7AFF2C12FD7759769DCC9',
       To:"labyrinththemind@gmail.com",
       From: `labyrinththemind@gmail.com`,
       Subject: "Your Analysis Report From Mind Labyrinth.",
@@ -330,44 +330,59 @@ export class QuestionFourPage implements OnInit {
 
     let key = this.key;
     if (key == "Year") {
+      console.log("FOR YEAR");
+      
       console.log("3 Books from Family, Pride, Love , Career, Money");
+      this.getBookFromFamilyPrideLoveCareerMoney(3);
       if (this.positiveItems == 5) {
-        console.log("year and 5 positive run same filter");
+        console.log("Year and 5 positive run same filter");
         this.getBookFromFamilyPrideLoveCareerMoney(3);
 
         //Bonus book logic
         if (this.relativeCount == 5) {
-          console.log("REsult from pride and careeer");
+          console.log("For Relative count 5");
+          
+          console.log("1 Bonus Book REsult from pride and careeer");
           this.getBonusBookFromPrideAndCareer(1);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
-          console.log("REsult from pride and careeer");
+          console.log("REaltive 4 and friend 1");
+          
+          console.log("1 Bonus Book REsult from pride and careeer");
           this.getBonusBookFromPrideAndCareer(1);
           return;
 
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
-          console.log("REsult from careeer and money");
+          console.log("For Relative 3 and friend 2");
+          
+          console.log("1 Bonus Book REsult from careeer and money");
 
 
           this.getBonusBookFromCareerAndMoney(1);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
-          console.log("REsult from careeer and money");
+          console.log("For realtive 2 and friend 3");
+          
+          console.log("1 Bonus Book REsult from careeer and money");
           this.getBonusBookFromCareerAndMoney(1);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
-          console.log("REsult from family and love");
+          console.log("For relative 1 and friend 4");
+          
+          console.log("1 Bonus Book REsult from family and love");
           this.getBonusBookFromFamilyAndLove(1);
           return;
 
         }
         if (this.friendCount == 5) {
-          console.log("REsult from family and love");
+          console.log("For friend 5");
+          
+          console.log("1 Bonus book REsult from family and love");
           this.getBonusBookFromFamilyAndLove(1);
           return;
 
@@ -580,6 +595,7 @@ export class QuestionFourPage implements OnInit {
 
     } else if (key == "Month") {
       console.log("1 Books from Family, Pride, Love , Career, Money");
+      this.getBookFromFamilyPrideLoveCareerMoney(1);
       if (this.positiveItems == 5) {
         console.log("year and 5 positive run same filter");
         //Bonus book logic
@@ -1786,15 +1802,23 @@ export class QuestionFourPage implements OnInit {
     });
   }
 
-  getList() {
+  async getList() {
     let books = this.booksService.getBooks();
     let bonusBooks = this.booksService.getBonusBooks();
+    console.log("Books");
+    
     console.log(books);
+    console.log("Bonus Books");
+    
     console.log(bonusBooks);
     this.sound.buttonClick();
-
+    await this.data.set('books', books);
+    await this.data.set('bonusBooks', bonusBooks);
     this.router.navigate(['question-five']);
 
 
   }
+
+
+  
 }

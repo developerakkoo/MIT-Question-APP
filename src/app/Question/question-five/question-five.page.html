@@ -4,10 +4,51 @@
   </ion-toolbar>
 </ion-header>
 <ion-content >
+  <ion-modal [isOpen]="isAbove18Open">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeAbove18()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-ana-cer2.jpg" alt="" srcset="">
+            <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send?phone=918080794699&text=I am Interested to know!" class="wa_btn wa_btn_s" #btnA>Share on whatsapp</a>
+        <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
+        <ion-button color="success" style="position: absolute; top: 611px; left: 100px;" (click)="openWhatsappA(btnA)" expand="block" shape="round">
+          <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+          Whatsapp
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
+
+
+  <ion-modal [isOpen]="isBelow18Open">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeBelow18()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send?phone=918999679144&text=I am Interested to know!" class="wa_btn wa_btn_s" #btnB>Share on whatsapp</a>
+  <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-ana-cer-MIT-2.jpg" alt="" srcset="">
+  <ion-button color="success" style="position: absolute; top: 611px; left: 100px;" (click)="openWhatsappB(btnB)" expand="block" shape="round">
+    <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+    Whatsapp
+  </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 <ion-grid class="ion-margin-top">
   <ion-row>
-    <ion-col style="margin-top:10px;" sizeLg="7" sizeSm="12" color="light">
+    <ion-col style="margin-top:10px;" sizeLg="7" offset-lg="2" sizeSm="12" color="light">
  
       <ion-list style="margin-top:30px;" color="primary">
         

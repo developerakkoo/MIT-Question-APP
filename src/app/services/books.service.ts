@@ -21,6 +21,10 @@ export class BooksService {
 
   setBonusBooks(bonusBooks: any){
     this.bonusBooksArray = bonusBooks;
+    console.log(bonusBooks);
+    console.log("Bonus books set");
+    
+    
   }
   getBonusBooks(){
     return this.bonusBooksArray || [];

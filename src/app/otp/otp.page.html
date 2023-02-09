@@ -9,20 +9,20 @@
   <ion-buttons slot="start">
     <ion-back-button defaultHref="auth"></ion-back-button>
   </ion-buttons>
-  <img style="margin: 50px; height: 50%; display: block;
+  <!-- <img style="margin: 50px; height: 50%; display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;" src="./../../assets/icon/logo.svg" alt="">
+  width: 50%;" src="./../../assets/icon/logo.svg" alt=""> -->
   <ion-grid>
     <ion-row>
-      <ion-col sizeLg="6" offsetLg="3" sizeSm="12">
+      <ion-col sizeMd="12"  sizeSm="12">
         <ion-card>
          
           <ion-card-content>
             <ion-text class="ion-text-center" color="light">
               <h1>We have sent you a verification code on your mobile.</h1>
             </ion-text>
-            <ng-otp-input style="display: flex; justify-content: center; align-items: center;" (onInputChange)="onOtpChange($event)" [config]="{length:4, numericInputMode: true}"></ng-otp-input>
+            <ng-otp-input type="number" style="display: flex; justify-content: center; align-items: center;" (onInputChange)="onOtpChange($event)" [config]="{length:4, numericInputMode: true}"></ng-otp-input>
    
           </ion-card-content>
         </ion-card>
