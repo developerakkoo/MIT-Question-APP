@@ -515,7 +515,7 @@ else if(item == "Green"){
           console.log("For Relative count 5");
           
           console.log("1 Bonus Book REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -523,7 +523,7 @@ else if(item == "Green"){
           console.log("REaltive 4 and friend 1");
           
           console.log("1 Bonus Book REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -533,21 +533,21 @@ else if(item == "Green"){
           console.log("1 Bonus Book REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("For realtive 2 and friend 3");
           
           console.log("1 Bonus Book REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("For relative 1 and friend 4");
           
           console.log("1 Bonus Book REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -555,7 +555,7 @@ else if(item == "Green"){
           console.log("For friend 5");
           
           console.log("1 Bonus book REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -572,34 +572,34 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
 
@@ -612,35 +612,35 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -652,34 +652,34 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return
 
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -690,36 +690,36 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
 
@@ -731,33 +731,33 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -773,13 +773,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -787,23 +787,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -816,13 +816,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -830,23 +830,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -858,13 +858,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -872,23 +872,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -900,13 +900,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -914,23 +914,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -941,13 +941,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -955,23 +955,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -982,13 +982,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -996,23 +996,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1031,13 +1031,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1045,23 +1045,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1074,13 +1074,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1088,23 +1088,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1116,13 +1116,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1130,23 +1130,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1158,13 +1158,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1172,23 +1172,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1199,35 +1199,35 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 3 && this.friendCount == 2) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1238,13 +1238,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1252,23 +1252,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1286,13 +1286,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1300,23 +1300,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1330,13 +1330,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1344,23 +1344,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1372,13 +1372,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1386,23 +1386,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1415,13 +1415,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1429,23 +1429,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1457,13 +1457,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1471,23 +1471,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1499,13 +1499,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1513,23 +1513,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1549,13 +1549,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1563,23 +1563,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1592,13 +1592,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1606,23 +1606,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1635,13 +1635,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1649,23 +1649,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1678,13 +1678,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1692,23 +1692,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1720,13 +1720,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1734,23 +1734,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
@@ -1762,13 +1762,13 @@ else if(item == "Green"){
         //Bonus book logic
         if (this.relativeCount == 5) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
         if (this.relativeCount == 4 && this.friendCount == 1) {
           console.log("REsult from pride and careeer");
-          this.getBonusBookFromPrideAndCareer(1);
+          this.getBonusBookFromPrideAndCareer(2);
           return;
 
         }
@@ -1776,23 +1776,23 @@ else if(item == "Green"){
           console.log("REsult from careeer and money");
 
 
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 2 && this.friendCount == 3) {
           console.log("REsult from careeer and money");
-          this.getBonusBookFromCareerAndMoney(1);
+          this.getBonusBookFromCareerAndMoney(2);
           return;
 
         } if (this.relativeCount == 1 && this.friendCount == 4) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }
         if (this.friendCount == 5) {
           console.log("REsult from family and love");
-          this.getBonusBookFromFamilyAndLove(1);
+          this.getBonusBookFromFamilyAndLove(2);
           return;
 
         }

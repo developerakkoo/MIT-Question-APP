@@ -17,7 +17,8 @@ export class QuestionFivePage implements OnInit {
 
   isAbove18Open: boolean = false;
   isBelow18Open: boolean = false;
-
+  @ViewChild('above18') aboveModal!: ModalController;
+  @ViewChild('below18') belowModal!: ModalController;
   gender ="male";
   age = "above18";
   email;
@@ -70,14 +71,19 @@ export class QuestionFivePage implements OnInit {
               openWhatsappA(btn){
                 console.log(this.btnA);
                 this.btnA.nativeElement.click();
+                this.aboveModal.dismiss();
+                this.belowModal.dismiss();
                 this.router.navigate(['complete-task'])
             
                 
               }
               openWhatsappB(btn){
                 console.log(this.btnB);
+                this.aboveModal.dismiss();
+                this.belowModal.dismiss();
+
                 this.btnB.nativeElement.click();
-                this.router.navigate(['complete-task'])
+                this.router.navigate(['complete-task']);
             
                 
               }
@@ -107,11 +113,11 @@ export class QuestionFivePage implements OnInit {
   }
 
   closeAbove18(){
-    this.isAbove18Open = false;
+    this.aboveModal.dismiss();
   }
 
   closeBelow18(){
-    this.isBelow18Open = false;
+    this.belowModal.dismiss();
   }
   async presentModalAbove18() {
     const modal = await this.modalController.create({

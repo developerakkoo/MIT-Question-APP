@@ -1,5 +1,5 @@
 import { AudioService } from './../audio.service';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { DataService } from './../data.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -69,6 +69,7 @@ export class CompleteTaskPage implements OnInit {
     private alertController: AlertController,
     private booksService: BooksService,
     private loadingController: LoadingController,
+    private modalController: ModalController,
     private afs: AngularFirestore,
     private router: Router,
     private sound: AudioService
@@ -78,17 +79,41 @@ export class CompleteTaskPage implements OnInit {
               }
 
   async ngOnInit() {
+    this.presentAlertModal();
     this.bonusBooks = await  this.data.get('BBooks');
     this.isShareInGroupChatOpened = await this.data.get('isModalLoaded');
     this.type = await this.data.get("gender");
     this.ageGroup = await this.data.get("age");
- 
     this.getTaskBy("indian", this.ageGroup);
     if(this.isShareInGroupChatOpened == true){
       this.isAreYouSureOpen = true;
     }
   }
 
+
+  async presentAlertModal() {
+    const alert = await this.alertController.create({
+      header: 'Continue!',
+      message: 'Do you want to  <strong>continue?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.modalController.dismiss();
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
 
 
   getTaskBy(type, age){

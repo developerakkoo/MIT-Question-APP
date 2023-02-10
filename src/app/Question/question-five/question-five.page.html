@@ -4,16 +4,17 @@
   </ion-toolbar>
 </ion-header>
 <ion-content >
-  <ion-modal [isOpen]="isAbove18Open">
+  <ion-modal #above18 [isOpen]="isAbove18Open">
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="end">
-            <ion-button (click)="closeAbove18()">Close</ion-button>
-          </ion-buttons>
+          
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
+        <ion-buttons slot="end">
+          <ion-button (click)="closeAbove18()">Close</ion-button>
+        </ion-buttons>
         <img style="height: 100%; width: 100%;" src="./../../../assets/data/Congratualtions-Supremo-without-button.jpg" alt="" srcset="">
             <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send?phone=918080794699&text=I am Interested to know!" class="wa_btn wa_btn_s" #btnB>Share on whatsapp</a>
         <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
@@ -27,7 +28,7 @@
 
 
 
-  <ion-modal [isOpen]="isBelow18Open">
+  <ion-modal #below18 [isOpen]="isBelow18Open">
     <ng-template>
       <ion-header>
         <ion-toolbar>
