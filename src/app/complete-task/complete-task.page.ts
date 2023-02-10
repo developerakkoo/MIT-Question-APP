@@ -2,7 +2,7 @@ import { AudioService } from './../audio.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { DataService } from './../data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { BooksService } from '../services/books.service';
@@ -14,13 +14,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./complete-task.page.scss'],
 })
 export class CompleteTaskPage implements OnInit {
-
+  @ViewChild('btnA', {static: false}) btnA: ElementRef;
   openTaskInterval;
-  count:number = 60;
+  count:number = 10;
   showTimer: boolean = false;
   secondsInaterval;
   seconds =  60;
   isTaskCompleted: boolean = false;
+  isAreYouSureOpen: boolean = false;
+  isShareInGroupOpen: boolean = false;
+  isShareInGroupChatOpened: boolean = false;
   bonusBooks:any[] = [
     // {
     //   bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
@@ -33,9 +36,13 @@ export class CompleteTaskPage implements OnInit {
     // }
   ];
 
-  books: any[];
+  fbooks: any[];
+  pbooks: any[];
+  lbooks: any[];
+  cbooks: any[];
+  mbooks: any[];
   tasks: any[];
-
+  booksArr = [];
   ageGroup;
   type;
   isFirstTask;
@@ -71,14 +78,15 @@ export class CompleteTaskPage implements OnInit {
               }
 
   async ngOnInit() {
-    this.bonusBooks = await  this.data.get('bonusBooks');
-    this.books = await this.data.get('books');
+    this.bonusBooks = await  this.data.get('BBooks');
+    this.isShareInGroupChatOpened = await this.data.get('isModalLoaded');
     this.type = await this.data.get("gender");
     this.ageGroup = await this.data.get("age");
-    console.log(this.bonusBooks);
-    console.log(this.books);
+ 
     this.getTaskBy("indian", this.ageGroup);
-    
+    if(this.isShareInGroupChatOpened == true){
+      this.isAreYouSureOpen = true;
+    }
   }
 
 
@@ -98,33 +106,97 @@ export class CompleteTaskPage implements OnInit {
     });
   }
 
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      backdropDismiss: false,
-      message: 'Have you shared<strong> 60 seconds</strong> to unlock!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-    this.sound.buttonClick();
-    this.showTimer = true;
+  closeShareInGroupModal(){
+    this.isShareInGroupOpen = false;
+  }
 
-            this.openTask();
-          }
-        }
-      ]
-    });
+  closeAreYouSure(){
+    this.isAreYouSureOpen = false;
+  }
+
+  async yesBtn(){
+    this.isAreYouSureOpen = false;
+    //show the boooks
+    this.bonusBooks = await  this.data.get('BBooks');
+    this.fbooks = await this.data.get('fBooks');
+    this.pbooks = await this.data.get('pBooks');
+    this.lbooks = await this.data.get('lBooks');
+    this.cbooks = await this.data.get('cBooks');
+    this.mbooks = await this.data.get('mBooks');
+    this.type = await this.data.get("gender");
+    this.ageGroup = await this.data.get("age");
+    console.log(this.bonusBooks);
+    
+    this.fbooks.forEach(el =>{
+      this.booksArr.push(el)
+    })
+
+    this.pbooks.forEach(el =>{
+      this.booksArr.push(el)
+    })
+
+    this.lbooks.forEach(el =>{
+      this.booksArr.push(el)
+    })
+
+    this.cbooks.forEach(el =>{
+      this.booksArr.push(el)
+    })
+
+    this.mbooks.forEach(el =>{
+      this.booksArr.push(el)
+    })
+
+    console.log("All Books Array");
+    console.log(this.booksArr);
+    await this.data.set('isModalLoaded', false);
+    this.openTask();
+    
+    
+  }
+
+  noBtn(){
+    this.isShareInGroupOpen = true;
+    this.isAreYouSureOpen = false;
+  }
+
+
+  async openWhatsappB(){
+    console.log(this.btnA);
+    this.btnA.nativeElement.click();
+    await this.data.set("isModalLoaded", true);
+    this.isShareInGroupChatOpened = true;
+    this.openTask();
+   
+  }
+  async presentAlertConfirm() {
+    this.isShareInGroupOpen = true;
+    // const alert = await this.alertController.create({
+    //   header: 'Confirm!',
+    //   backdropDismiss: false,
+    //   message: 'Have you shared<strong> 60 seconds</strong> to unlock!!!',
+    //   buttons: [
+    //     {
+    //       text: 'Cancel',
+    //       role: 'cancel',
+    //       cssClass: 'secondary',
+    //       handler: () => {
+    //         console.log('Confirm Cancel: blah');
+    //       }
+    //     }, {
+    //       text: 'Okay',
+    //       handler: () => {
+    //         console.log('Confirm Okay');
+    // this.sound.buttonClick();
+    // this.showTimer = true;
+
+    //         this.openTask();
+    //       }
+    //     }
+    //   ]
+    // });
   
-    await alert.present();
+    // await alert.present();
   }
 
   async openTask(){

@@ -5,6 +5,51 @@
 </ion-header>
 
 <ion-content>
+  <ion-modal [isOpen]="isShareInGroupOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeShareInGroupModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <img style="height: 100%; width: 100%;" src="./../../../assets/data/sharewb.jpg" alt="" srcset="">
+            <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send" class="wa_btn wa_btn_s" #btnA>Share on whatsapp</a>
+        <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
+        <ion-button color="none" style="background-image: url('./../../assets/data/button.png');
+  background-size: cover; position: absolute; width: 270px; height: 70px; top: 581px; left: 30px;" (click)="openWhatsappB()" >
+    
+  </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+  <ion-modal [isOpen]="isAreYouSureOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeAreYouSure()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <img style="height: 100%; width: 100%;" src="./../../../assets/data/are-you-sure-wb.jpg" alt="" srcset="">
+      </ion-content>
+      <ion-button (click)="yesBtn()">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="noBtn()">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ng-template>
+  </ion-modal>
+
+
+
   <ion-list>
     <ion-list-header>
       <ion-label>Bonus Book For you</ion-label>
@@ -26,7 +71,7 @@
     </ion-slide>
   </ion-slides>
   <ion-list *ngIf="!isTaskCompleted">
-    <ion-list-header>
+    <ion-list-header> 
       <ion-label>Locked Books waititng for you</ion-label>
     </ion-list-header>
     <ion-button *ngIf="!isTaskCompleted" (click)="presentAlertConfirm()" expand="block">
@@ -34,7 +79,7 @@
     </ion-button>
 
     <ion-slides style="height: 200px; width: auto;"  [options]="slides" mode="ios" pager="ios" scrollbar="ios" [hidden]="!isTaskCompleted">
-      <ion-slide *ngFor="let item of books" >
+      <ion-slide *ngFor="let item of booksArr" >
         <img [src]="item.bookImage" />
       </ion-slide>
     </ion-slides>
@@ -49,8 +94,8 @@
       Complete task to unlock
     </ion-button>
 
-    <ion-slides  (click)="downloadBook()" style="height: 200px; width: auto;" [options]="slides" mode="ios" pager="ios" scrollbar="ios" [hidden]="!isTaskCompleted">
-      <ion-slide  *ngFor="let item of books">
+    <ion-slides   style="height: 200px; width: auto;" [options]="slides" mode="ios" pager="ios" scrollbar="ios" [hidden]="!isTaskCompleted">
+      <ion-slide (click)="downloadBook(item)"  *ngFor="let item of booksArr">
         <img [src]="item.bookImage" />
 
       </ion-slide>

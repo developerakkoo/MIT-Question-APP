@@ -9,6 +9,7 @@ import { LanguagePopoverPage } from 'src/app/language-popover/language-popover.p
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { BooksService } from 'src/app/services/books.service';
+import { async } from '@firebase/util';
 
 @Component({
   selector: 'app-question-three',
@@ -30,6 +31,7 @@ export class QuestionThreePage implements OnInit {
 
   rList:any[] = [];
   fList:any[] = [];
+
 
   relativeCount:number;
   friendCount: number;
@@ -89,6 +91,8 @@ export class QuestionThreePage implements OnInit {
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
+  allBooks: any[];
+  allbonusBooks:any[];
   bonusBooks: any[];
   top200Books: any[];
   top100Books: any[];
@@ -126,6 +130,7 @@ export class QuestionThreePage implements OnInit {
    }
 
   ngOnInit() {
+    // this.getBookFromFamilyPrideLoveCareerMoney(15);
   }
   async openLanguagePopOver(event){
     const popover = await this.popoverController.create({
@@ -218,11 +223,13 @@ export class QuestionThreePage implements OnInit {
     let books = this.booksService.getBooks();
     let bonusBooks = this.booksService.getBonusBooks();
     console.log("Books");
+    console.log(this.allBooks);
+    
     
     console.log(books);
-    console.log("Bonus Books");
+    console.log("Bonus Books ALL");
     
-    console.log(bonusBooks);
+    console.log(this.allbonusBooks);
     this.sound.buttonClick();
     await this.data.set('books', books);
     await this.data.set('bonusBooks', bonusBooks);
@@ -253,13 +260,13 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-      if(this.selectedList.length == 5){
-    this.sound.buttonClick();
-        this.buttonEvent = false;
-        this.presentAlert();
+    //   if(this.selectedList.length == 5){
+    // this.sound.buttonClick();
+    //     this.buttonEvent = false;
+    //     this.presentAlert();
 
     
-        }
+    //     }
   
   }
   async presentToast(msg) {
@@ -292,14 +299,14 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-      if(this.selectedList.length == 5){
-    this.sound.buttonClick();
-    this.buttonEvent = false;
+    //   if(this.selectedList.length == 5){
+    // this.sound.buttonClick();
+    // this.buttonEvent = false;
 
-        this.presentAlert();
+    //     this.presentAlert();
 
     
-        }
+    //     }
   }
 
   async presentModalOrange(item) {
@@ -324,14 +331,14 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-      if(this.selectedList.length == 5){
-    this.sound.buttonClick();
-    this.buttonEvent = false;
+    //   if(this.selectedList.length == 5){
+    // this.sound.buttonClick();
+    // this.buttonEvent = false;
 
-        this.presentAlert();
+    //     this.presentAlert();
 
     
-        }
+    //     }
   }
 
   async presentModalRed(item) {
@@ -356,14 +363,14 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-      if(this.selectedList.length == 5){
-    this.sound.buttonClick();
-    this.buttonEvent = false;
+    //   if(this.selectedList.length == 5){
+    // this.sound.buttonClick();
+    // this.buttonEvent = false;
 
-        this.presentAlert();
+    //     this.presentAlert();
 
     
-        }
+    //     }
   }
 
   async presentModalWhite(item) {
@@ -387,13 +394,13 @@ export class QuestionThreePage implements OnInit {
      this.selectedList.push(data.data);
       console.log(this.selectedList.includes(data.data));
       console.log(this.selectedList);
-      if(this.selectedList.length == 5){
-    this.sound.buttonClick();
-    this.buttonEvent = false;
+    //   if(this.selectedList.length == 5){
+    // this.sound.buttonClick();
+    // this.buttonEvent = false;
 
-        this.presentAlert();
+    //     this.presentAlert();
     
-        }
+    //     }
   }
 
 
@@ -1801,170 +1808,280 @@ else if(item == "Green"){
 
 
   getBooksFromTop200(count: number) {
-    this.afs.collection('Books', ref => ref.where("top200", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("top200", "==", true))
+    .valueChanges().subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.top200Books = bookThree;
       console.log(`top 200 Books`);
       console.log(this.top200Books);
-      this.booksService.setBooks(this.top200Books);
+      let arr = [];
+
+      this.top200Books.forEach((el) =>{
+        console.log(el);
+        
+        arr.push(el)
+      })
+
+      await this.data.set("200Books", arr);
+
     })
   }
   getBooksFromTop150(count: number) {
-    this.afs.collection('Books', ref => ref.where("top150", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("top150", "==", true)).valueChanges()
+    .subscribe(async(value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.top150Books = bookThree;
       console.log(`top 150 Books`);
       console.log(this.top150Books);
-      this.booksService.setBooks(this.top150Books);
+     let arr = [];
+
+   this.top150Books.forEach((el) =>{
+    console.log(el);
+    
+    arr.push(el)
+  })
+  await this.data.set("150Books", arr);
 
     })
   }
   getBooksFromTop100(count: number) {
-    this.afs.collection('Books', ref => ref.where("top100", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("top100", "==", true)).valueChanges().subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.top100Books = bookThree;
       console.log(`top 100 Books`);
       console.log(this.top100Books);
-      this.booksService.setBooks(this.top100Books);
+  
+      let arr = [];
+     this.top100Books.forEach((el) =>{
+    console.log(el);
+
+      arr.push(el)
+    })
+
+    await this.data.set("100Books", arr);
 
 
     })
   }
 
   getBooksFromTop50(count: number) {
-    this.afs.collection('Books', ref => ref.where("top50", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("top50", "==", true)).valueChanges().subscribe(async(value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.top50Books = bookThree;
       console.log(`top 50 Books`);
       console.log(this.top50Books);
-      this.booksService.setBooks(this.top50Books);
+    let arr = [];
+
+      this.top50Books.forEach((el) =>{
+    console.log(el);
+
+        arr.push(el)
+      })
+
+      await this.data.set("50Books", arr);
 
 
     })
   }
   getBooksFromTop30(count: number) {
-    this.afs.collection('Books', ref => ref.where("top30", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("top30", "==", true)).valueChanges().
+    subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.top30Books = bookThree;
       console.log(`top 30 Books`);
       console.log(this.top30Books);
-      this.booksService.setBooks(this.top30Books);
+      let arr = [];
+
+      this.top30Books.forEach((el) =>{
+    console.log(el);
+
+        arr.push(el)
+      })
+      await this.data.set("30Books", arr);
+
 
 
     })
   }
   getBonusBookFromFamilyAndLove(count) {
-    this.afs.collection('Books', ref => ref.where("isFamily", "==", true).where("isLove", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isFamily", "==", true).where("isLove", "==", true)).valueChanges()
+    .subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
       this.bonusBooks = bookThree;
       console.log(`Bonus Books`);
       console.log(this.bonusBooks);
-      this.booksService.setBonusBooks(this.bonusBooks);
+      let arr = [];
+
+      this.bonusBooks.forEach((el) =>{
+    console.log(el);
+
+        arr.push(el)
+      })
+
+      await this.data.set("BBooks", arr);
+
 
     });
   }
 
   getBonusBookFromCareerAndMoney(count) {
-    this.afs.collection('Books', ref => ref.where("isCareer", "==", true).where("isMoney", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isCareer", "==", true).where("isMoney", "==", true)).valueChanges()
+    .subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
       this.bonusBooks = bookThree;
       console.log(`Bonus Books`);
       console.log(this.bonusBooks);
-      this.booksService.setBonusBooks(this.bonusBooks);
+      let arr = [];
+
+      this.bonusBooks.forEach((el) =>{
+    console.log(el);
+
+        arr.push(el)
+      })
+
+      await this.data.set("BBooks", arr);
 
 
     });
   }
 
   getBonusBookFromPrideAndCareer(count) {
-    this.afs.collection('Books', ref => ref.where("isPride", "==", true).where("isCareer", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isPride", "==", true).where("isCareer", "==", true)).valueChanges()
+    .subscribe(async(value) => {
       // console.log(value);
       let bookOne = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.bonusBooks = bookOne;
       console.log(`Bonus Books`);
       console.log(this.bonusBooks);
-      this.booksService.setBonusBooks(this.bonusBooks);
+      let arr = [];
 
+      this.bonusBooks.forEach((el) =>{
+    console.log(el);
+
+        arr.push(el)
+      })
+      await this.data.set("BBooks", arr);
 
 
     });
   }
 
-  getBookFromFamilyPrideLoveCareerMoney(count: number) {
-    this.afs.collection('Books', ref => ref.where("isFamily", "==", true)).valueChanges().subscribe((value) => {
+  async getBookFromFamilyPrideLoveCareerMoney(count: number) {
+    let books:any[];
+    this.afs.collection('Books', ref => ref.where("isFamily", "==", true)).valueChanges().
+    subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.familyBooks = bookThree;
       console.log(`Family Books`);
-      console.log(this.familyBooks);
-      this.booksService.setBooks(this.familyBooks);
+      console.log(bookThree);
+      let arr = [];
+      bookThree.forEach((el) =>{
+    console.log(el);
+        arr.push(el)
+      })
 
 
+      console.log(arr);
+      await this.data.set("fBooks", arr);
+      
 
     });
-    this.afs.collection('Books', ref => ref.where("isPride", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isPride", "==", true)).valueChanges().subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.prideBooks = bookThree;
       console.log(`Pride Books`);
       console.log(this.prideBooks);
-      this.booksService.setBooks(this.prideBooks);
+      let arr = [];
+      this.prideBooks.forEach((el) =>{
+    console.log(el);
+        arr.push(el);
+      })
+
+      await this.data.set("pBooks", arr);
 
 
 
     });
-    this.afs.collection('Books', ref => ref.where("isLove", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isLove", "==", true)).valueChanges().subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.loveBooks = bookThree;
       console.log(`Love Books`);
       console.log(this.loveBooks);
-      this.booksService.setBooks(this.loveBooks);
+      let arr = [];
 
+    this.loveBooks.forEach((el) =>{
+    console.log(el);
+
+    arr.push(el)
+  })
+  await this.data.set("lBooks", arr);
+
+  
 
 
     });
-    this.afs.collection('Books', ref => ref.where("isCareer", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isCareer", "==", true)).valueChanges().subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.careerBooks = bookThree;
       console.log(`Career Books`);
       console.log(this.careerBooks);
-      this.booksService.setBooks(this.careerBooks);
+      let arr = [];
+
+    this.careerBooks.forEach((el) =>{
+    console.log(el);
+
+      arr.push(el)
+    })
+    await this.data.set("cBooks", arr);
+
 
 
 
     });
 
-    this.afs.collection('Books', ref => ref.where("isMoney", "==", true)).valueChanges().subscribe((value) => {
+    this.afs.collection('Books', ref => ref.where("isMoney", "==", true)).valueChanges()
+    .subscribe(async (value) => {
       // console.log(value);
       let bookThree = value.sort(() => Math.random() - Math.random()).slice(0, count);
 
       this.moneyBooks = bookThree;
       console.log(`Money Books`);
       console.log(this.moneyBooks);
-      this.booksService.setBooks(this.moneyBooks);
+      let arr = [];
+
+    this.moneyBooks.forEach((el) =>{
+    console.log(el);
+
+      arr.push(el)
+    })
+
+    await this.data.set("mBooks", arr);
 
 
 
     });
+
   }
 
   

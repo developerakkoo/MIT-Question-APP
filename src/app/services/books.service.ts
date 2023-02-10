@@ -13,6 +13,10 @@ export class BooksService {
 
   setBooks(book: any){
     this.booksArray = book;
+    console.log("Books Service");
+
+    console.log(this.booksArray);
+    
   }
 
   getBooks(){

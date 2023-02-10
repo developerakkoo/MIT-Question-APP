@@ -8,9 +8,29 @@
 </ion-header>
 <ion-content >
   <div id="doc" #doc>
- <ion-text color="primary" class="ion-text-center">
-    <h1> {{username | uppercase}} Priority </h1>
-  </ion-text>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-text color="primary" class="ion-text-center">
+          <h1> {{username | uppercase}} Priority </h1>
+        </ion-text>
+        <canvas id="canvas"  class="example-boundary" #imageCanvas>
+        </canvas>
+
+        <canvas id="canvasM"  class="example-boundary" #imageCanvasMiddle>
+        </canvas>
+
+        <canvas id="canvasL"  class="example-boundary" #imageCanvasMiddle>
+        </canvas>
+         
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>
+
+  <!-- <div id="doc" #doc>
+ 
 <ion-text class="ion-text-center">
   <p> <strong style="color: red"> {{username}} </strong> is <strong style="color: green;">{{wordOne}}</strong>  </p>
 <p> <strong style="color: red"> {{username}}'s </strong>partner is <strong style="color: green;"> {{wordTwo}}</strong> </p>
@@ -26,7 +46,7 @@
 <p> <strong style="color: red"> {{username}} </strong> will remember<strong style="color: green;">{{greenValue}}</strong> for rest of the life</p>
 </ion-text>
 
-</div>
+</div> -->
   <!-- <ion-button (click)="sendmail()" expand="block" fill="clear" shape="round">
     Click me
   </ion-button> -->
