@@ -26,14 +26,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDXK8zoD3NY2hBcysLAEyzaAK36v3iFoTg",
-  authDomain: "doctor-ca445.firebaseapp.com",
-  databaseURL: "https://doctor-ca445.firebaseio.com",
-  projectId: "doctor-ca445",
-  storageBucket: "doctor-ca445.appspot.com",
-  messagingSenderId: "398311684583",
-  appId: "1:398311684583:web:90e02ad66c9cb3daca6542"
+const  firebaseConfig = {
+  apiKey: "AIzaSyB_59XKpXL_bFhA9CGZ_-dbJ5eGk1KupQs",
+  authDomain: "mindlabyrinth-84d32.firebaseapp.com",
+  projectId: "mindlabyrinth-84d32",
+  storageBucket: "mindlabyrinth-84d32.appspot.com",
+  messagingSenderId: "1068500924245",
+  appId: "1:1068500924245:web:ab884b7d9c5b6fe077a1dc",
+  measurementId: "G-R1CS765GMB"
 };
 @NgModule({
   declarations: [AppComponent],

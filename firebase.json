@@ -1,11 +1,7 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "hosting": {
     "public": "www",
-    "site": "quizyappweb",
+    "site": "mindlabyrinth",
     "ignore": [
       "firebase.json",
       "**/.*",
