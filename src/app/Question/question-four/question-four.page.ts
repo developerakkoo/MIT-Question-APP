@@ -263,7 +263,7 @@ export class QuestionFourPage implements OnInit {
       fill: '#00000',
       fontSize: 18
     });
-    this._canvasMiddle.add(text);
+    this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordTwo, {
       left: 450,
@@ -271,7 +271,7 @@ export class QuestionFourPage implements OnInit {
       fill: '#00000',
       fontSize: 18
     });
-    this._canvasMiddle.add(text);
+    this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordThree, {
       left: 440,
@@ -279,7 +279,7 @@ export class QuestionFourPage implements OnInit {
       fill: '#00000',
       fontSize: 18
     });
-    this._canvasMiddle.add(text);
+    this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordFour, {
       left: 440,
@@ -287,7 +287,7 @@ export class QuestionFourPage implements OnInit {
       fill: '#00000',
       fontSize: 18
     });
-    this._canvasMiddle.add(text);
+    this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordFive, {
       left: 440,
@@ -295,7 +295,7 @@ export class QuestionFourPage implements OnInit {
       fill: '#00000',
       fontSize: 18
     });
-    this._canvasMiddle.add(text);
+    this._canvasPyramid.add(text);
 
 
     //Midle Layer TExt
@@ -337,6 +337,7 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasMiddle.add(text);
     this._canvasMiddle.renderAll();
+    this._canvasPyramid.renderAll();
 
   }
   random(array) {

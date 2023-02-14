@@ -24,6 +24,7 @@ export class CompleteTaskPage implements OnInit {
   isAreYouSureOpen: boolean = false;
   isShareInGroupOpen: boolean = false;
   isShareInGroupChatOpened: boolean = false;
+  isSeminarModal: boolean = false;
   bonusBooks:any[] = [
     // {
     //   bookImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5adcab162041559.63cf68c4f0405.jpg'
@@ -131,6 +132,9 @@ export class CompleteTaskPage implements OnInit {
     });
   }
 
+  closeSeminarModal(){
+    this.isSeminarModal = false;
+  }
   closeShareInGroupModal(){
     this.isShareInGroupOpen = false;
   }
@@ -175,6 +179,9 @@ export class CompleteTaskPage implements OnInit {
     console.log("All Books Array");
     console.log(this.booksArr);
     await this.data.set('isModalLoaded', false);
+    setTimeout(() =>{
+      this.isSeminarModal = true;
+    }, 5000)
     this.openTask();
     
     
@@ -196,32 +203,7 @@ export class CompleteTaskPage implements OnInit {
   }
   async presentAlertConfirm() {
     this.isShareInGroupOpen = true;
-    // const alert = await this.alertController.create({
-    //   header: 'Confirm!',
-    //   backdropDismiss: false,
-    //   message: 'Have you shared<strong> 60 seconds</strong> to unlock!!!',
-    //   buttons: [
-    //     {
-    //       text: 'Cancel',
-    //       role: 'cancel',
-    //       cssClass: 'secondary',
-    //       handler: () => {
-    //         console.log('Confirm Cancel: blah');
-    //       }
-    //     }, {
-    //       text: 'Okay',
-    //       handler: () => {
-    //         console.log('Confirm Okay');
-    // this.sound.buttonClick();
-    // this.showTimer = true;
 
-    //         this.openTask();
-    //       }
-    //     }
-    //   ]
-    // });
-  
-    // await alert.present();
   }
 
   async openTask(){

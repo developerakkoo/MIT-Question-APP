@@ -105,8 +105,8 @@ export class QuestionFivePage implements OnInit {
     }
     if(age == "below18"){
       this.audio.buttonClick();
-      this.isBelow18Open = true;
       this.isAbove18Open = false;
+      this.isBelow18Open =true;
       console.log("Open Below 18 page");
 
     }

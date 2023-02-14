@@ -428,7 +428,11 @@ else if(item == "Green"){
 
   async getDataStored() {
 
+    let loading = await this.loadingController.create({
+      message:"Loading..."
+    })
 
+    await loading.present();
     this.positiveItems = await this.data.get('pCount');
     this.negativeItems = await this.data.get('nCount');
     this.relativeCount = await this.data.get('rCount');
@@ -467,8 +471,9 @@ else if(item == "Green"){
     this.whiteValue = this.questionThree[3]['value'];
     this.greenValue = this.questionThree[4]['value'];
     this.logic();
-    setTimeout(() =>{
+    setTimeout(async () =>{
       this.getBooks();
+      await loading.dismiss();
     }, 5000)
 
 

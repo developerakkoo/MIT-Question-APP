@@ -37,14 +37,50 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <img style="height: 100%; width: 100%;" src="./../../../assets/data/are-you-sure-wb.jpg" alt="" srcset="">
+        <img style="height: 100%; width: 100%; position: relative;" src="./../../../assets/data/are-you-sure-wb.jpg" alt="" srcset="">
+        
+        <button style="position: absolute;
+        top: 359px;
+        left: 118px;
+        width: 50px;
+        height: 50px;
+        border-radius: 20px;
+        background-color: lightgreen;" (click)="yesBtn()">YES</button>
+
+<button style="position: absolute;
+top: 359px;
+left: 184px;
+width: 50px;
+height: 50px;
+border-radius: 20px;
+background-color: red;" (click)="noBtn()">NO</button>
+        <!-- <ion-button (click)="yesBtn()">
+          <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="noBtn()">
+          <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+        </ion-button> -->
+      </ion-content>
+      
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isSeminarModal" style="height: 500px; width: 500px;">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeAreYouSure()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <img style="height: 100%; width: 100%;" src="./../../../assets/data/Free-seminar-without-button.jpg" alt="" srcset="">
       </ion-content>
       <ion-button (click)="yesBtn()">
         <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
       </ion-button>
-      <ion-button (click)="noBtn()">
-        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
-      </ion-button>
+     
     </ng-template>
   </ion-modal>
 
