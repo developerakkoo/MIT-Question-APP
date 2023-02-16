@@ -16,13 +16,13 @@
       <ion-list>
         <ion-list-header>
         </ion-list-header>
-        <ion-item *ngFor="let item of allItems | filterBy: userFilter" (click)="onDismissByValue(item)">
+        <ion-item *ngFor="let item of words | async | filterBy: userFilter" (click)="onDismissByValue(item)">
           <ion-label> {{item.value}} </ion-label>
-          <!-- <span> {{item.emoji}} </span> -->
+          <span> {{item.emoji}} </span>
         </ion-item>
-        <!-- <ion-button *ngIf="(allItems | async | filterBy: userFilter).length === 0" (click)="saveWord()" expand="block" fill="outline">
+        <ion-button *ngIf="(words | async | filterBy: userFilter).length === 0" (click)="saveWord()" expand="block" fill="outline">
         Add word
-        </ion-button> -->
+        </ion-button>
       </ion-list>
     </ion-col>
   </ion-row>

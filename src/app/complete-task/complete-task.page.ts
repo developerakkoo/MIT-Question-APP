@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class CompleteTaskPage implements OnInit {
   @ViewChild('btnA', {static: false}) btnA: ElementRef;
+  @ViewChild('btn', {static: false}) btnSemindar: ElementRef;
   openTaskInterval;
   count:number = 10;
   showTimer: boolean = false;
@@ -80,7 +81,6 @@ export class CompleteTaskPage implements OnInit {
               }
 
   async ngOnInit() {
-    this.presentAlertModal();
     this.bonusBooks = await  this.data.get('BBooks');
     this.isShareInGroupChatOpened = await this.data.get('isModalLoaded');
     this.type = await this.data.get("gender");
@@ -178,11 +178,14 @@ export class CompleteTaskPage implements OnInit {
 
     console.log("All Books Array");
     console.log(this.booksArr);
+    this.booksArr.forEach((el) =>{
+      console.log(el);
+        this.bonusBooks.push(el);
+    })
     await this.data.set('isModalLoaded', false);
     setTimeout(() =>{
       this.isSeminarModal = true;
     }, 5000)
-    this.openTask();
     
     
   }
@@ -198,7 +201,12 @@ export class CompleteTaskPage implements OnInit {
     this.btnA.nativeElement.click();
     await this.data.set("isModalLoaded", true);
     this.isShareInGroupChatOpened = true;
-    this.openTask();
+``   
+  }
+
+  async openWhatsappSeminar(){
+    console.log(this.btnSemindar);
+    this.btnSemindar.nativeElement.click();
    
   }
   async presentAlertConfirm() {
@@ -207,26 +215,26 @@ export class CompleteTaskPage implements OnInit {
   }
 
   async openTask(){
-    let loading = await this.loadingController.create({
-      message:"Complete the task..."
-    })
-    await loading.present();
-    var options = "location=yes,hidden=yes,beforeload=yes";
-    let browser = this.iab.create(this.tasks[0]['taskLink'],"_blank", options);
+    // let loading = await this.loadingController.create({
+    //   message:"Complete the task..."
+    // })
+    // await loading.present();
+    // var options = "location=yes,hidden=yes,beforeload=yes";
+    // let browser = this.iab.create(this.tasks[0]['taskLink'],"_blank", options);
 
-    this.openTaskInterval = setInterval(async() =>{
-      this.count -= 1;
-      console.log(this.count);
+    // this.openTaskInterval = setInterval(async() =>{
+    //   this.count -= 1;
+    //   console.log(this.count);
       
-      if(this.count == 0){
-    this.isTaskCompleted = true;
-    await loading.dismiss();
-    this.showTimer = false;
+    //   if(this.count == 0){
+    // this.isTaskCompleted = true;
+    // await loading.dismiss();
+    // this.showTimer = false;
 
-    clearInterval(this.openTaskInterval);
+    // clearInterval(this.openTaskInterval);
 
-      }
-    }, 1000)
+    //   }
+    // }, 1000)
 
   }
 

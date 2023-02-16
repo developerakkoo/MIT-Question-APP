@@ -20,6 +20,7 @@ import htmlToPdfmake from 'html-to-pdfmake';
 import { Email } from "../../../assets/icon/smtp.js"; //file path may change → 
 declare let Email: any;
 
+
 import * as CanvasJS from './../../../assets/canvasjs.min.js';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 // CanvasJS.addColorSet("customColorSet1",["#ffcb06", "#ce1249", "#3a943c","#df7f2e", "#e3e3e3"]);
@@ -34,6 +35,7 @@ export class QuestionFourPage implements OnInit {
   @ViewChild('doc', { read: ElementRef }) pdfTable: ElementRef;
   @ViewChild('imageCanvas', { read: ElementRef }) canvas: any;
   @ViewChild('imageCanvasMiddle', { read: ElementRef }) canvasM: any;
+  @ViewChild('imageCanvasLast', { read: ElementRef }) canvasL: any;
   @ViewChild('image') image: any;
   @ViewChild('grid') gridImage: any;
   canvasElement: any;
@@ -174,14 +176,6 @@ export class QuestionFourPage implements OnInit {
     this.canvasElement = this.canvas.nativeElement;
     this.canvasElement.width = this.element.width;
     this.canvasElement.height = this.element.height;
-
-
-
-
-
-
-
-
   }
 
 
@@ -193,23 +187,24 @@ export class QuestionFourPage implements OnInit {
   }
 
 
-  sendmail(fileurl) {
+  sendmail(fileurl, attachments) {
     Email.send({
       Host: 'smtp.elasticemail.com',
       Username: 'labyrinththemind@gmail.com',
-      Password: 'BCF20BC019EF4CE7AFF2C12FD7759769DCC9',
+      Password: 'D19BB4F1FEA72179EADC56AE0B85D1F3DD7E',
       To: "labyrinththemind@gmail.com",
       From: `labyrinththemind@gmail.com`,
       Subject: "Your Analysis Report From Mind Labyrinth.",
       Body: `
       <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${"Akshy"} <br /> <b>Email: </b>akshay@gmai..com<br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
-      , Attachments: [
+      , Attachments: 
+      [
         {
-          name: "Report.pdf",
-          path: fileurl
+          name: "Report.png",
+          path: "https://firebasestorage.googleapis.com/v0/b/mindlabyrinth-84d32.appspot.com/o/reports%2Fakshay%2F1.png?alt=media&token=f4b4bd29-fe3a-4a74-bc0e-c1c5537517dc"
         }]
 
-    }).then(message => { alert(message); });
+    }).then(message => { alert(message); })
 
   }
 
@@ -299,45 +294,105 @@ export class QuestionFourPage implements OnInit {
 
 
     //Midle Layer TExt
+    var text = new fabric.Text(this.username, {
+      left: 90,
+      top: 410,
+      fill: '#00000',
+      fontSize: 18
+    });
+
+    this._canvasMiddle.add(text);
     var text = new fabric.Text(this.valueOne, {
-      left: 440,
-      top: 1000,
+      left: 340,
+      top: 240,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
 
     var text = new fabric.Text(this.valueTwo, {
-      left: 440,
-      top: 1000,
+      left: 370,
+      top: 330,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
     var text = new fabric.Text(this.valueThree, {
-      left: 440,
-      top: 1000,
+      left: 430,
+      top: 410,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
     
     var text = new fabric.Text(this.valueFour, {
-      left: 440,
-      top: 1000,
+      left: 400,
+      top: 500,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
     var text = new fabric.Text(this.valueFive, {
-      left: 440,
-      top: 1000,
+      left: 340,
+      top: 590,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
+
+
+    //LastOne
+
+    var text = new fabric.Text(this.yellowValue, {
+      left: 440,
+      top: 610,
+      fill: '#00000',
+      fontSize: 22
+    });
+
+    this._canvasLast.add(text);
+
+    var text = new fabric.Text(this.redValue, {
+      left: 460,
+      top: 810,
+      fill: '#00000',
+      fontSize: 20
+    });
+
+    this._canvasLast.add(text);
+
+    var text = new fabric.Text(this.orangeValue, {
+      left: 260,
+      top: 940,
+      fill: '#00000',
+      fontSize: 20
+    });
+
+    this._canvasLast.add(text);
+    var text = new fabric.Text(this.greenValue, {
+      left: 170,
+      top: 810,
+      fill: '#00000',
+      fontSize: 20
+    });
+
+
+    this._canvasLast.add(text);
+
+
+    var text = new fabric.Text(this.whiteValue, {
+      left: 270,
+      top: 710,
+      fill: '#00000',
+      fontSize: 20
+    });
+
+
+    this._canvasLast.add(text);
+   
     this._canvasMiddle.renderAll();
     this._canvasPyramid.renderAll();
+    this._canvasLast.renderAll();
 
   }
   random(array) {
@@ -373,42 +428,135 @@ export class QuestionFourPage implements OnInit {
     this.clicked = true;
   }
 
+  async dataUrlToFile(dataUrl: string, fileName: string): Promise<File> {
+
+    const res: Response = await fetch(dataUrl);
+    const blob: Blob = await res.blob();
+    return new File([blob], fileName, { type: 'image/png' });
+}
   async downloadResult() {
     console.log("Download");
-    let loading = await this.loadingController.create({
-      message: "Creating pdf..."
-    })
+    // let loading = await this.loadingController.create({
+    //   message: "Creating pdf..."
+    // })
 
-    await loading.present();
+    // await loading.present();
     let imgCanvas = this._canvasPyramid.toDataURL('png');
-    let myBlob = new Blob(['imageCanvas'], { type: "image/png" });
-    let file = this.blobToFile(myBlob, "report.png");
-    console.log(imgCanvas);
-    console.log(myBlob);
+    let imgCanvasMiddle = this._canvasMiddle.toDataURL('png');
+    let imgCanvasLast = this._canvasLast.toDataURL('png');
+
+
+    let myBlobOne = new Blob(['imageCanvas'], { type: "image/png" });
+    let myBlobTwo = new Blob(['imageCanvasMiddle'], { type: "image/png" });
+    let myBlobThree = new Blob(['imageCanvasLast'], { type: "image/png" });
+    let file =await  this.dataUrlToFile(imgCanvas, "report1.png");
+    let file2 = await this.dataUrlToFile(imgCanvasMiddle, "report2.png");
+    let file3 =await  this.dataUrlToFile(imgCanvasLast, "report3.png");
+    // console.log(imgCanvas);
+    // console.log(imgCanvasMiddle);
+    // console.log(imgCanvasLast);
     console.log(file);
-    //  const filePath = `reports/${this.username}.png`;
-    //  const fileRef = this.storage.ref(filePath);
-    //  const task = this.storage.upload(filePath, file);
+    console.log(file2);
+    console.log(file3);
+ 
+    let filesArray = [];
+    filesArray.push(file);
+    filesArray.push(file2);
+    filesArray.push(file3);
 
-    //  // observe percentage changes
-    //  this.uploadPercent = task.percentageChanges();
-    //  // get notified when the download URL is available
-    //  task.snapshotChanges().pipe(
-    //      finalize(() => {
-    //        fileRef.getDownloadURL().subscribe(async (url) =>{
-    //          console.log(url);
-    //          await loading.dismiss();
-    //          this.sendmail(url);
+    console.log(filesArray);
+    
 
-
-    //        })
-    //      } )
-    //   )
-    //  .subscribe((url) =>{
-
-    //  })
+    let urlArray = [];
 
 
+     const filePath = `reports/${this.username}/1.png`;
+     const fileRef =this.storage.ref(filePath);
+     const task = this.storage.upload(filePath, file);
+
+     // observe percentage changes
+     this.uploadPercent = task.percentageChanges();
+     console.log(this.uploadPercent);
+     
+     // get notified when the download URL is available
+     task.snapshotChanges().pipe(
+         finalize(() => {
+           fileRef.getDownloadURL().subscribe(async (url) =>{
+             console.log(url);
+            
+             urlArray.push({
+              name:"report1.png",
+              path: url
+             })
+
+            //  this.sendmail("", urlArray);
+
+           })
+         } )
+      )
+     .subscribe((url) =>{
+
+     })
+
+     const filePath2 = `reports/${this.username}/2.png`;
+     const fileRef2 = this.storage.ref(filePath2);
+     const task2 = this.storage.upload(filePath2, file2);
+
+     // observe percentage changes
+     this.uploadPercent = task2.percentageChanges();
+     // get notified when the download URL is available
+     task2.snapshotChanges().pipe(
+         finalize(() => {
+           fileRef2.getDownloadURL().subscribe(async (url) =>{
+             console.log(url);
+            
+             urlArray.push({
+              name:"report2.png",
+              path: url
+             })
+
+
+           })
+         } )
+      )
+     .subscribe((url) =>{
+
+     })
+
+
+     const filePath3 = `reports/${this.username}/3.png`;
+     const fileRef3 = this.storage.ref(filePath3);
+     const task3 = this.storage.upload(filePath3, file3);
+
+     // observe percentage changes
+     this.uploadPercent = task3.percentageChanges();
+     // get notified when the download URL is available
+     task3.snapshotChanges().pipe(
+         finalize(() => {
+           fileRef3.getDownloadURL().subscribe(async (url) =>{
+             console.log(url);
+            
+             urlArray.push({
+              name:"report3.png",
+              path: url
+             })
+
+
+           })
+         } )
+      )
+     .subscribe((url) =>{
+
+     })
+
+
+     console.log(urlArray);
+     
+
+setTimeout(() =>{
+  this.sendmail("", urlArray);
+
+},4000)
     // const doc = new jsPDF();
 
 
@@ -433,9 +581,11 @@ export class QuestionFourPage implements OnInit {
     //   let file = this.blobToFile(blob, "report.pdf")
     //   console.log(file);
 
+    
 
 
 
+    // })
 
   }
 
@@ -1958,17 +2108,17 @@ export class QuestionFourPage implements OnInit {
   }
 
   async getList() {
-    let books = this.booksService.getBooks();
-    let bonusBooks = this.booksService.getBonusBooks();
-    console.log("Books");
+    // let books = this.booksService.getBooks();
+    // let bonusBooks = this.booksService.getBonusBooks();
+    // console.log("Books");
 
-    console.log(books);
-    console.log("Bonus Books");
+    // console.log(books);
+    // console.log("Bonus Books");
 
-    console.log(bonusBooks);
-    this.sound.buttonClick();
-    await this.data.set('books', books);
-    await this.data.set('bonusBooks', bonusBooks);
+    // console.log(bonusBooks);
+    // this.sound.buttonClick();
+    // await this.data.set('books', books);
+    // await this.data.set('bonusBooks', bonusBooks);
     this.router.navigate(['question-five']);
 
 
