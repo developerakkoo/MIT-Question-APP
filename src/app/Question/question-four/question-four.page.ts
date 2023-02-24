@@ -187,24 +187,28 @@ export class QuestionFourPage implements OnInit {
   }
 
 
-  sendmail(fileurl, attachments) {
+  async sendmail(fileurl, attachments) {
+    let loading = await this.loadingController.create({
+      message:"Creating your Report..."
+    })
+
+    await loading.present();
     Email.send({
       Host: 'smtp.elasticemail.com',
-      Username: 'labyrinththemind@gmail.com',
-      Password: 'D19BB4F1FEA72179EADC56AE0B85D1F3DD7E',
-      To: "labyrinththemind@gmail.com",
-      From: `labyrinththemind@gmail.com`,
+      // Username: 'labyrinththemind@gmail.com',
+      // Password: 'D19BB4F1FEA72179EADC56AE0B85D1F3DD7E',
+      Username:'developerakshayjadhav@gmail.com',
+      Password:'87A4F69473522DB22AA13603F1150E29F278',
+      To: "developerakshayjadhav@gmail.com",
+      From: `developerakshayjadhav@gmail.com`,
       Subject: "Your Analysis Report From Mind Labyrinth.",
       Body: `
-      <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${"Akshy"} <br /> <b>Email: </b>akshay@gmai..com<br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
-      , Attachments: 
-      [
-        {
-          name: "Report.png",
-          path: "https://firebasestorage.googleapis.com/v0/b/mindlabyrinth-84d32.appspot.com/o/reports%2Fakshay%2F1.png?alt=media&token=f4b4bd29-fe3a-4a74-bc0e-c1c5537517dc"
-        }]
-
-    }).then(message => { alert(message); })
+      <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${this.username} <br /> <b>Email: </b> ${this.email} <br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
+      , Attachments: attachments
+    }).then(async message => { console.log(message);
+      await loading.dismiss();
+      this.router.navigate(['question-five']);
+    })
 
   }
 
@@ -253,7 +257,7 @@ export class QuestionFourPage implements OnInit {
 
 
     var text = new fabric.Text(this.wordOne, {
-      left: 440,
+      left: 460,
       top: 600,
       fill: '#00000',
       fontSize: 18
@@ -269,7 +273,7 @@ export class QuestionFourPage implements OnInit {
     this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordThree, {
-      left: 440,
+      left: 470,
       top: 800,
       fill: '#00000',
       fontSize: 18
@@ -277,7 +281,7 @@ export class QuestionFourPage implements OnInit {
     this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordFour, {
-      left: 440,
+      left: 470,
       top: 900,
       fill: '#00000',
       fontSize: 18
@@ -285,7 +289,7 @@ export class QuestionFourPage implements OnInit {
     this._canvasPyramid.add(text);
 
     var text = new fabric.Text(this.wordFive, {
-      left: 440,
+      left: 470,
       top: 1000,
       fill: '#00000',
       fontSize: 18
@@ -362,7 +366,7 @@ export class QuestionFourPage implements OnInit {
     this._canvasLast.add(text);
 
     var text = new fabric.Text(this.orangeValue, {
-      left: 260,
+      left: 390,
       top: 940,
       fill: '#00000',
       fontSize: 20
@@ -382,7 +386,7 @@ export class QuestionFourPage implements OnInit {
 
     var text = new fabric.Text(this.whiteValue, {
       left: 270,
-      top: 710,
+      top: 650,
       fill: '#00000',
       fontSize: 20
     });
@@ -479,7 +483,7 @@ export class QuestionFourPage implements OnInit {
      console.log(this.uploadPercent);
      
      // get notified when the download URL is available
-     task.snapshotChanges().pipe(
+    await  task.snapshotChanges().pipe(
          finalize(() => {
            fileRef.getDownloadURL().subscribe(async (url) =>{
              console.log(url);
@@ -505,7 +509,7 @@ export class QuestionFourPage implements OnInit {
      // observe percentage changes
      this.uploadPercent = task2.percentageChanges();
      // get notified when the download URL is available
-     task2.snapshotChanges().pipe(
+     await task2.snapshotChanges().pipe(
          finalize(() => {
            fileRef2.getDownloadURL().subscribe(async (url) =>{
              console.log(url);
@@ -531,7 +535,7 @@ export class QuestionFourPage implements OnInit {
      // observe percentage changes
      this.uploadPercent = task3.percentageChanges();
      // get notified when the download URL is available
-     task3.snapshotChanges().pipe(
+     await task3.snapshotChanges().pipe(
          finalize(() => {
            fileRef3.getDownloadURL().subscribe(async (url) =>{
              console.log(url);
@@ -550,13 +554,18 @@ export class QuestionFourPage implements OnInit {
      })
 
 
-     console.log(urlArray);
+     setTimeout(() =>{
+       console.log(urlArray);
+       this.sendmail("", urlArray);
+
+
+     },5000)
      
 
-setTimeout(() =>{
-  this.sendmail("", urlArray);
+// setTimeout(() =>{
+//   this.sendmail("", urlArray);
 
-},4000)
+// },4000)
     // const doc = new jsPDF();
 
 
@@ -2119,7 +2128,7 @@ setTimeout(() =>{
     // this.sound.buttonClick();
     // await this.data.set('books', books);
     // await this.data.set('bonusBooks', bonusBooks);
-    this.router.navigate(['question-five']);
+    this.downloadResult();
 
 
   }
