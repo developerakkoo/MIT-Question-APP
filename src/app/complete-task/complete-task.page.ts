@@ -16,11 +16,13 @@ import { Observable } from 'rxjs';
 export class CompleteTaskPage implements OnInit {
   @ViewChild('btnA', {static: false}) btnA: ElementRef;
   @ViewChild('btn', {static: false}) btnSemindar: ElementRef;
+  @ViewChild('zerodhabtn', {static: false}) btnZerodha: ElementRef;
   openTaskInterval;
   count:number = 10;
   showTimer: boolean = false;
   secondsInaterval;
   seconds =  60;
+  isZerodhaModal: boolean = false;
   isTaskCompleted: boolean = false;
   isAreYouSureOpen: boolean = false;
   isShareInGroupOpen: boolean = false;
@@ -143,6 +145,10 @@ export class CompleteTaskPage implements OnInit {
     this.isAreYouSureOpen = false;
   }
 
+  closeZerodhaModal(){
+    this.isZerodhaModal = false;
+  }
+
   async yesBtn(){
     this.isAreYouSureOpen = false;
     //show the boooks
@@ -183,9 +189,14 @@ export class CompleteTaskPage implements OnInit {
         this.bonusBooks.push(el);
     })
     await this.data.set('isModalLoaded', false);
+
+    setTimeout(() =>{
+      this.isZerodhaModal = true;
+    }, 3000)
+
     setTimeout(() =>{
       this.isSeminarModal = true;
-    }, 5000)
+    }, 10000)
     
     
   }
@@ -195,6 +206,9 @@ export class CompleteTaskPage implements OnInit {
     this.isAreYouSureOpen = false;
   }
 
+  openWhatsappZerodha(){
+
+  }
 
   async openWhatsappB(){
     console.log(this.btnA);

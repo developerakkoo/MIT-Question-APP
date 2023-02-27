@@ -30,7 +30,7 @@
   </ion-modal>
 
 
-  <ion-modal class="mymodal" [isOpen]="isAreYouSureOpen">
+  <ion-modal  class="mymodal" [isOpen]="isAreYouSureOpen">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -96,6 +96,31 @@ background-color: red;" (click)="noBtn()">NO</button>
   </ion-modal>
 
 
+  <ion-modal [isOpen]="isZerodhaModal" style="--height: 740px; --width: 360px;">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeZerodhaModal()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <img style="height: 100%; width: 100%;" src="./../../../assets/data/zerodha-blank-image.jpg" alt=""
+          srcset="">
+      </ion-content>
+     
+      <a style="display: none;" id="sharelink"
+        href="http://api.whatsapp.com/send?phone=7972100451&text=Zerodha Account opened." class="wa_btn wa_btn_s"
+        #zerodhabtn>Share on whatsapp</a>
+      <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
+      <ion-button color="none" style="background-image: url('./../../assets/data/button.png');
+  background-size: cover; position: absolute; width: 270px; height: 70px; top: 401px; left: 109px;"
+        (click)="openWhatsappZerodha()">
+
+      </ion-button>
+    </ng-template>
+  </ion-modal>
 
   <ion-list>
     <ion-list-header>

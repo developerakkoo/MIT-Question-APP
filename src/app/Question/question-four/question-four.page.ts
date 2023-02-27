@@ -195,12 +195,12 @@ export class QuestionFourPage implements OnInit {
     await loading.present();
     Email.send({
       Host: 'smtp.elasticemail.com',
-      // Username: 'labyrinththemind@gmail.com',
-      // Password: 'D19BB4F1FEA72179EADC56AE0B85D1F3DD7E',
-      Username:'developerakshayjadhav@gmail.com',
-      Password:'87A4F69473522DB22AA13603F1150E29F278',
-      To: "developerakshayjadhav@gmail.com",
-      From: `developerakshayjadhav@gmail.com`,
+      Username: 'labyrinththemind@gmail.com',
+      Password: 'D19BB4F1FEA72179EADC56AE0B85D1F3DD7E',
+      // Username:'developerakshayjadhav@gmail.com',
+      // Password:'87A4F69473522DB22AA13603F1150E29F278',
+      To: "labyrinththemind@gmail.com",
+      From: `labyrinththemind@gmail.com`,
       Subject: "Your Analysis Report From Mind Labyrinth.",
       Body: `
       <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${this.username} <br /> <b>Email: </b> ${this.email} <br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
@@ -256,7 +256,7 @@ export class QuestionFourPage implements OnInit {
     this.greenValue = this.questionThree[4]['value'];
 
 
-    var text = new fabric.Text(this.wordOne, {
+    var text = new fabric.Text(this.valueOne, {
       left: 460,
       top: 600,
       fill: '#00000',
@@ -264,7 +264,7 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasPyramid.add(text);
 
-    var text = new fabric.Text(this.wordTwo, {
+    var text = new fabric.Text(this.valueTwo, {
       left: 450,
       top: 700,
       fill: '#00000',
@@ -272,7 +272,7 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasPyramid.add(text);
 
-    var text = new fabric.Text(this.wordThree, {
+    var text = new fabric.Text(this.valueThree, {
       left: 470,
       top: 800,
       fill: '#00000',
@@ -280,7 +280,7 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasPyramid.add(text);
 
-    var text = new fabric.Text(this.wordFour, {
+    var text = new fabric.Text(this.valueFour, {
       left: 470,
       top: 900,
       fill: '#00000',
@@ -288,7 +288,7 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasPyramid.add(text);
 
-    var text = new fabric.Text(this.wordFive, {
+    var text = new fabric.Text(this.valueFive, {
       left: 470,
       top: 1000,
       fill: '#00000',
@@ -306,7 +306,7 @@ export class QuestionFourPage implements OnInit {
     });
 
     this._canvasMiddle.add(text);
-    var text = new fabric.Text(this.valueOne, {
+    var text = new fabric.Text(this.wordOne, {
       left: 340,
       top: 240,
       fill: '#00000',
@@ -314,14 +314,14 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasMiddle.add(text);
 
-    var text = new fabric.Text(this.valueTwo, {
+    var text = new fabric.Text(this.wordTwo, {
       left: 370,
       top: 330,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
-    var text = new fabric.Text(this.valueThree, {
+    var text = new fabric.Text(this.wordThree, {
       left: 430,
       top: 410,
       fill: '#00000',
@@ -329,14 +329,14 @@ export class QuestionFourPage implements OnInit {
     });
     this._canvasMiddle.add(text);
     
-    var text = new fabric.Text(this.valueFour, {
+    var text = new fabric.Text(this.wordFour, {
       left: 400,
       top: 500,
       fill: '#00000',
       fontSize: 18
     });
     this._canvasMiddle.add(text);
-    var text = new fabric.Text(this.valueFive, {
+    var text = new fabric.Text(this.wordFive, {
       left: 340,
       top: 590,
       fill: '#00000',
@@ -440,11 +440,11 @@ export class QuestionFourPage implements OnInit {
 }
   async downloadResult() {
     console.log("Download");
-    // let loading = await this.loadingController.create({
-    //   message: "Creating pdf..."
-    // })
+    let loading = await this.loadingController.create({
+      message: "Creating pdf..."
+    })
 
-    // await loading.present();
+    await loading.present();
     let imgCanvas = this._canvasPyramid.toDataURL('png');
     let imgCanvasMiddle = this._canvasMiddle.toDataURL('png');
     let imgCanvasLast = this._canvasLast.toDataURL('png');
@@ -554,8 +554,10 @@ export class QuestionFourPage implements OnInit {
      })
 
 
-     setTimeout(() =>{
+    
+     setTimeout(async() =>{
        console.log(urlArray);
+       await loading.dismiss();
        this.sendmail("", urlArray);
 
 

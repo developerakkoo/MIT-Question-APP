@@ -22,6 +22,10 @@ export class QuestionFivePage implements OnInit {
   gender ="male";
   age = "above18";
   email;
+  tehsil;
+  state;
+  district;
+  pincode;
   occupation = 'Health Care';
   @ViewChild('btnB', {static: false}) btnB: ElementRef;
   @ViewChild('btnA', {static: false}) btnA: ElementRef;
@@ -57,7 +61,11 @@ export class QuestionFivePage implements OnInit {
                   number: this.number,
                   age: this.age,
                   gender: this.gender,
-                  occupation: this.occupation
+                  occupation: this.occupation,
+                  state: this.state,
+                  pincode: this.pincode,
+                  district: this.district,
+                  tehsil: this.tehsil
                 }
                 this.itemsCollection.doc(id).set({...obj, key: id}).then((data) =>{
                   console.log(data);
