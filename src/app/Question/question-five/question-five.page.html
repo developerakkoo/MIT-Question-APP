@@ -94,23 +94,31 @@
       </ion-item>
 
       <ion-item>
+
         <ion-label>State</ion-label>
-        <ion-input [(ngModel)]="state"></ion-input>
-      </ion-item>
+        <ion-select (ionChange)="stateEvent($event)" value="Maharashtra" multiple="false" placeholder="Select Occupation">
+          <ion-select-option value="Maharashtra">Maharashtra</ion-select-option>
+          <ion-select-option value="Andra Pradesh">Andra Pradesh</ion-select-option>
+          <ion-select-option value="Haryana">Haryana</ion-select-option>
+          <ion-select-option value="Manipur">Manipur</ion-select-option>
+          <ion-select-option value="Arunachal Pradesh">Arunachal Pradesh</ion-select-option>
+          <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+        </ion-select>
+       </ion-item>
 
       <ion-item>
         <ion-label>District</ion-label>
-        <ion-input [(ngModel)]="district"></ion-input>
+        <ion-input [(ngModel)]="district" required="true"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Tehsil</ion-label>
-        <ion-input [(ngModel)]="tehsil"></ion-input>
+        <ion-input [(ngModel)]="tehsil" required="true"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Pincode</ion-label>
-        <ion-input type="number" [(ngModel)]="pincode"></ion-input>
+        <ion-input type="number" [(ngModel)]="pincode" required="true"></ion-input>
       </ion-item>
    <ion-item>
 

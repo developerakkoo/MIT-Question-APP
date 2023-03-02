@@ -1,3 +1,4 @@
+import { Below18withoutmhPage } from './../../modal/below18withoutmh/below18withoutmh.page';
 import { Above18Page } from './../../modal/above18/above18.page';
 import { ModalController } from '@ionic/angular';
 import { DataService } from './../../data.service';
@@ -23,7 +24,7 @@ export class QuestionFivePage implements OnInit {
   age = "above18";
   email;
   tehsil;
-  state;
+  state:string = "Maharashtra";
   district;
   pincode;
   occupation = 'Health Care';
@@ -36,6 +37,7 @@ export class QuestionFivePage implements OnInit {
   constructor(private modalController: ModalController,
               private afs: AngularFirestore,
               private audio: AudioService,
+              
               private router: Router,
               private data: DataService) {
                 this.itemsCollection = afs.collection<any>('profiles');
@@ -44,7 +46,7 @@ export class QuestionFivePage implements OnInit {
 
 
               async ngOnInit() {
-                this.age = await this.data.get("age");
+                // this.age = await this.data.get("age");
                 this.email = await this.data.get("email");
                 this.number = await this.data.get("number");
                 this.occupation = await this.data.get("occupation");
@@ -104,18 +106,22 @@ export class QuestionFivePage implements OnInit {
     // this.router.navigate(['complete-task']);
     if(age == "above18"){
       // this.presentModalAbove18();
-      this.isAbove18Open = true;
-      this.isBelow18Open = false;
+      this.presentModalAbove18();
       this.audio.buttonClick();
 
       console.log("Open Above 18 page");
       
-    }
-    if(age == "below18"){
+     }
+     if(age == "below18"){
       this.audio.buttonClick();
-      this.isAbove18Open = false;
-      this.isBelow18Open =true;
-      console.log("Open Below 18 page");
+      this.presentModalBelow18WithoutMaharashtra();
+      console.log("Open Below 18 page without maha");
+
+    }
+    if(age == "below18" && this.state == "Maharashtra"){
+      this.audio.buttonClick();
+      this.presentModalBelow18();
+      console.log("Open Below 18 page with maha");
 
     }
   }
@@ -127,6 +133,16 @@ export class QuestionFivePage implements OnInit {
   closeBelow18(){
     this.belowModal.dismiss();
   }
+  async presentModalBelow18WithoutMaharashtra() {
+    const modal = await this.modalController.create({
+    component: Below18withoutmhPage,
+    componentProps: { value: 123 }
+    });
+  
+    await modal.present();
+  
+  }
+
   async presentModalAbove18() {
     const modal = await this.modalController.create({
     component: Above18Page,
@@ -138,6 +154,8 @@ export class QuestionFivePage implements OnInit {
   }
 
   async presentModalBelow18() {
+    console.log("Present modal below 18");
+    
     const modal = await this.modalController.create({
     component: Below18Page,
     componentProps: { value: 123 }
@@ -156,6 +174,10 @@ export class QuestionFivePage implements OnInit {
     console.log(ev.detail.value);
     this.age = ev.detail.value;
     
+  }
+
+  stateEvent(ev){
+    this.state = ev.detail.value;
   }
 
   occupationEvent(ev){

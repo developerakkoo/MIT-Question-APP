@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'below18',
     loadChildren: () => import('./modal/below18/below18.module').then( m => m.Below18PageModule)
   },
+  {
+    path: 'below18withoutmh',
+    loadChildren: () => import('./modal/below18withoutmh/below18withoutmh.module').then( m => m.Below18withoutmhPageModule)
+  },
 ];
 
 @NgModule({

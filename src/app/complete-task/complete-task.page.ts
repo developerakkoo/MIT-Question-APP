@@ -22,7 +22,7 @@ export class CompleteTaskPage implements OnInit {
   showTimer: boolean = false;
   secondsInaterval;
   seconds =  60;
-  isZerodhaModal: boolean = false;
+  isZerodhaModal: boolean = true;
   isTaskCompleted: boolean = false;
   isAreYouSureOpen: boolean = false;
   isShareInGroupOpen: boolean = false;
@@ -190,9 +190,9 @@ export class CompleteTaskPage implements OnInit {
     })
     await this.data.set('isModalLoaded', false);
 
-    setTimeout(() =>{
-      this.isZerodhaModal = true;
-    }, 3000)
+    // setTimeout(() =>{
+    //   this.isZerodhaModal = true;
+    // }, 3000)
 
     setTimeout(() =>{
       this.isSeminarModal = true;
@@ -207,6 +207,8 @@ export class CompleteTaskPage implements OnInit {
   }
 
   openWhatsappZerodha(){
+    this.isZerodhaModal = false;
+    this.btnZerodha.nativeElement.click();
 
   }
 

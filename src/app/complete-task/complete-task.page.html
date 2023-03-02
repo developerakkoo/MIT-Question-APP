@@ -17,7 +17,7 @@
       <ion-content class="ion-padding">
         <img style="height: 100%; width: 100%;" src="./../../../assets/data/Kindly-Share-in-3-groups-common.jpg" alt=""
           srcset="">
-        <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send" class="wa_btn wa_btn_s" #btnA>Share
+        <a style="display: none;" id="sharelink" href="http://api.whatsapp.com/send?phone=7972100451&text=https://mindlabyrinth.web.app/" class="wa_btn wa_btn_s" #btnA>Share
           on whatsapp</a>
         <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
         <ion-button color="none" style="background-image: url('./../../assets/data/button.png');
@@ -88,7 +88,7 @@ background-color: red;" (click)="noBtn()">NO</button>
         #btn>Share on whatsapp</a>
       <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
       <ion-button color="none" style="background-image: url('./../../assets/data/button.png');
-  background-size: cover; position: absolute; width: 270px; height: 70px; top: 401px; left: 109px;"
+  background-size: cover; position: absolute; width: 270px; height: 70px; top: 401px; left: 38px;"
         (click)="openWhatsappSeminar()">
 
       </ion-button>
@@ -96,7 +96,7 @@ background-color: red;" (click)="noBtn()">NO</button>
   </ion-modal>
 
 
-  <ion-modal [isOpen]="isZerodhaModal" style="--height: 740px; --width: 360px;">
+  <!-- <ion-modal [isOpen]="isZerodhaModal" style="--height: 740px; --width: 360px;">
     <ng-template>
       <ion-header>
         <ion-toolbar>
@@ -109,18 +109,23 @@ background-color: red;" (click)="noBtn()">NO</button>
         <img style="height: 100%; width: 100%;" src="./../../../assets/data/zerodha-blank-image.jpg" alt=""
           srcset="">
       </ion-content>
-     
+     <a style="font-size: 30px;
+     text-align: center;
+     position: absolute;
+     top: 220px;
+     left: 60px;
+     font-weight: bold;" (click)="closeZerodhaModal()" href="https://zerodha.com/open-account">ZERODHA LINK</a>
       <a style="display: none;" id="sharelink"
         href="http://api.whatsapp.com/send?phone=7972100451&text=Zerodha Account opened." class="wa_btn wa_btn_s"
         #zerodhabtn>Share on whatsapp</a>
-      <!-- <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset=""> -->
+     <img style="height: 100%; width: 100%;" src="./../../../assets/Supremo-vertical2.jpg" alt="" srcset="">
       <ion-button color="none" style="background-image: url('./../../assets/data/button.png');
-  background-size: cover; position: absolute; width: 270px; height: 70px; top: 401px; left: 109px;"
+  background-size: cover; position: absolute; width: 312px; height: 88px; top: 646px; left: 12px;"
         (click)="openWhatsappZerodha()">
 
       </ion-button>
     </ng-template>
-  </ion-modal>
+  </ion-modal> -->
 
   <ion-list>
     <ion-list-header>

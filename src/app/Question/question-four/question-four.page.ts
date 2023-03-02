@@ -16,7 +16,8 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { fabric, initAligningGuidelines } from "fabric";
 import htmlToPdfmake from 'html-to-pdfmake';
-
+// 12408D8448D03BC1EB379D56643F6DBD99204C7C8A19CAF3DF7E1D0C7DE2D4D5735A2826660AEC840A28EDD2C0159997
+//Elatic Email Htttp API key
 import { Email } from "../../../assets/icon/smtp.js"; //file path may change → 
 declare let Email: any;
 
@@ -195,15 +196,15 @@ export class QuestionFourPage implements OnInit {
     await loading.present();
     Email.send({
       Host: 'smtp.elasticemail.com',
-      Username: 'labyrinththemind@gmail.com',
-      Password: 'D19BB4F1FEA72179EADC56AE0B85D1F3DD7E',
-      // Username:'developerakshayjadhav@gmail.com',
-      // Password:'87A4F69473522DB22AA13603F1150E29F278',
+      // Username: 'labyrinththemind@gmail.com',
+      // Password: '5E16BF798D437241CE305C69A45439BD560D',
+      Username:'developerakshayjadhav@gmail.com',
+      Password:'87A4F69473522DB22AA13603F1150E29F278',
       To: "labyrinththemind@gmail.com",
-      From: `labyrinththemind@gmail.com`,
+      From: `developerakshayjadhav@gmail.com`,
       Subject: "Your Analysis Report From Mind Labyrinth.",
       Body: `
-      <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${this.username} <br /> <b>Email: </b> ${this.email} <br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b> `
+      <i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>${this.username} <br /> <b>Email: </b> ${this.email} <br /> <b>Subject: </b><br /> <b>Message:</b> <br /><br><br> <b>~End of Message.~</b>`
       , Attachments: attachments
     }).then(async message => { console.log(message);
       await loading.dismiss();
@@ -397,7 +398,7 @@ export class QuestionFourPage implements OnInit {
     this._canvasMiddle.renderAll();
     this._canvasPyramid.renderAll();
     this._canvasLast.renderAll();
-
+    this.getList();
   }
   random(array) {
     return this[Math.floor((Math.random() * array.length))];
