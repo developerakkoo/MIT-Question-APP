@@ -1,6 +1,6 @@
 import { Below18withoutmhPage } from './../../modal/below18withoutmh/below18withoutmh.page';
 import { Above18Page } from './../../modal/above18/above18.page';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { DataService } from './../../data.service';
 import { Router } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -36,6 +36,7 @@ export class QuestionFivePage implements OnInit {
   items: Observable<any[]>;
   constructor(private modalController: ModalController,
               private afs: AngularFirestore,
+              private toastController: ToastController,
               private audio: AudioService,
               
               private router: Router,
@@ -98,12 +99,24 @@ export class QuestionFivePage implements OnInit {
                 
               }
 
+
+              async presentToast(msg) {
+                const toast = await this.toastController.create({
+                  message: msg,
+                  duration: 2000
+                });
+                toast.present();
+              }
   async submit(){
     let age = await this.data.set("age", this.age);
     await this.data.set("gender", this.gender);
     await this.data.set("email", this.email);
     await this.data.set("occupation", this.occupation);
     // this.router.navigate(['complete-task']);
+
+    if(this.state == "" || this.tehsil == "" || this.pincode == "" || this.district == "" ){
+      this.presentToast("Please Fill All required values.")
+    }
     if(age == "above18"){
       // this.presentModalAbove18();
       this.presentModalAbove18();
@@ -136,7 +149,9 @@ export class QuestionFivePage implements OnInit {
   async presentModalBelow18WithoutMaharashtra() {
     const modal = await this.modalController.create({
     component: Below18withoutmhPage,
-    componentProps: { value: 123 }
+    componentProps: { value: 123 },
+    cssClass:'modal'
+
     });
   
     await modal.present();
@@ -146,7 +161,8 @@ export class QuestionFivePage implements OnInit {
   async presentModalAbove18() {
     const modal = await this.modalController.create({
     component: Above18Page,
-    componentProps: { value: 123 }
+    componentProps: { value: 123 },
+    cssClass:'modal'
     });
   
     await modal.present();
@@ -158,7 +174,9 @@ export class QuestionFivePage implements OnInit {
     
     const modal = await this.modalController.create({
     component: Below18Page,
-    componentProps: { value: 123 }
+    componentProps: { value: 123 },
+    cssClass:'modal'
+
     });
   
     await modal.present();

@@ -26,6 +26,20 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+.modal{
+    --height:570px;
+    --width:300px;
+    --background-size: cover;
+}
+
+.modal > img{
+    height: 100%;
+    width: 100%;
+}
+
+.modal > ion-button{
+    position: absolute; top: 427px; left: 53px;
+}
 ngx-otp-input{
     margin-left: 50%;
 }
