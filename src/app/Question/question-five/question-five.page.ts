@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Below18withoutmhPage } from './../../modal/below18withoutmh/below18withoutmh.page';
 import { Above18Page } from './../../modal/above18/above18.page';
 import { ModalController, ToastController } from '@ionic/angular';
@@ -16,6 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class QuestionFivePage implements OnInit {
 
+  ionicForm: FormGroup;
   isAbove18Open: boolean = false;
   isBelow18Open: boolean = false;
   @ViewChild('above18') aboveModal!: ModalController;
@@ -36,11 +38,17 @@ export class QuestionFivePage implements OnInit {
   items: Observable<any[]>;
   constructor(private modalController: ModalController,
               private afs: AngularFirestore,
+              private fb: FormBuilder,
               private toastController: ToastController,
               private audio: AudioService,
               
               private router: Router,
               private data: DataService) {
+                this.ionicForm = this.fb.group({
+                  district: ['',[Validators.required]],
+                  tehsil: ['',[Validators.required]],
+                  pincode: ['',[Validators.required]]
+                })
                 this.itemsCollection = afs.collection<any>('profiles');
                 this.items = this.itemsCollection.valueChanges();
                }
@@ -114,7 +122,7 @@ export class QuestionFivePage implements OnInit {
     await this.data.set("occupation", this.occupation);
     // this.router.navigate(['complete-task']);
 
-    if(this.state == "" || this.tehsil == "" || this.pincode == "" || this.district == "" ){
+    if(this.tehsil == "" || this.pincode == "" || this.district == "" ){
       this.presentToast("Please Fill All required values.")
     }
     if(age == "above18"){

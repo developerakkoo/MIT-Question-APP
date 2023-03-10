@@ -105,34 +105,37 @@
           <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
         </ion-select>
        </ion-item>
+       <ion-item>
 
-      <ion-item>
-        <ion-label>District</ion-label>
-        <ion-input [(ngModel)]="district" required="true"></ion-input>
-      </ion-item>
+        <ion-label>Occupation</ion-label>
+        <ion-select (ionChange)="occupationEvent($event)" value="Health Care" multiple="false" placeholder="Select Occupation">
+          <ion-select-option value="Health Care">Health Care</ion-select-option>
+          <ion-select-option value="Sports">Sports</ion-select-option>
+          <ion-select-option value="Education">Education</ion-select-option>
+          <ion-select-option value="Civil">Civil</ion-select-option>
+          <ion-select-option value="Sales">Sales</ion-select-option>
+          <ion-select-option value="Services">Services</ion-select-option>
+          <ion-select-option value="Social">Social</ion-select-option>
+        </ion-select>
+       </ion-item>
+       <form [formGroup]="ionicForm" (ngSubmit)="submit()">
+        <ion-item>
+          <ion-label position="floating">District<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="district" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Tehsil <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="tehsil" type="text"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Tehsil</ion-label>
-        <ion-input [(ngModel)]="tehsil" required="true"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Pincode</ion-label>
-        <ion-input type="number" [(ngModel)]="pincode" required="true"></ion-input>
-      </ion-item>
-   <ion-item>
-
-    <ion-label>Occupation</ion-label>
-    <ion-select (ionChange)="occupationEvent($event)" value="Health Care" multiple="false" placeholder="Select Occupation">
-      <ion-select-option value="Health Care">Health Care</ion-select-option>
-      <ion-select-option value="Sports">Sports</ion-select-option>
-      <ion-select-option value="Education">Education</ion-select-option>
-      <ion-select-option value="Civil">Civil</ion-select-option>
-      <ion-select-option value="Sales">Sales</ion-select-option>
-      <ion-select-option value="Services">Services</ion-select-option>
-      <ion-select-option value="Social">Social</ion-select-option>
-    </ion-select>
-   </ion-item>
+        <ion-item>
+          <ion-label position="floating">Pincode <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="pincode" type="number"></ion-input>
+        </ion-item>
+      
+       </form>
+   
+   
     </ion-col>
   </ion-row>
 </ion-grid>
@@ -140,7 +143,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar color="primary">
-  <ion-button expand="full" color="success" (click)="submit()" fill="clear" size="large" >
+  <ion-button expand="full" color="success" (click)="submit()" fill="clear" size="large" type="submit" [disabled]="ionicForm.invalid" >
     <ion-icon slot="end" name="chevron-forward" color="success"></ion-icon>
     Next
   </ion-button>

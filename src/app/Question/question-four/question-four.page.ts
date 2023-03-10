@@ -200,7 +200,7 @@ export class QuestionFourPage implements OnInit {
       // Password: '5E16BF798D437241CE305C69A45439BD560D',
       Username:'developerakshayjadhav@gmail.com',
       Password:'87A4F69473522DB22AA13603F1150E29F278',
-      To: "labyrinththemind@gmail.com",
+      To: "sbuddhisagar.ecti@gmail.com",
       From: `developerakshayjadhav@gmail.com`,
       Subject: "Your Analysis Report From Mind Labyrinth.",
       Body: `
@@ -400,6 +400,8 @@ export class QuestionFourPage implements OnInit {
     this._canvasLast.renderAll();
     this.getList();
   }
+
+
   random(array) {
     return this[Math.floor((Math.random() * array.length))];
   }
@@ -457,9 +459,7 @@ export class QuestionFourPage implements OnInit {
     let file =await  this.dataUrlToFile(imgCanvas, "report1.png");
     let file2 = await this.dataUrlToFile(imgCanvasMiddle, "report2.png");
     let file3 =await  this.dataUrlToFile(imgCanvasLast, "report3.png");
-    // console.log(imgCanvas);
-    // console.log(imgCanvasMiddle);
-    // console.log(imgCanvasLast);
+
     console.log(file);
     console.log(file2);
     console.log(file3);
@@ -480,89 +480,105 @@ export class QuestionFourPage implements OnInit {
      const task = this.storage.upload(filePath, file);
 
      // observe percentage changes
-     this.uploadPercent = task.percentageChanges();
+     this.uploadPercent =  task.percentageChanges();
      console.log(this.uploadPercent);
      
-     // get notified when the download URL is available
-    await  task.snapshotChanges().pipe(
-         finalize(() => {
-           fileRef.getDownloadURL().subscribe(async (url) =>{
-             console.log(url);
-            
-             urlArray.push({
-              name:"report1.png",
-              path: url
-             })
+     fileRef.getDownloadURL().subscribe((url) =>{
+      console.log(url);
+      console.log("DOwnload URL");
+      urlArray.push({
+                  name:"report1.png",
+                  path: url
+                 })
+      const filePath2 = `reports/${this.username}/2.png`;
+      const fileRef2 = this.storage.ref(filePath2);
+      const task2 = this.storage.upload(filePath2, file2);
 
-            //  this.sendmail("", urlArray);
+      fileRef2.getDownloadURL().subscribe(url =>{
+        console.log(url);
+        console.log("Doenload URL 2");
+        urlArray.push({
+          name:"report2.png",
+          path: url
+         })
+        const filePath = `reports/${this.username}/3.png`;
+     const fileRef3 =this.storage.ref(filePath);
+     const task3 = this.storage.upload(filePath, file3);
 
-           })
-         } )
-      )
-     .subscribe((url) =>{
 
+     fileRef3.getDownloadURL().subscribe(async (url) =>{
+      console.log(url);
+      urlArray.push({
+        name:"report3.png",
+        path: url
+       })
+      console.log("Download URL 3");
+      console.log("urlarray------");
+     
+      console.log(urlArray);
+      await loading.dismiss();
+      this.sendmail("", urlArray);
+      
      })
+      })
+      
+     })
+     // get notified when the download URL is available
+    //   task.snapshotChanges().pipe(
+    //      finalize(() => {
+    //        fileRef.getDownloadURL()
+    //        .subscribe(async (url) =>{
+    //          console.log(url);
+            
+    //          urlArray.push({
+    //           name:"report1.png",
+    //           path: url
+    //          })
 
-     const filePath2 = `reports/${this.username}/2.png`;
-     const fileRef2 = this.storage.ref(filePath2);
-     const task2 = this.storage.upload(filePath2, file2);
+    //         //  this.sendmail("", urlArray);
+
+    //        })
+    //      } )
+    //   )
+    //  .subscribe((url) =>{
+
+    //  })
+
+
 
      // observe percentage changes
-     this.uploadPercent = task2.percentageChanges();
-     // get notified when the download URL is available
-     await task2.snapshotChanges().pipe(
-         finalize(() => {
-           fileRef2.getDownloadURL().subscribe(async (url) =>{
-             console.log(url);
+    //  this.uploadPercent = task2.percentageChanges();
+    //  // get notified when the download URL is available
+    //   task2.snapshotChanges().pipe(
+    //      finalize(() => {
+    //        fileRef2.getDownloadURL().subscribe(async (url) =>{
+    //          console.log(url);
             
-             urlArray.push({
-              name:"report2.png",
-              path: url
-             })
+    //          urlArray.push({
+    //           name:"report2.png",
+    //           path: url
+    //          })
 
 
-           })
-         } )
-      )
-     .subscribe((url) =>{
+    //        })
+    //      } )
+    //   )
+    //  .subscribe((url) =>{
 
-     })
-
-
-     const filePath3 = `reports/${this.username}/3.png`;
-     const fileRef3 = this.storage.ref(filePath3);
-     const task3 = this.storage.upload(filePath3, file3);
-
-     // observe percentage changes
-     this.uploadPercent = task3.percentageChanges();
-     // get notified when the download URL is available
-     await task3.snapshotChanges().pipe(
-         finalize(() => {
-           fileRef3.getDownloadURL().subscribe(async (url) =>{
-             console.log(url);
-            
-             urlArray.push({
-              name:"report3.png",
-              path: url
-             })
+    //  })
 
 
-           })
-         } )
-      )
-     .subscribe((url) =>{
-
-     })
-
-
+  
     
-     setTimeout(async() =>{
-       console.log(urlArray);
-       await loading.dismiss();
-       this.sendmail("", urlArray);
+   
+
+    //  setTimeout(async() =>{
+    //    console.log(urlArray);
+    //    await loading.dismiss();
+    //    this.sendmail("", urlArray);
 
 
-     },5000)
+    //  },5000)
      
 
 // setTimeout(() =>{
@@ -592,10 +608,6 @@ export class QuestionFourPage implements OnInit {
     //   console.log(blob);
     //   let file = this.blobToFile(blob, "report.pdf")
     //   console.log(file);
-
-    
-
-
 
     // })
 

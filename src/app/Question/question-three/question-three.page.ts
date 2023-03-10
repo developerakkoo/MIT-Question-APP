@@ -234,7 +234,7 @@ export class QuestionThreePage implements OnInit {
     this.sound.buttonClick();
     await this.data.set('books', books);
     await this.data.set('bonusBooks', bonusBooks);
-    this.router.navigate(['question-four']);
+    this.router.navigate(['question-five']);
 
 
   }

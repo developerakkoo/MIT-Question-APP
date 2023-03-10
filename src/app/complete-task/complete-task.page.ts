@@ -216,7 +216,7 @@ export class CompleteTaskPage implements OnInit {
     console.log(this.btnA);
     this.btnA.nativeElement.click();
     await this.data.set("isModalLoaded", true);
-    this.isShareInGroupChatOpened = true;
+    this.isAreYouSureOpen = true;
 ``   
   }
 
