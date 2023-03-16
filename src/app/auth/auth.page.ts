@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { QuotesService } from './../services/quotes.service';
 import { AudioService } from './../audio.service';
 import { OtpPage } from './../otp/otp.page';
@@ -39,6 +40,7 @@ export class AuthPage implements OnInit {
               private quotes: QuotesService,
               private fb: FormBuilder,
               private data: DataService,
+              private auth: AngularFireAuth,
               private modalController: ModalController) { 
                 this.ionicForm = this.fb.group({
                   mobileNo:[, [Validators.required, Validators.min(10)]]
@@ -86,7 +88,7 @@ export class AuthPage implements OnInit {
     const modal = await this.modalController.create({
     component: OtpPage,
   backdropDismiss: false,
-      componentProps:{otp: otp}
+      componentProps:{otp: otp, number: this.ionicForm.value.mobileNo}
     });
     await modal.present();
   }
@@ -105,13 +107,16 @@ export class AuthPage implements OnInit {
 
   async onSubmit(){
 
-    console.log(this.mobileNo);
-    
+    console.log(this.ionicForm.value.mobileNo);
+    let email = this.ionicForm.value.mobileNo + "@test.com";
+    console.log(email);
+
+   
    
     this.sound.buttonClick();
     this.otp = this.generateOTP();
     console.log(this.otp);
-    await this.data.set("number", this.mobileNo);
+    await this.data.set("number", this.ionicForm.value.mobileNo);
     this.http 
     .get(`https://sms.k7marketinghub.com/app/smsapi/index.php?key=56391A88208C8A&campaign=14827&routeid=30&type=text&contacts=${this.ionicForm.value.mobileNo}&senderid=WBMCCE&msg=Dear%20Customer,%20Your%20OTP%20is%20${this.otp}%20for%20The%20Mind%20Labyrinth.%20Do%20not%20share%20this%20OTP%20to%20anyone%20for%20security%20reasons.%20-App%20Institute&template_id=1707167514169508879`)
     .subscribe((data) =>{

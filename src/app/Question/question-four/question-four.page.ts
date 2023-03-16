@@ -55,6 +55,11 @@ export class QuestionFourPage implements OnInit {
   relativeCount;
   friendCount;
 
+  imageOne;
+  imageTwo;
+  imageThree;
+
+
   questionOne;
   questionTwo;
   questionThree;
@@ -98,6 +103,9 @@ export class QuestionFourPage implements OnInit {
   tasksDoc: AngularFirestoreCollection<any>;
   tasks: Observable<any>;
 
+  userDoc: AngularFirestoreDocument<any>;
+  user: Observable<any>;
+
   familyBooks: any[];
   prideBooks: any[];
   careerBooks: any[];
@@ -126,12 +134,18 @@ export class QuestionFourPage implements OnInit {
     private afs: AngularFirestore) {
     this.booksDoc = this.afs.collection<any>('Books');
     this.tasksDoc = this.afs.collection<any>('Tasks');
-
-
+    
   }
-
-  ngOnInit() {
-
+  
+  async ngOnInit() {
+    let userId = await this.data.get("userId");
+    console.log(`UserId in page four ${userId}`);
+    this.userDoc = this.afs.doc<any>(`Users/${userId}`);
+    this.user = this.userDoc.valueChanges();
+    this.user.subscribe((user) =>{
+      console.log(user);
+      
+    })
   }
 
   ionViewDidEnter() {
@@ -517,100 +531,38 @@ export class QuestionFourPage implements OnInit {
      
       console.log(urlArray);
       await loading.dismiss();
-      this.sendmail("", urlArray);
+
+      this.imageOne = urlArray[0]['path'];
+      this.imageTwo = urlArray[1]['path'];
+      this.imageThree = urlArray[2]['path'];
+      this.updateUser();
       
      })
       })
       
      })
-     // get notified when the download URL is available
-    //   task.snapshotChanges().pipe(
-    //      finalize(() => {
-    //        fileRef.getDownloadURL()
-    //        .subscribe(async (url) =>{
-    //          console.log(url);
-            
-    //          urlArray.push({
-    //           name:"report1.png",
-    //           path: url
-    //          })
-
-    //         //  this.sendmail("", urlArray);
-
-    //        })
-    //      } )
-    //   )
-    //  .subscribe((url) =>{
-
-    //  })
-
-
-
-     // observe percentage changes
-    //  this.uploadPercent = task2.percentageChanges();
-    //  // get notified when the download URL is available
-    //   task2.snapshotChanges().pipe(
-    //      finalize(() => {
-    //        fileRef2.getDownloadURL().subscribe(async (url) =>{
-    //          console.log(url);
-            
-    //          urlArray.push({
-    //           name:"report2.png",
-    //           path: url
-    //          })
-
-
-    //        })
-    //      } )
-    //   )
-    //  .subscribe((url) =>{
-
-    //  })
-
-
-  
-    
    
+  }
 
-    //  setTimeout(async() =>{
-    //    console.log(urlArray);
-    //    await loading.dismiss();
-    //    this.sendmail("", urlArray);
+ async updateUser(){
+    let loading = await this.loadingController.create({
+      message: "Update user data..."
+    })
 
-
-    //  },5000)
-     
-
-// setTimeout(() =>{
-//   this.sendmail("", urlArray);
-
-// },4000)
-    // const doc = new jsPDF();
-
-
-    // const pdfTable = this.pdfTable.nativeElement;
-    // console.log(pdfTable);
-
-
-
-    // var html = htmlToPdfmake(pdfTable.innerHTML);
-
-    // const documentDefinition = {
-    //   content: html,
-    //   // image: this.getBase64ImageFromURL('./../../../assets/Empty-template-middle-page.jpg')
-
-    // };
-
-    // this.sound.buttonClick();
-
-    // const pdf = await pdfMake.createPdf(documentDefinition);
-    // pdf.getBlob((blob) => {
-    //   console.log(blob);
-    //   let file = this.blobToFile(blob, "report.pdf")
-    //   console.log(file);
-
-    // })
-
+    this.userDoc.update({
+      imageOne: this.imageOne,
+      imageTwo: this.imageTwo,
+      imageThree: this.imageThree
+    }).then(async (user) =>{
+      console.log("user updated");
+      await loading.dismiss()
+      this.router.navigate(['question-five']);
+      
+    }).catch(async (error) =>{
+      console.log(error);
+      await loading.dismiss()
+      
+    })
   }
 
   getBase64ImageFromURL(url) {

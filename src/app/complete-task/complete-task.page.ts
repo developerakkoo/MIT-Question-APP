@@ -54,6 +54,21 @@ export class CompleteTaskPage implements OnInit {
   tasksDoc: AngularFirestoreCollection<any>;
   // tasks: Observable<any>;
 
+   itemsCollection: AngularFirestoreCollection<any>;
+  items: Observable<any[]>;
+
+
+  age;
+  email;
+  name;
+  gender;
+  number;
+
+  occupation;
+  questionOne;
+  questionThree;
+  wordList;
+
 
   
   slides = {
@@ -79,11 +94,20 @@ export class CompleteTaskPage implements OnInit {
     private sound: AudioService
               ) { 
     this.tasksDoc = this.afs.collection<any>('Tasks');
+    this.itemsCollection = afs.collection<any>('Profile');
+
 
               }
 
   async ngOnInit() {
     this.bonusBooks = await  this.data.get('BBooks');
+    this.name = await this.data.get('name');
+    this.email = await this.data.get('email');
+    this.age = await this.data.get('age');
+    this.number = await this.data.get('number');
+    this.wordList = await this.data.get('wordList');
+    this.questionOne = await this.data.get('questionOne');
+    this.questionThree = await this.data.get('questionThree');
     this.isShareInGroupChatOpened = await this.data.get('isModalLoaded');
     this.type = await this.data.get("gender");
     this.ageGroup = await this.data.get("age");
@@ -91,6 +115,8 @@ export class CompleteTaskPage implements OnInit {
     if(this.isShareInGroupChatOpened == true){
       this.isAreYouSureOpen = true;
     }
+
+    this.uploadData();
   }
 
 
@@ -134,6 +160,26 @@ export class CompleteTaskPage implements OnInit {
     });
   }
 
+
+  uploadData(){
+    let obj = {
+      name: this.name || "",
+      email: this.email || "",
+      number: this.number || "",
+      age: this.age || "",
+      gender: this.type || "",
+      occupation: this.occupation || "",
+      wordList: this.wordList || "",
+      questionOne: this.questionOne || "",
+      questionThree: this.questionThree || ""
+    }
+
+    this.itemsCollection.add(obj).then((data) =>
+    {
+      console.log("DAta added");
+      
+    })
+  }
   closeSeminarModal(){
     this.isSeminarModal = false;
   }
