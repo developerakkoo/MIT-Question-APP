@@ -130,7 +130,7 @@ export class QuestionFivePage implements OnInit {
       state: this.state
     }).then((done) =>{
       console.log("data updated");
-      if(age == "above18"){
+      if(age == "above18" && this.state == "Maharashtra"){
         // this.presentModalAbove18();
         this.presentModalAbove18();
         this.audio.buttonClick();
@@ -138,13 +138,13 @@ export class QuestionFivePage implements OnInit {
         console.log("Open Above 18 page");
         
        }
-       if(age == "below18"){
+       if(age == "above18"){
         this.audio.buttonClick();
         this.presentModalBelow18WithoutMaharashtra();
-        console.log("Open Below 18 page without maha");
+        console.log("Open Above 18 page without maha");
   
       }
-      if(age == "below18" && this.state == "Maharashtra"){
+      if(age == "below18"){
         this.audio.buttonClick();
         this.presentModalBelow18();
         console.log("Open Below 18 page with maha");
