@@ -25,13 +25,12 @@ export class FirstPageTaskPage implements OnInit {
     this.isStepModalOpen = false;
   }
   openAuth(){
-    this.closeStepModal();
     this.router.navigate(['auth'])
   }
   async BookForYear(){
     this.data.set("key", "Year").then((value) =>{
     this.sound.buttonClick();
-      this.isStepModalOpen = true;
+    this.openAuth();
     }).catch((error) =>{
       console.log(error);
       
@@ -41,7 +40,7 @@ export class FirstPageTaskPage implements OnInit {
   async BookForMonth(){
     this.data.set("key", "Month").then((value) =>{
     this.sound.buttonClick();
-    this.isStepModalOpen = true;
+    this.openAuth();
 
     }).catch((error) =>{
       console.log(error);
@@ -52,7 +51,7 @@ export class FirstPageTaskPage implements OnInit {
   async BookForDay(){
     this.data.set("key", "Day").then((value) =>{
     this.sound.buttonClick();
-    this.isStepModalOpen = true;
+    this.openAuth();
 
     }).catch((error) =>{
       console.log(error);
@@ -63,7 +62,7 @@ export class FirstPageTaskPage implements OnInit {
   async BookForWeek(){
     this.data.set("key", "Week").then((value) =>{
     this.sound.buttonClick();
-    this.isStepModalOpen = true;
+    this.openAuth();
 
     }).catch((error) =>{
       console.log(error);
@@ -74,7 +73,7 @@ export class FirstPageTaskPage implements OnInit {
   async BookForLife(){
     this.data.set("key", "Life").then((value) =>{
     this.sound.buttonClick();
-    this.isStepModalOpen = true;
+    this.openAuth();
 
     }).catch((error) =>{
       console.log(error);

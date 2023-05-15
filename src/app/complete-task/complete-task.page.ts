@@ -272,7 +272,6 @@ export class CompleteTaskPage implements OnInit {
    
   }
   async presentAlertConfirm() {
-    this.isShareInGroupOpen = true;
 
   }
 
